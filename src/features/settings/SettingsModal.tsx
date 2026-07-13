@@ -48,6 +48,29 @@ export function SettingsModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
             {/* Body */}
             <div className="p-6 flex flex-col gap-5">
               
+              {/* Child Profile */}
+              <div className="flex flex-col gap-2">
+                <label className="font-fredoka font-bold text-lf-navy text-lg">
+                  Child's Name
+                </label>
+                <input
+                  type="text"
+                  value={useSettings((s) => s.childName)}
+                  onChange={(e) => useSettings.getState().setChildName(e.target.value)}
+                  placeholder="e.g. Lily"
+                  maxLength={12}
+                  className="w-full px-4 py-3 rounded-2xl outline-none"
+                  style={{
+                    background: C.muted,
+                    border: `3px solid ${C.navy}`,
+                    fontFamily: "'Fredoka',sans-serif",
+                    fontSize: 18,
+                    color: C.navy,
+                    boxShadow: `inset 0 2px 4px rgba(0,0,0,0.05)`,
+                  }}
+                />
+              </div>
+
               {/* Sound Toggle */}
               <div 
                 onClick={toggleSound}

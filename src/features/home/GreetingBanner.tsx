@@ -1,11 +1,13 @@
 import { motion } from "motion/react";
-import { C, CATEGORIES, CHILD_NAME } from "@/app/constants";
+import { C, CATEGORIES } from "@/app/constants";
 import { useGreeting } from "@/hooks/useGreeting";
 import { useProgress, formatStreak } from "@/hooks/useProgress";
+import { useSettings } from "@/hooks/useSettings";
 
 export function GreetingBanner() {
   const g = useGreeting();
   const { progress } = useProgress();
+  const { childName } = useSettings();
   const completedCount = CATEGORIES.filter(c => c.state === "complete" || c.state === "active").length;
 
   return (
@@ -30,7 +32,7 @@ export function GreetingBanner() {
             className="text-xl sm:text-2xl lg:text-3xl leading-tight font-bold"
             style={{ fontFamily: "'Fredoka',sans-serif", color: C.navy }}
           >
-            {CHILD_NAME}, what shall we learn? ✨
+            {childName}, what shall we learn? ✨
           </p>
         </div>
       </div>

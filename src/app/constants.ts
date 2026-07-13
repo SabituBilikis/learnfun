@@ -19,10 +19,6 @@ export const C = {
   white:  "#FFFFFF",
 };
 
-// ── Child profile ─────────────────────────────────────────────────────────────
-// Placeholder until a real profile/parent-settings feature exists.
-export const CHILD_NAME = "Lily";
-
 // ── Lesson content (data-driven — see src/data/*.json) ────────────────────────
 export interface LetterEntry { l: string; word: string; emoji: string; }
 export const LETTERS: LetterEntry[] = lettersData;

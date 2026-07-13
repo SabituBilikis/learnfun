@@ -8,6 +8,8 @@ interface SettingsState {
   timePlayedToday: number; // in seconds
   incrementTimePlayed: (seconds: number) => void;
   lastPlayedDate: string;
+  childName: string;
+  setChildName: (name: string) => void;
 }
 
 const SETTINGS_KEY = "learnfun_settings";
@@ -17,6 +19,7 @@ export const useSettings = create<SettingsState>((set) => {
   let initialScreenTimeLimit = 0;
   let initialTimePlayedToday = 0;
   let initialLastPlayedDate = new Date().toISOString().split("T")[0];
+  let initialChildName = "Lily";
 
   if (typeof window !== "undefined") {
     try {
@@ -27,6 +30,7 @@ export const useSettings = create<SettingsState>((set) => {
         if (typeof parsed.screenTimeLimit === "number") initialScreenTimeLimit = parsed.screenTimeLimit;
         if (typeof parsed.timePlayedToday === "number") initialTimePlayedToday = parsed.timePlayedToday;
         if (typeof parsed.lastPlayedDate === "string") initialLastPlayedDate = parsed.lastPlayedDate;
+        if (typeof parsed.childName === "string") initialChildName = parsed.childName;
         
         // Reset time played if it's a new day
         const today = new Date().toISOString().split("T")[0];
@@ -45,6 +49,7 @@ export const useSettings = create<SettingsState>((set) => {
     screenTimeLimit: initialScreenTimeLimit,
     timePlayedToday: initialTimePlayedToday,
     lastPlayedDate: initialLastPlayedDate,
+    childName: initialChildName,
     toggleSound: () =>
       set((state) => {
         const next = !state.soundEnabled;
@@ -73,6 +78,13 @@ export const useSettings = create<SettingsState>((set) => {
           }));
         } catch (e) {}
         return { timePlayedToday: newTime, lastPlayedDate: today };
+      }),
+    setChildName: (name) =>
+      set((state) => {
+        try {
+          localStorage.setItem(SETTINGS_KEY, JSON.stringify({ ...state, childName: name }));
+        } catch (e) {}
+        return { childName: name };
       }),
   };
 });
