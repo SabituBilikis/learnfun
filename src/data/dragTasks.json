@@ -1,0 +1,47 @@
+[
+  {
+    "id": "apple-basket",
+    "instruction": "Drag the Apple to the Basket",
+    "voiceLine": "Drag the apple into the basket!",
+    "object": { "emoji": "🍎", "label": "Apple", "color": "#FF3B30", "bg": "#FFE8E6" },
+    "zone": { "emoji": "🧺", "label": "Basket", "color": "#FF9500", "bg": "#FFF0D6", "hint": "Drop it here!" },
+    "distractor": { "emoji": "🍊", "label": "Orange", "color": "#FF9500", "bg": "#FFF0D6" },
+    "reward": "🌟"
+  },
+  {
+    "id": "star-sky",
+    "instruction": "Put the Star in the Night Sky",
+    "voiceLine": "Put the star up in the night sky!",
+    "object": { "emoji": "⭐", "label": "Star", "color": "#FFD700", "bg": "#FFF8D6" },
+    "zone": { "emoji": "🌙", "label": "Night Sky", "color": "#3A1FA0", "bg": "#E8E4FF", "hint": "Up here!" },
+    "distractor": { "emoji": "☀️", "label": "Sun", "color": "#FF9500", "bg": "#FFF0D6" },
+    "reward": "🎉"
+  },
+  {
+    "id": "fish-water",
+    "instruction": "Drop the Fish into the Ocean",
+    "voiceLine": "Drop the fish into the ocean!",
+    "object": { "emoji": "🐟", "label": "Fish", "color": "#007AFF", "bg": "#DFF0FF" },
+    "zone": { "emoji": "🌊", "label": "Ocean", "color": "#00C7BE", "bg": "#D6F8F7", "hint": "Splash!" },
+    "distractor": { "emoji": "🐦", "label": "Bird", "color": "#00C7BE", "bg": "#D6F8F7" },
+    "reward": "🏅"
+  },
+  {
+    "id": "flower-pot",
+    "instruction": "Plant the Flower in the Pot",
+    "voiceLine": "Plant the flower into the pot!",
+    "object": { "emoji": "🌸", "label": "Flower", "color": "#FF2D9B", "bg": "#FFE4F2" },
+    "zone": { "emoji": "🪴", "label": "Pot", "color": "#34C759", "bg": "#E4F8E8", "hint": "Right here!" },
+    "distractor": { "emoji": "🍄", "label": "Mushroom", "color": "#FF9500", "bg": "#FFF0D6" },
+    "reward": "✨"
+  },
+  {
+    "id": "ball-goal",
+    "instruction": "Kick the Ball into the Goal",
+    "voiceLine": "Kick the ball into the goal!",
+    "object": { "emoji": "⚽", "label": "Ball", "color": "#1A0050", "bg": "#E4E0FF" },
+    "zone": { "emoji": "🥅", "label": "Goal", "color": "#34C759", "bg": "#E4F8E8", "hint": "Score!" },
+    "distractor": { "emoji": "🏀", "label": "Basketball", "color": "#FF9500", "bg": "#FFF0D6" },
+    "reward": "🏆"
+  }
+]

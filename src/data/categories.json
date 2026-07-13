@@ -1,0 +1,187 @@
+[
+  {
+    "id": "shapes", "title": "Shapes", "icon": "🔷", "color": "#007AFF", "dark": "#0056CC", "panelType": "shape-tap",
+    "entries": [
+      { "name": "Circle",    "emoji": "⭕", "color": "#FF3B30", "dark": "#CC2A20", "shapeType": "circle",    "panelEmojis": ["🍕","🌍","🍩","🌙"], "fact": "A Circle is round like a wheel!" },
+      { "name": "Square",    "emoji": "🟥", "color": "#007AFF", "dark": "#0056CC", "shapeType": "square",    "panelEmojis": ["📦","🎁","🧇","🪟"], "fact": "A Square has four equal sides!" },
+      { "name": "Triangle",  "emoji": "🔺", "color": "#FF9500", "dark": "#CC7600", "shapeType": "triangle",  "panelEmojis": ["🔺","🏔️","🎄","🧲"], "fact": "A Triangle has three sides!" },
+      { "name": "Rectangle", "emoji": "📄", "color": "#00C7BE", "dark": "#009B94", "shapeType": "rectangle", "panelEmojis": ["📱","🖥️","📺","🚪"], "fact": "A Rectangle has two long sides and two short sides!" },
+      { "name": "Star",      "emoji": "⭐", "color": "#C9A200", "dark": "#9A7800", "shapeType": "star",      "panelEmojis": ["⭐","🌟","💫","✨"], "fact": "A Star has five twinkly points!" },
+      { "name": "Heart",     "emoji": "❤️", "color": "#FF2D9B", "dark": "#CC1F7A", "shapeType": "heart",     "panelEmojis": ["❤️","🍓","🌹","💗"], "fact": "A Heart is the shape of love!" },
+      { "name": "Diamond",   "emoji": "💎", "color": "#007AFF", "dark": "#0056CC", "shapeType": "diamond",   "panelEmojis": ["💎","💠","🔷","🃏"], "fact": "A Diamond sparkles like a gem!" },
+      { "name": "Oval",      "emoji": "🥚", "color": "#34C759", "dark": "#28A046", "shapeType": "oval",      "panelEmojis": ["🥚","🪆","🫘","🍋"], "fact": "An Oval is shaped like an egg!" },
+      { "name": "Pentagon",  "emoji": "⬠", "color": "#AF52DE", "dark": "#8A3DB5", "shapeType": "pentagon",  "panelEmojis": ["🏠","⬠","⚙️","📐"], "fact": "A Pentagon has five sides!" },
+      { "name": "Hexagon",   "emoji": "🔶", "color": "#FF9500", "dark": "#CC7600", "shapeType": "hexagon",   "panelEmojis": ["🐝","❄️","🔶","🧲"], "fact": "A Hexagon has six sides, like a honeycomb!" }
+    ]
+  },
+  {
+    "id": "colors", "title": "Colors", "icon": "🎨", "color": "#AF52DE", "dark": "#8A3DB5", "panelType": "color-swatch",
+    "entries": [
+      { "name": "Red",    "emoji": "🔴", "color": "#FF3B30", "dark": "#CC2A20", "soundWord": "Red! Like a fire truck.",    "panelEmojis": ["🍎","🌹","🎈","🍓","❤️","🚒"] },
+      { "name": "Orange", "emoji": "🟠", "color": "#FF9500", "dark": "#CC7600", "soundWord": "Orange! Like a sunset.",    "panelEmojis": ["🍊","🎃","🦊","🥕","🏀","🌅"] },
+      { "name": "Yellow", "emoji": "🟡", "color": "#FFD700", "dark": "#C9A200", "soundWord": "Yellow! Like the sun.",     "panelEmojis": ["🌻","⭐","🍋","🐤","🧀","☀️"] },
+      { "name": "Green",  "emoji": "🟢", "color": "#34C759", "dark": "#28A046", "soundWord": "Green! Like the grass.",    "panelEmojis": ["🍀","🥦","🐸","🌿","🎄","🥑"] },
+      { "name": "Blue",   "emoji": "🔵", "color": "#007AFF", "dark": "#0056CC", "soundWord": "Blue! Like the ocean.",     "panelEmojis": ["🌊","💎","🫐","🐬","🦋","☁️"] },
+      { "name": "Purple", "emoji": "🟣", "color": "#AF52DE", "dark": "#8A3DB5", "soundWord": "Purple! Like lavender.",    "panelEmojis": ["🍇","🟣","🦄","💜","🔮","🌸"] },
+      { "name": "Pink",   "emoji": "🩷", "color": "#FF2D9B", "dark": "#CC1F7A", "soundWord": "Pink! Like a flamingo.",    "panelEmojis": ["🌸","🍬","🦩","💗","🐷","🎀"] },
+      { "name": "Brown",  "emoji": "🟤", "color": "#A0522D", "dark": "#7A3B1E", "soundWord": "Brown! Like chocolate.",    "panelEmojis": ["🍫","🐻","🍂","🪵","🐕","🧁"] },
+      { "name": "Black",  "emoji": "⚫", "color": "#1A1A2E", "dark": "#0D0D1F", "soundWord": "Black! Like the night sky.", "panelEmojis": ["🐈","🎩","🖊️","🦇","🌑","🎱"] },
+      { "name": "White",  "emoji": "⚪", "color": "#9B9BB4", "dark": "#7070A0", "soundWord": "White! Like fluffy clouds.", "panelEmojis": ["☁️","🕊️","🐑","🧊","🌨️","🍚"] },
+      { "name": "Gray",   "emoji": "🩶", "color": "#8E8E93", "dark": "#636366", "soundWord": "Gray! Like an elephant.",   "panelEmojis": ["🐘","🌧️","🪨","🐺","🌫️","🦔"] },
+      { "name": "Gold",   "emoji": "🥇", "color": "#B8860B", "dark": "#8B6508", "soundWord": "Gold! Shiny like treasure!","panelEmojis": ["⭐","🏆","👑","🔔","🌟","💰"] }
+    ]
+  },
+  {
+    "id": "animals", "title": "Animals", "icon": "🐶", "color": "#FF9500", "dark": "#CC7600", "panelType": "tap-reveal",
+    "entries": [
+      { "name": "Dog",      "emoji": "🐶", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🐾","🦴","🎾","🏠"] },
+      { "name": "Cat",      "emoji": "🐱", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["🐾","🧶","🎀","🐟"] },
+      { "name": "Cow",      "emoji": "🐄", "color": "#00C7BE", "dark": "#009B94", "panelEmojis": ["🥛","🌿","🐄","🔔"] },
+      { "name": "Pig",      "emoji": "🐷", "color": "#FF2D9B", "dark": "#CC1F7A", "panelEmojis": ["🌽","🏡","🍂","🐾"] },
+      { "name": "Horse",    "emoji": "🐴", "color": "#A0522D", "dark": "#7A3B1E", "panelEmojis": ["🌾","🏇","🐾","🍎"] },
+      { "name": "Sheep",    "emoji": "🐑", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["🌿","🧶","🌸","🐑"] },
+      { "name": "Chicken",  "emoji": "🐔", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["🥚","🌾","🐓","🌻"] },
+      { "name": "Duck",     "emoji": "🦆", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["💧","🌊","🌿","🐟"] },
+      { "name": "Rabbit",   "emoji": "🐰", "color": "#FF2D9B", "dark": "#CC1F7A", "panelEmojis": ["🥕","🌸","🐾","🍀"] },
+      { "name": "Mouse",    "emoji": "🐭", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["🧀","🏠","🌾","🐾"] },
+      { "name": "Lion",     "emoji": "🦁", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🌾","🏆","🐾","🌅"] },
+      { "name": "Elephant", "emoji": "🐘", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["💧","🌿","🥜","🏔️"] },
+      { "name": "Monkey",   "emoji": "🐒", "color": "#A0522D", "dark": "#7A3B1E", "panelEmojis": ["🍌","🌴","🐾","🎪"] },
+      { "name": "Penguin",  "emoji": "🐧", "color": "#00C7BE", "dark": "#009B94", "panelEmojis": ["🐟","❄️","🌊","🏔️"] },
+      { "name": "Giraffe",  "emoji": "🦒", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["🌿","🍃","🌅","🦒"] },
+      { "name": "Frog",     "emoji": "🐸", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["🌿","💧","🍃","🦟"] },
+      { "name": "Bear",     "emoji": "🐻", "color": "#A0522D", "dark": "#7A3B1E", "panelEmojis": ["🍯","🐟","🌲","🐾"] },
+      { "name": "Tiger",    "emoji": "🐯", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🌿","🐾","🏔️","🌅"] },
+      { "name": "Dolphin",  "emoji": "🐬", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["🌊","🐟","⭐","💙"] },
+      { "name": "Parrot",   "emoji": "🦜", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["🌴","🍌","🌈","🌺"] }
+    ]
+  },
+  {
+    "id": "fruits", "title": "Fruits", "icon": "🍎", "color": "#FF3B30", "dark": "#CC2A20", "panelType": "tap-reveal",
+    "entries": [
+      { "name": "Apple",      "emoji": "🍎", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["🍎","🍎","🍎","🍎","🍎"] },
+      { "name": "Banana",     "emoji": "🍌", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["🍌","🍌","🍌","🍌","🍌","🍌"] },
+      { "name": "Orange",     "emoji": "🍊", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🍊","🍊","🍊","🍊"] },
+      { "name": "Grapes",     "emoji": "🍇", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["🍇","🍇","🍇","🍇","🍇","🍇","🍇","🍇"] },
+      { "name": "Strawberry", "emoji": "🍓", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["🍓","🍓","🍓","🍓","🍓"] },
+      { "name": "Watermelon", "emoji": "🍉", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["🍉","🍉","🍉"] },
+      { "name": "Pineapple",  "emoji": "🍍", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["🍍","🍍"] },
+      { "name": "Mango",      "emoji": "🥭", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🥭","🥭","🥭","🥭"] },
+      { "name": "Cherry",     "emoji": "🍒", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["🍒","🍒","🍒","🍒","🍒","🍒"] },
+      { "name": "Lemon",      "emoji": "🍋", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["🍋","🍋","🍋","🍋","🍋"] },
+      { "name": "Peach",      "emoji": "🍑", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🍑","🍑","🍑","🍑"] },
+      { "name": "Pear",       "emoji": "🍐", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["🍐","🍐","🍐","🍐","🍐"] },
+      { "name": "Kiwi",       "emoji": "🥝", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["🥝","🥝","🥝","🥝","🥝","🥝"] },
+      { "name": "Blueberry",  "emoji": "🫐", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["🫐","🫐","🫐","🫐","🫐","🫐","🫐","🫐","🫐","🫐"] },
+      { "name": "Coconut",    "emoji": "🥥", "color": "#00C7BE", "dark": "#009B94", "panelEmojis": ["🥥","🥥"] }
+    ]
+  },
+  {
+    "id": "vehicles", "title": "Vehicles", "icon": "🚗", "color": "#00C7BE", "dark": "#009B94", "panelType": "tap-reveal",
+    "entries": [
+      { "name": "Car",             "emoji": "🚗", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["🛞","⛽","🗺️","🚦"] },
+      { "name": "Bus",             "emoji": "🚌", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🎒","🏫","👨‍👩‍👧","⏰"] },
+      { "name": "Truck",           "emoji": "🚛", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["📦","🛞","🔧","🛣️"] },
+      { "name": "Bicycle",         "emoji": "🚲", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["🪖","🛞","💨","🏆"] },
+      { "name": "Train",           "emoji": "🚂", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["🛤️","🚉","💨","🔔"] },
+      { "name": "Airplane",        "emoji": "✈️", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["🌤️","☁️","🌍","🛫"] },
+      { "name": "Boat",            "emoji": "⛵", "color": "#00C7BE", "dark": "#009B94", "panelEmojis": ["🌊","⚓","🐟","🌅"] },
+      { "name": "Helicopter",      "emoji": "🚁", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["💨","🌤️","🔦","⚙️"] },
+      { "name": "Rocket",          "emoji": "🚀", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["🌟","🌍","🔥","🛸"] },
+      { "name": "Submarine",       "emoji": "🤿", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["🌊","🐠","🔦","⚓"] },
+      { "name": "Tractor",         "emoji": "🚜", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["🌾","🏡","🌱","🛞"] },
+      { "name": "Fire Truck",      "emoji": "🚒", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["🔥","🚿","🪖","🔔"] },
+      { "name": "Ambulance",       "emoji": "🚑", "color": "#FF2D9B", "dark": "#CC1F7A", "panelEmojis": ["❤️","💊","🏥","🔔"] },
+      { "name": "Taxi",            "emoji": "🚕", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["🗺️","🚦","💰","🌆"] },
+      { "name": "Scooter",         "emoji": "🛴", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["🛞","💨","🪖","🌳"] },
+      { "name": "Motorcycle",      "emoji": "🏍️", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🪖","🛞","💨","🏆"] },
+      { "name": "Hot Air Balloon", "emoji": "🎈", "color": "#FF2D9B", "dark": "#CC1F7A", "panelEmojis": ["☁️","🌈","🌅","💨"] },
+      { "name": "Skateboard",      "emoji": "🛹", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["🛞","💨","🏆","🎤"] }
+    ]
+  },
+  {
+    "id": "school", "title": "School", "icon": "🏫", "color": "#C9A200", "dark": "#9A7800", "panelType": "tap-reveal",
+    "entries": [
+      { "name": "Pencil",     "emoji": "✏️", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["✏️","✏️","✏️","📝"] },
+      { "name": "Book",       "emoji": "📚", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["📖","📚","📚","🔖"] },
+      { "name": "Ruler",      "emoji": "📏", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["📏","📐","✏️","🔢"] },
+      { "name": "Scissors",   "emoji": "✂️", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["✂️","🎨","📄","🎀"] },
+      { "name": "Eraser",     "emoji": "🧹", "color": "#FF2D9B", "dark": "#CC1F7A", "panelEmojis": ["🧹","✏️","📝","🧽"] },
+      { "name": "Backpack",   "emoji": "🎒", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["📚","✏️","🍎","💧"] },
+      { "name": "Notebook",   "emoji": "📓", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["📓","✏️","📐","🔖"] },
+      { "name": "Crayon",     "emoji": "🖍️", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🖍️","🎨","🖍️","🖍️"] },
+      { "name": "Globe",      "emoji": "🌍", "color": "#00C7BE", "dark": "#009B94", "panelEmojis": ["🌍","🌏","🌎","🗺️"] },
+      { "name": "Calculator", "emoji": "🧮", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["🔢","➕","✖️","🟰"] },
+      { "name": "Paint",      "emoji": "🎨", "color": "#FF2D9B", "dark": "#CC1F7A", "panelEmojis": ["🔴","🟡","🔵","🎨"] },
+      { "name": "Desk",       "emoji": "🪑", "color": "#A0522D", "dark": "#7A3B1E", "panelEmojis": ["📚","✏️","💻","🪴"] },
+      { "name": "Bell",       "emoji": "🔔", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["🔔","🏫","⏰","🎒"] },
+      { "name": "Lunch Box",  "emoji": "🍱", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["🍎","🥪","🧃","🍪"] },
+      { "name": "Compass",    "emoji": "🧭", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["📐","🗺️","🔢","📏"] }
+    ]
+  },
+  {
+    "id": "home", "title": "Home", "icon": "🏠", "color": "#FF9500", "dark": "#CC7600", "panelType": "tap-reveal",
+    "entries": [
+      { "name": "Bed",         "emoji": "🛏️", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["😴","🛏️","🌙","🧸"] },
+      { "name": "Sofa",        "emoji": "🛋️", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["📺","🛋️","🍿","😌"] },
+      { "name": "Table",       "emoji": "🪑", "color": "#A0522D", "dark": "#7A3B1E", "panelEmojis": ["🍽️","🥤","🕯️","🌺"] },
+      { "name": "Refrigerator","emoji": "🧊", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["🍎","🥛","🧃","❄️"] },
+      { "name": "Stove",       "emoji": "🍳", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["🍳","🔥","🥚","👨‍🍳"] },
+      { "name": "Bathtub",     "emoji": "🛁", "color": "#00C7BE", "dark": "#009B94", "panelEmojis": ["🧼","🛁","💧","🦆"] },
+      { "name": "TV",          "emoji": "📺", "color": "#1A0050", "dark": "#0D0030", "panelEmojis": ["📺","🎮","🍿","📡"] },
+      { "name": "Door",        "emoji": "🚪", "color": "#A0522D", "dark": "#7A3B1E", "panelEmojis": ["🔑","🚪","🏠","🔔"] },
+      { "name": "Window",      "emoji": "🪟", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["☀️","🌧️","🌷","🪟"] },
+      { "name": "Lamp",        "emoji": "💡", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["💡","🌙","📖","✨"] },
+      { "name": "Clock",       "emoji": "🕐", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["⏰","🕐","⏱️","🌅"] },
+      { "name": "Plant",       "emoji": "🪴", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["💧","☀️","🌱","🪴"] }
+    ]
+  },
+  {
+    "id": "body", "title": "Body Parts", "icon": "🫀", "color": "#FF2D9B", "dark": "#CC1F7A", "panelType": "tap-reveal",
+    "entries": [
+      { "name": "Head",    "emoji": "🗣️", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["👂","👁️","👃","👄"] },
+      { "name": "Eyes",    "emoji": "👁️", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["👁️","👁️","😉","🌟"] },
+      { "name": "Ears",    "emoji": "👂", "color": "#FF2D9B", "dark": "#CC1F7A", "panelEmojis": ["🎵","🔔","🗣️","👂"] },
+      { "name": "Nose",    "emoji": "👃", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["🌹","🍕","🌺","👃"] },
+      { "name": "Mouth",   "emoji": "👄", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["😄","😮","😋","🗣️"] },
+      { "name": "Hands",   "emoji": "👐", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["👋","🤝","👏","✌️"] },
+      { "name": "Fingers", "emoji": "🖐️", "color": "#FFD700", "dark": "#C9A200", "panelEmojis": ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"] },
+      { "name": "Arms",    "emoji": "💪", "color": "#34C759", "dark": "#28A046", "panelEmojis": ["💪","🏋️","🤗","🤝"] },
+      { "name": "Legs",    "emoji": "🦵", "color": "#AF52DE", "dark": "#8A3DB5", "panelEmojis": ["🦵","🦿","⚽","🚴"] },
+      { "name": "Feet",    "emoji": "🦶", "color": "#00C7BE", "dark": "#009B94", "panelEmojis": ["👟","🩴","⚽","🏃"] },
+      { "name": "Hair",    "emoji": "💇", "color": "#A0522D", "dark": "#7A3B1E", "panelEmojis": ["🌬️","💇","✂️","🌸"] },
+      { "name": "Teeth",   "emoji": "🦷", "color": "#007AFF", "dark": "#0056CC", "panelEmojis": ["🦷","🪥","🧴","😁"] },
+      { "name": "Heart",   "emoji": "❤️", "color": "#FF3B30", "dark": "#CC2A20", "panelEmojis": ["❤️","💓","💗","💝"] },
+      { "name": "Tummy",   "emoji": "🫃", "color": "#FF9500", "dark": "#CC7600", "panelEmojis": ["🍎","😋","😌","✅"] }
+    ]
+  },
+  {
+    "id": "months", "title": "Months", "icon": "📅", "color": "#007AFF", "dark": "#0056CC", "panelType": "sequence",
+    "entries": [
+      { "name": "January",   "emoji": "❄️", "color": "#007AFF", "dark": "#0056CC", "soundWord": "January. The first month. Cold winter days!", "panelEmojis": ["1️⃣","❄️","⛄","🌨️"] },
+      { "name": "February",  "emoji": "💝", "color": "#FF2D9B", "dark": "#CC1F7A", "soundWord": "February. The second month. Valentine's Day!", "panelEmojis": ["2️⃣","💝","🌹","💌"] },
+      { "name": "March",     "emoji": "🌧️", "color": "#34C759", "dark": "#28A046", "soundWord": "March. The third month. Spring begins!", "panelEmojis": ["3️⃣","🌧️","🌱","🌈"] },
+      { "name": "April",     "emoji": "🌸", "color": "#FF2D9B", "dark": "#CC1F7A", "soundWord": "April. The fourth month. April showers!", "panelEmojis": ["4️⃣","🌸","🌦️","🌷"] },
+      { "name": "May",       "emoji": "🌺", "color": "#FF9500", "dark": "#CC7600", "soundWord": "May. The fifth month. Flowers bloom!", "panelEmojis": ["5️⃣","🌺","🌻","🦋"] },
+      { "name": "June",      "emoji": "☀️", "color": "#FFD700", "dark": "#C9A200", "soundWord": "June. The sixth month. Summer starts!", "panelEmojis": ["6️⃣","☀️","🏖️","🌞"] },
+      { "name": "July",      "emoji": "🎆", "color": "#FF3B30", "dark": "#CC2A20", "soundWord": "July. The seventh month. Fireworks!", "panelEmojis": ["7️⃣","🎆","🏖️","🌊"] },
+      { "name": "August",    "emoji": "🌊", "color": "#00C7BE", "dark": "#009B94", "soundWord": "August. The eighth month. Hot summer fun!", "panelEmojis": ["8️⃣","🌊","🍦","🏄"] },
+      { "name": "September", "emoji": "🍂", "color": "#FF9500", "dark": "#CC7600", "soundWord": "September. The ninth month. School begins!", "panelEmojis": ["9️⃣","🍂","🎒","🏫"] },
+      { "name": "October",   "emoji": "🎃", "color": "#FF9500", "dark": "#CC7600", "soundWord": "October. The tenth month. Halloween!", "panelEmojis": ["🔟","🎃","🍁","👻"] },
+      { "name": "November",  "emoji": "🦃", "color": "#A0522D", "dark": "#7A3B1E", "soundWord": "November. The eleventh month. Harvest time!", "panelEmojis": ["1️⃣","1️⃣","🦃","🍂","🥧"] },
+      { "name": "December",  "emoji": "🎄", "color": "#FF3B30", "dark": "#CC2A20", "soundWord": "December. The twelfth month. Happy holidays!", "panelEmojis": ["1️⃣","2️⃣","🎄","⛄","🎁"] }
+    ]
+  },
+  {
+    "id": "days", "title": "Days", "icon": "📆", "color": "#AF52DE", "dark": "#8A3DB5", "panelType": "sequence",
+    "entries": [
+      { "name": "Monday",    "emoji": "💼", "color": "#007AFF", "dark": "#0056CC", "soundWord": "Monday. The first day of the week. A fresh start!", "panelEmojis": ["1️⃣","💼","📚","☕"] },
+      { "name": "Tuesday",   "emoji": "🎨", "color": "#AF52DE", "dark": "#8A3DB5", "soundWord": "Tuesday. The second day. Time to create!", "panelEmojis": ["2️⃣","🎨","🖌️","✏️"] },
+      { "name": "Wednesday", "emoji": "🌿", "color": "#34C759", "dark": "#28A046", "soundWord": "Wednesday. The middle of the week. Midweek magic!", "panelEmojis": ["3️⃣","🌿","🍃","💧"] },
+      { "name": "Thursday",  "emoji": "⚡", "color": "#FF9500", "dark": "#CC7600", "soundWord": "Thursday. The fourth day. Power through!", "panelEmojis": ["4️⃣","⚡","💪","🏆"] },
+      { "name": "Friday",    "emoji": "🎉", "color": "#FF2D9B", "dark": "#CC1F7A", "soundWord": "Friday. Almost the weekend. Time to celebrate!", "panelEmojis": ["5️⃣","🎉","🎈","🥳"] },
+      { "name": "Saturday",  "emoji": "⛹️", "color": "#FFD700", "dark": "#C9A200", "soundWord": "Saturday. Play day! Have fun!", "panelEmojis": ["6️⃣","⛹️","🌞","🎮"] },
+      { "name": "Sunday",    "emoji": "☀️", "color": "#FF9500", "dark": "#CC7600", "soundWord": "Sunday. Rest day. Relax and recharge!", "panelEmojis": ["7️⃣","☀️","🌅","😴"] }
+    ]
+  }
+]

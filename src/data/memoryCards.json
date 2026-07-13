@@ -1,0 +1,8 @@
+[
+  { "id": "apple",    "emoji": "🍎", "color": "#FF3B30", "bg": "#FFE5E3" },
+  { "id": "star",     "emoji": "⭐", "color": "#FFD700", "bg": "#FFF8D6" },
+  { "id": "rocket",   "emoji": "🚀", "color": "#007AFF", "bg": "#E0EFFF" },
+  { "id": "rainbow",  "emoji": "🌈", "color": "#AF52DE", "bg": "#F2E8FF" },
+  { "id": "elephant", "emoji": "🐘", "color": "#6B4FA0", "bg": "#EDE4FF" },
+  { "id": "sun",      "emoji": "☀️", "color": "#FF9500", "bg": "#FFF0D6" }
+]

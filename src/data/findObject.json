@@ -1,0 +1,42 @@
+[
+  {
+    "id": "round_1",
+    "target": "🍎",
+    "targetName": "Apple",
+    "options": ["🍌", "🍎", "🍇", "🍉"],
+    "promptText": "Find the Apple!",
+    "voiceLine": "Can you find the apple?"
+  },
+  {
+    "id": "round_2",
+    "target": "🐶",
+    "targetName": "Dog",
+    "options": ["🐱", "🐰", "🐶", "🦁"],
+    "promptText": "Find the Dog!",
+    "voiceLine": "Where is the dog?"
+  },
+  {
+    "id": "round_3",
+    "target": "🚗",
+    "targetName": "Car",
+    "options": ["🚌", "🚗", "✈️", "🚂"],
+    "promptText": "Find the Car!",
+    "voiceLine": "Spot the car!"
+  },
+  {
+    "id": "round_4",
+    "target": "🔵",
+    "targetName": "Blue Circle",
+    "options": ["🔴", "🟢", "🟡", "🔵"],
+    "promptText": "Find the Blue Circle!",
+    "voiceLine": "Find the blue circle."
+  },
+  {
+    "id": "round_5",
+    "target": "⭐",
+    "targetName": "Star",
+    "options": ["⭐", "🌙", "☀️", "☁️"],
+    "promptText": "Find the Star!",
+    "voiceLine": "Can you find the star?"
+  }
+]
