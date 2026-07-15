@@ -26,13 +26,19 @@ interface ProgressStore {
   deleteProfile: (id: string) => void;
 }
 
-export const useProgress = create<ProgressStore>((set, get) => {
+function deriveState(state: ProfilesState) {
+  return {
+    state,
+    activeProfile: state.profiles[state.activeProfileId],
+    progress: state.profiles[state.activeProfileId].progress
+  };
+}
+
+export const useProgress = create<ProgressStore>((set) => {
   const initialState = loadProfiles();
   
   return {
-    state: initialState,
-    get progress() { return get().state.profiles[get().state.activeProfileId].progress; },
-    get activeProfile() { return get().state.profiles[get().state.activeProfileId]; },
+    ...deriveState(initialState),
     
     updateProgress: (updater) => {
       set((store) => {
@@ -48,7 +54,7 @@ export const useProgress = create<ProgressStore>((set, get) => {
           }
         };
         saveProfiles(nextState);
-        return { state: nextState };
+        return deriveState(nextState);
       });
     },
     
@@ -66,7 +72,7 @@ export const useProgress = create<ProgressStore>((set, get) => {
           }
         };
         saveProfiles(nextState);
-        return { state: nextState };
+        return deriveState(nextState);
       });
     },
     
@@ -75,7 +81,7 @@ export const useProgress = create<ProgressStore>((set, get) => {
         if (!store.state.profiles[id]) return store;
         const nextState = { ...store.state, activeProfileId: id };
         saveProfiles(nextState);
-        return { state: nextState };
+        return deriveState(nextState);
       });
     },
     
@@ -91,7 +97,7 @@ export const useProgress = create<ProgressStore>((set, get) => {
           }
         };
         saveProfiles(nextState);
-        return { state: nextState };
+        return deriveState(nextState);
       });
     },
     
@@ -107,7 +113,7 @@ export const useProgress = create<ProgressStore>((set, get) => {
         
         const nextState = { activeProfileId: nextActive, profiles: newProfiles };
         saveProfiles(nextState);
-        return { state: nextState };
+        return deriveState(nextState);
       });
     }
   };
