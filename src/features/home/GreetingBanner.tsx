@@ -32,7 +32,7 @@ export function GreetingBanner() {
             className="text-xl sm:text-2xl lg:text-3xl leading-tight font-bold"
             style={{ fontFamily: "'Fredoka',sans-serif", color: C.navy }}
           >
-            {childName}, what shall we learn? ✨
+            {childName || "Little Explorer"}, what shall we learn? ✨
           </p>
         </div>
       </div>

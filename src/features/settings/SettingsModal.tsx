@@ -6,6 +6,8 @@ import { useSettings } from "@/hooks/useSettings";
 export function SettingsModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const soundEnabled = useSettings(s => s.soundEnabled);
   const toggleSound = useSettings(s => s.toggleSound);
+  const childName = useSettings(s => s.childName);
+  const setChildName = useSettings(s => s.setChildName);
 
   return (
     <AnimatePresence>
@@ -55,8 +57,8 @@ export function SettingsModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
                 </label>
                 <input
                   type="text"
-                  value={useSettings((s) => s.childName)}
-                  onChange={(e) => useSettings.getState().setChildName(e.target.value)}
+                  value={childName}
+                  onChange={(e) => setChildName(e.target.value)}
                   placeholder="e.g. Lily"
                   maxLength={12}
                   className="w-full px-4 py-3 rounded-2xl outline-none"

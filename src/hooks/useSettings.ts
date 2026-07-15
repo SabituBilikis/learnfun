@@ -19,7 +19,7 @@ export const useSettings = create<SettingsState>((set) => {
   let initialScreenTimeLimit = 0;
   let initialTimePlayedToday = 0;
   let initialLastPlayedDate = new Date().toISOString().split("T")[0];
-  let initialChildName = "Lily";
+  let initialChildName = "";
 
   if (typeof window !== "undefined") {
     try {
