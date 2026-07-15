@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { C, CATEGORIES } from "@/app/constants";
 import { useGreeting } from "@/hooks/useGreeting";
 import { useProgress, formatStreak } from "@/hooks/useProgress";
-import { useSettings } from "@/hooks/useSettings";
 
 export function GreetingBanner() {
   const g = useGreeting();
