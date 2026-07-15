@@ -6,8 +6,7 @@ import { useSettings } from "@/hooks/useSettings";
 
 export function GreetingBanner() {
   const g = useGreeting();
-  const { progress } = useProgress();
-  const { childName } = useSettings();
+  const { progress, activeProfile } = useProgress();
   const completedCount = CATEGORIES.filter(c => c.state === "complete" || c.state === "active").length;
 
   return (
@@ -32,7 +31,7 @@ export function GreetingBanner() {
             className="text-xl sm:text-2xl lg:text-3xl leading-tight font-bold"
             style={{ fontFamily: "'Fredoka',sans-serif", color: C.navy }}
           >
-            {childName || "Little Explorer"}, what shall we learn? ✨
+            {activeProfile.name || "Little Explorer"}, what shall we learn? ✨
           </p>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { CATEGORIES } from "@/app/constants";
 import { motion } from "motion/react";
 
 export function ParentDashboard({ onBack }: { onBack: () => void }) {
-  const [tab, setTab] = useState<"profiles" | "analytics" | "settings">("settings");
+  const [tab, setTab] = useState<"profiles" | "analytics" | "settings">("profiles");
   const { soundEnabled, toggleSound, screenTimeLimit, setScreenTimeLimit, timePlayedToday } = useSettings();
   const { state, activeProfile, switchProfile, addProfile, deleteProfile, updateProgress } = useProgress();
 
@@ -182,6 +182,17 @@ export function ParentDashboard({ onBack }: { onBack: () => void }) {
                   >
                     Reset Progress
                   </button>
+                </div>
+
+                <div className="w-full h-[2px] bg-gray-100" />
+                
+                {/* Feedback */}
+                <div>
+                  <h3 className="text-lg font-bold mb-1">Feedback & Support</h3>
+                  <p className="font-nunito text-gray-500 mb-4">Have questions or suggestions? We'd love to hear from you!</p>
+                  <a href="mailto:sabitubilikis96@gmail.com" className="inline-block px-6 py-3 rounded-2xl bg-lf-teal text-white font-bold hover:bg-lf-teal/90 transition-colors border-2 border-transparent shadow-[2px_3px_0_#009B94]">
+                    Contact Support
+                  </a>
                 </div>
 
               </div>
