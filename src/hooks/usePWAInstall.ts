@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Capacitor } from "@capacitor/core";
 
 export function usePWAInstall() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
@@ -6,6 +7,11 @@ export function usePWAInstall() {
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
+    if (Capacitor.isNativePlatform()) {
+      setIsInstalled(true);
+      return;
+    }
+
     const handleBeforeInstallPrompt = (e: any) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -15,12 +21,6 @@ export function usePWAInstall() {
     const handleAppInstalled = () => {
       setIsInstallable(false);
       setIsInstalled(true);
-      if (typeof (window as any).gtag === "function") {
-        (window as any).gtag("event", "pwa_installed", {
-          event_category: "Engagement",
-          event_label: "Installed App",
-        });
-      }
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
@@ -28,14 +28,6 @@ export function usePWAInstall() {
 
     if (window.matchMedia("(display-mode: standalone)").matches) {
       setIsInstalled(true);
-      // Optional: Track if they launch the app from the home screen
-      if (typeof (window as any).gtag === "function" && !sessionStorage.getItem("tracked_pwa_open")) {
-        (window as any).gtag("event", "pwa_opened", {
-          event_category: "Engagement",
-          event_label: "Opened via Home Screen",
-        });
-        sessionStorage.setItem("tracked_pwa_open", "true");
-      }
     }
 
     return () => {
@@ -51,14 +43,6 @@ export function usePWAInstall() {
     if (outcome === "accepted") {
       setDeferredPrompt(null);
       setIsInstallable(false);
-      
-      // Some browsers don't fire 'appinstalled' reliably, so tracking the prompt acceptance is a good fallback
-      if (typeof (window as any).gtag === "function") {
-        (window as any).gtag("event", "pwa_install_accepted", {
-          event_category: "Engagement",
-          event_label: "Accepted Install Prompt",
-        });
-      }
     }
   };
 

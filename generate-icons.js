@@ -50,7 +50,33 @@ async function generateIcons() {
     .png()
     .toFile('public/icon-192x192.png');
 
-  console.log('Icons generated successfully.');
+  const androidIconSizes = [
+    { directory: 'mipmap-mdpi', size: 48, foregroundSize: 108 },
+    { directory: 'mipmap-hdpi', size: 72, foregroundSize: 162 },
+    { directory: 'mipmap-xhdpi', size: 96, foregroundSize: 216 },
+    { directory: 'mipmap-xxhdpi', size: 144, foregroundSize: 324 },
+    { directory: 'mipmap-xxxhdpi', size: 192, foregroundSize: 432 },
+  ];
+
+  for (const { directory, size, foregroundSize } of androidIconSizes) {
+    const outputDirectory = `android/app/src/main/res/${directory}`;
+    fs.mkdirSync(outputDirectory, { recursive: true });
+
+    await sharp('public/icon-512x512.png')
+      .resize(size, size, { fit: 'cover' })
+      .png()
+      .toFile(`${outputDirectory}/ic_launcher.png`);
+    await sharp('public/icon-512x512.png')
+      .resize(size, size, { fit: 'cover' })
+      .png()
+      .toFile(`${outputDirectory}/ic_launcher_round.png`);
+    await sharp('public/icon-512x512.png')
+      .resize(foregroundSize, foregroundSize, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .png()
+      .toFile(`${outputDirectory}/ic_launcher_foreground.png`);
+  }
+
+  console.log('Web and Android icons generated successfully.');
 }
 
 generateIcons().catch(console.error);

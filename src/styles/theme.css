@@ -134,8 +134,8 @@
   --color-lf-white: #FFFFFF;
 
   /* Fonts */
-  --font-nunito: 'Nunito', sans-serif;
-  --font-fredoka: 'Fredoka', sans-serif;
+  --font-nunito: var(--learnfun-body-font);
+  --font-fredoka: var(--learnfun-display-font);
 }
 
 @layer base {
@@ -145,7 +145,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Fredoka', 'Nunito', sans-serif;
+    font-family: var(--learnfun-display-font);
   }
 
   /**

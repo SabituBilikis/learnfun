@@ -1,7 +1,10 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router";
+import { App as CapacitorApp } from "@capacitor/app";
+import { Capacitor } from "@capacitor/core";
 import { ErrorBoundary } from "@/components/feedback/ErrorBoundary";
 import { AppSplash } from "@/components/feedback/AppSplash";
+import { ScreenTimeEnforcer } from "@/components/layout/ScreenTimeEnforcer";
 import { HomeScreen } from "@/features/home/HomeScreen";
 import { useProgress } from "@/hooks/useProgress";
 
@@ -33,6 +36,22 @@ export default function App() {
   }, [touchDailyStreak]);
 
   useEffect(() => {
+    if (!Capacitor.isNativePlatform()) return;
+
+    const backButtonListener = CapacitorApp.addListener("backButton", ({ canGoBack }) => {
+      if (canGoBack) {
+        window.history.back();
+      } else {
+        void CapacitorApp.exitApp();
+      }
+    });
+
+    return () => {
+      void backButtonListener.then((listener) => listener.remove());
+    };
+  }, []);
+
+  useEffect(() => {
     if (!showSplash) return;
     const t = setTimeout(() => setShowSplash(false), 2800);
     return () => clearTimeout(t);
@@ -41,6 +60,7 @@ export default function App() {
   return (
     <ErrorBoundary>
       {showSplash && <AppSplash onDone={() => setShowSplash(false)} />}
+      <ScreenTimeEnforcer />
       <Suspense fallback={<div style={{ height: "100dvh", background: "#F3EEFF" }} />}>
         <Routes>
           <Route path="/" element={<HomeScreen />} />

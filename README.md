@@ -17,6 +17,10 @@ npm run dev
 | --- | --- |
 | `npm run dev` | Start the Vite dev server |
 | `npm run build` | Typecheck + production build |
+| `npm run cap:sync` | Build the web app and sync it into Android |
+| `npm run cap:android` | Open the Android project in Android Studio |
+| `npm run cap:android:debug` | Build a debug APK |
+| `npm run cap:android:release` | Build a signed release bundle after signing is configured |
 | `npm run preview` | Preview the production build |
 | `npm run typecheck` | TypeScript strict check (no emit) |
 | `npm run lint` | ESLint over `src` |
@@ -26,3 +30,7 @@ npm run dev
 ## Tech stack
 
 React 18 · TypeScript (strict) · Vite 6 · Tailwind CSS v4 · Motion (Framer Motion) · Vitest + React Testing Library
+
+## Android release
+
+LearnFun now includes a Capacitor Android app. See `docs/android-play-release.md` for the Google Play release process.

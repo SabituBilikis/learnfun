@@ -3,6 +3,7 @@ import {
   defaultProfilesState,
   loadProfiles,
   sanitizeProgress,
+  sanitizeProfilesState,
   saveProfiles,
   withDailyStreak,
   defaultProgress,
@@ -48,6 +49,33 @@ describe("sanitizeProgress", () => {
     expect(result.numbersLearned).toBe(0);
     expect(result.starsTotal).toBe(0);
     expect(result.catProgress).toEqual({ shapes: 2 });
+  });
+
+  test("bounds completion counters and rejects invalid dates", () => {
+    const result = sanitizeProgress({
+      lettersLearned: 99,
+      numbersLearned: 21,
+      starsTotal: 1_000_001,
+      streakDays: 100_001,
+      lastSeen: "not-a-date",
+    });
+    expect(result).toEqual(defaultProgress());
+  });
+});
+
+describe("sanitizeProfilesState", () => {
+  test("drops malformed profiles and falls back to a valid active profile", () => {
+    const result = sanitizeProfilesState({
+      activeProfileId: "missing",
+      profiles: {
+        valid: { id: "ignored", name: "  Ada  ", avatar: "🦊", progress: { lettersLearned: 3 } },
+        bad: { name: "", avatar: "🦁", progress: {} },
+      },
+    });
+    expect(result.activeProfileId).toBe("valid");
+    expect(result.profiles.valid.name).toBe("Ada");
+    expect(result.profiles.valid.progress.lettersLearned).toBe(3);
+    expect(result.profiles.bad).toBeUndefined();
   });
 });
 

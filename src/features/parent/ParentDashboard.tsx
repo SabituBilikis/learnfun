@@ -4,6 +4,7 @@ import { C } from "@/app/constants";
 import { useSettings } from "@/hooks/useSettings";
 import { useProgress } from "@/hooks/useProgress";
 import { CATEGORIES } from "@/app/constants";
+import { categoryPercent } from "@/lib/helpers";
 import { motion } from "motion/react";
 
 export function ParentDashboard({ onBack }: { onBack: () => void }) {
@@ -104,7 +105,7 @@ export function ParentDashboard({ onBack }: { onBack: () => void }) {
                   {CATEGORIES.map(c => {
                     // Only show progress for unlocked categories or if they have some progress
                     if (c.state === "locked" && !activeProfile.progress.catProgress[c.id]) return null;
-                    const pct = activeProfile.progress.catProgress[c.id] || 0;
+                    const pct = categoryPercent(c, activeProfile.progress);
                     return (
                       <div key={c.id}>
                         <div className="flex justify-between text-base font-bold mb-1.5">
@@ -192,6 +193,9 @@ export function ParentDashboard({ onBack }: { onBack: () => void }) {
                   <p className="font-nunito text-gray-500 mb-4">Have questions or suggestions? We'd love to hear from you!</p>
                   <a href="mailto:sabitubilikis96@gmail.com" className="inline-block px-6 py-3 rounded-2xl bg-lf-teal text-white font-bold hover:bg-lf-teal/90 transition-colors border-2 border-transparent shadow-[2px_3px_0_#009B94]">
                     Contact Support
+                  </a>
+                  <a href="/privacy.html" className="ml-3 inline-block px-6 py-3 rounded-2xl bg-white text-lf-navy font-bold border-2 border-lf-navy hover:bg-lf-muted transition-colors">
+                    Privacy Policy
                   </a>
                 </div>
 

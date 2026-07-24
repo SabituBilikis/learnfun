@@ -3,9 +3,16 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "overrides": {
+    "fast-uri": "3.1.4"
+  },
   "scripts": {
     "dev": "vite",
     "build": "npm run typecheck && vite build",
+    "cap:sync": "npm run build && npx cap sync android",
+    "cap:android": "npx cap open android",
+    "cap:android:debug": "npm run cap:sync && cd android && gradlew.bat assembleDebug",
+    "cap:android:release": "npm run cap:sync && cd android && gradlew.bat bundleRelease",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
@@ -15,6 +22,10 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@capacitor/android": "^8.4.2",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/cli": "^8.4.2",
+    "@capacitor/core": "^8.4.2",
     "lucide-react": "0.487.0",
     "motion": "12.23.24",
     "react": "18.3.1",

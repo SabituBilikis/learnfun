@@ -2,6 +2,9 @@ import { create } from "zustand";
 import {
   loadProfiles,
   saveProfiles,
+  defaultProgress,
+  sanitizeProfileName,
+  sanitizeProgress,
   withDailyStreak,
   type UserProgress,
   type Profile,
@@ -42,7 +45,7 @@ export const useProgress = create<ProgressStore>((set) => {
     
     updateProgress: (updater) => {
       set((store) => {
-        const nextProgress = updater(store.state.profiles[store.state.activeProfileId].progress);
+        const nextProgress = sanitizeProgress(updater(store.state.profiles[store.state.activeProfileId].progress));
         const nextState = {
           ...store.state,
           profiles: {
@@ -87,13 +90,15 @@ export const useProgress = create<ProgressStore>((set) => {
     
     addProfile: (name, avatar) => {
       set((store) => {
-        const id = Math.random().toString(36).substring(2, 9);
+        const profileName = sanitizeProfileName(name);
+        if (!profileName || Object.keys(store.state.profiles).length >= 10) return store;
+        const id = crypto.randomUUID();
         const nextState = {
           ...store.state,
           activeProfileId: id,
           profiles: {
             ...store.state.profiles,
-            [id]: { id, name, avatar, progress: { ...store.state.profiles["default"].progress, lettersLearned:0, numbersLearned:0, catProgress:{}, starsTotal:0, streakDays:0, lastSeen:"" } } // empty progress
+            [id]: { id, name: profileName, avatar, progress: defaultProgress() }
           }
         };
         saveProfiles(nextState);

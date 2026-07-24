@@ -4,23 +4,22 @@ import { Lock } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import { ParentGate } from "@/features/parent/ParentGate";
 
+const PARENT_UNLOCK_DURATION_MS = 15 * 60 * 1000;
+
 export function ScreenTimeEnforcer() {
   const { screenTimeLimit, timePlayedToday, incrementTimePlayed } = useSettings();
   const [showGate, setShowGate] = useState(false);
-  const [unlocked, setUnlocked] = useState(false);
+  const [unlockedUntil, setUnlockedUntil] = useState(0);
 
   // Track time
   useEffect(() => {
-    // If no limit, or unlocked for the session, don't increment.
-    // Actually we still want to increment timePlayedToday for analytics even if no limit.
     const interval = setInterval(() => {
-      incrementTimePlayed(1); // increment 1 second every second
+      incrementTimePlayed(1);
     }, 1000);
     return () => clearInterval(interval);
   }, [incrementTimePlayed]);
 
-  // If there's a limit, and we've exceeded it (limit is in minutes, timePlayed is in seconds)
-  const isLocked = !unlocked && screenTimeLimit > 0 && timePlayedToday >= screenTimeLimit * 60;
+  const isLocked = Date.now() >= unlockedUntil && screenTimeLimit > 0 && timePlayedToday >= screenTimeLimit * 60;
 
   if (!isLocked) return null;
 
@@ -30,7 +29,7 @@ export function ScreenTimeEnforcer() {
         <div className="bg-white rounded-3xl overflow-hidden w-full max-w-sm">
           <ParentGate 
             onSuccess={() => {
-              setUnlocked(true); // temporary unlock for this session
+              setUnlockedUntil(Date.now() + PARENT_UNLOCK_DURATION_MS);
               setShowGate(false);
             }} 
             onBack={() => setShowGate(false)} 
@@ -50,7 +49,7 @@ export function ScreenTimeEnforcer() {
         <span className="text-7xl mb-4">⏰</span>
         <h2 className="text-3xl font-bold text-[#1A0050] mb-2">Time's Up!</h2>
         <p className="font-nunito font-semibold text-lg text-gray-500 mb-8">
-          You've played for {screenTimeLimit} minutes today. See you tomorrow!
+          You've played for {screenTimeLimit} minutes today. A parent can add 15 more minutes.
         </p>
         
         <button
