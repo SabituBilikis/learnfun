@@ -16,10 +16,10 @@ def signingProperties = [
 def hasReleaseSigning = signingProperties.values().every { it }
 
 android {
-    namespace = "com.learnfun.app"
+    namespace = "com.learnfunkids.app"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.learnfun.app"
+        applicationId "com.learnfunkids.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

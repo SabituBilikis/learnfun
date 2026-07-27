@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "com.learnfun.app",
+  appId: "com.learnfunkids.app",
   appName: "Learn Fun",
   webDir: "dist",
   android: {
