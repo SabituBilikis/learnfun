@@ -37,7 +37,7 @@ export function FindObjectScreen({ onBack }: { onBack: () => void }) {
   // Voice prompt on round start
   useEffect(() => {
     if (roundData && !paused && !won && lives > 0 && !lockBoard && soundOn) {
-      speak(roundData.voiceLine || roundData.promptText, { rate: 0.85, pitch: 1.1 });
+      void speak(roundData.voiceLine || roundData.promptText, { rate: 0.85, pitch: 1.1 });
     }
   }, [currentRound, paused, won, lives, lockBoard, soundOn, roundData]);
 
@@ -48,7 +48,7 @@ export function FindObjectScreen({ onBack }: { onBack: () => void }) {
       // Correct!
       setCorrectOption(emoji);
       setLockBoard(true);
-      if (soundOn) speak("Great job!", { rate: 0.9, pitch: 1.2 });
+      if (soundOn) void speak("Great job!", { rate: 0.9, pitch: 1.2 });
       
       setTimeout(() => {
         if (currentRound + 1 >= totalRounds) {
@@ -63,7 +63,7 @@ export function FindObjectScreen({ onBack }: { onBack: () => void }) {
       // Wrong
       setWrongOption(emoji);
       setLives(l => Math.max(0, l - 1));
-      if (soundOn) speak("Oops, try again!", { rate: 0.9, pitch: 1.0 });
+      if (soundOn) void speak("Oops, try again!", { rate: 0.9, pitch: 1.0 });
       setTimeout(() => {
         setWrongOption(null);
       }, 600);

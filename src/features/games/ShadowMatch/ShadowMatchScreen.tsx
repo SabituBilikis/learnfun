@@ -36,7 +36,7 @@ export function ShadowMatchScreen({ onBack }: { onBack: () => void }) {
   // Voice prompt
   useEffect(() => {
     if (roundData && !paused && !won && lives > 0 && !lockBoard && soundOn) {
-      speak("Match the shadow!", { rate: 0.9, pitch: 1.1 });
+      void speak("Match the shadow!", { rate: 0.9, pitch: 1.1 });
     }
   }, [currentRound, paused, won, lives, lockBoard, soundOn, roundData]);
 
@@ -46,7 +46,7 @@ export function ShadowMatchScreen({ onBack }: { onBack: () => void }) {
     if (emoji === roundData.target) {
       // Correct!
       setLockBoard(true);
-      if (soundOn) speak("You matched it!", { rate: 0.9, pitch: 1.2 });
+      if (soundOn) void speak("You matched it!", { rate: 0.9, pitch: 1.2 });
       
       setTimeout(() => {
         if (currentRound + 1 >= totalRounds) {
@@ -60,7 +60,7 @@ export function ShadowMatchScreen({ onBack }: { onBack: () => void }) {
       // Wrong
       setWrongOption(emoji);
       setLives(l => Math.max(0, l - 1));
-      if (soundOn) speak("Try again!", { rate: 0.9, pitch: 1.0 });
+      if (soundOn) void speak("Try again!", { rate: 0.9, pitch: 1.0 });
       setTimeout(() => {
         setWrongOption(null);
       }, 600);

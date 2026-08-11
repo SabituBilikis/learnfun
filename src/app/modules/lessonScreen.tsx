@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { LESSON_LETTERS, LETTER_COLORS_FULL, LETTER_DARKS } from "../constants";
-import { speak } from "../../lib/speech";
+import { cancelSpeech, speak } from "../../lib/speech";
 import { LessonShell } from "../../features/lesson/LessonShell";
 import { LessonMascot } from "../../features/lesson/LessonMascot";
 import { IllustrationPanel } from "../../features/lesson/IllustrationPanel";
@@ -24,19 +24,23 @@ export function LessonScreen({ letterIndex, onBack, onComplete, onNavigate }: {
 
   // Reset state when letter changes
   useEffect(() => {
+    void cancelSpeech();
     setPlaying(false);
     setBurst(0);
     setReacting(false);
   }, [letterIndex]);
 
-  const speakLetter = () => {
+  const speakLetter = async () => {
     if (playing) return;
     setPlaying(true);
     setBurst(b => b + 1);
     setReacting(true);
-    const spoke = speak(entry.l, { rate: 0.65, pitch: 1.3, onEnd: () => setPlaying(false) });
-    if (!spoke) setTimeout(() => setPlaying(false), 1300);
     setTimeout(() => setReacting(false), 1100);
+    try {
+      await speak(entry.l, { rate: 0.65, pitch: 1.3 });
+    } finally {
+      setPlaying(false);
+    }
   };
 
   return (

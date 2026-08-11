@@ -22,7 +22,7 @@ export function ShapeTapPanel({ entry, onCountChange }: {
   function tapShape() {
     if (tapped) return;
     setTapped(true); onCountChange(1);
-    speak(entry.fact ? `${entry.name}! ${entry.fact}` : `${entry.name}!`, { rate: 0.7, pitch: 1.3 });
+    void speak(entry.fact ? `${entry.name}! ${entry.fact}` : `${entry.name}!`, { rate: 0.7, pitch: 1.3 });
   }
 
   function tapItem(i: number) {

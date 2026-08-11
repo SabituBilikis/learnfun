@@ -71,7 +71,7 @@ export function BalloonPopScreen({ onBack }: { onBack: () => void }) {
 
   // Intro speech
   useEffect(() => {
-    if (soundOn) speak("Pop the balloons!", { rate: 0.9, pitch: 1.1 });
+    if (soundOn) void speak("Pop the balloons!", { rate: 0.9, pitch: 1.1 });
   }, [soundOn]);
 
   function handlePop(id: string) {
@@ -89,7 +89,7 @@ export function BalloonPopScreen({ onBack }: { onBack: () => void }) {
       const next = prev + 1;
       if (next >= BALLOONS_TO_WIN) {
         setWon(true);
-        if (soundOn) speak("You did it!", { rate: 0.9, pitch: 1.2 });
+        if (soundOn) void speak("You did it!", { rate: 0.9, pitch: 1.2 });
       }
       return next;
     });

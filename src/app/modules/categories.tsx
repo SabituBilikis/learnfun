@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 import { C } from "../constants";
 import { BackButton, ProgressTrack, StatPill, CTAButton, SoundRings } from "./primitives";
 import { NumState } from "./numbers";
-import { speak } from "../../lib/speech";
+import { cancelSpeech, speak } from "../../lib/speech";
 import categoriesData from "../../data/categories.json";
 import { LessonShell } from "../../features/lesson/LessonShell";
 import { TapRevealPanel } from "../../features/lesson/panels/TapRevealPanel";
@@ -115,17 +115,19 @@ export function GenericLessonScreen({ catId, entryIndex, onBack, onComplete, onN
   const entry = cat.entries[entryIndex];
 
   useEffect(() => {
+    void cancelSpeech();
     setPlaying(false); setBurst(0); setReacting(false); setTapCount(0);
   }, [catId, entryIndex]);
 
-  const speakEntry = () => {
+  const speakEntry = async () => {
     if (playing) return;
     setPlaying(true); setBurst(b => b+1); setReacting(true);
-    const spoke = speak(entry.soundWord || entry.name, {
-      rate: 0.7, pitch: 1.25, onEnd: () => setPlaying(false),
-    });
-    if (!spoke) setTimeout(() => setPlaying(false), 1200);
     setTimeout(() => setReacting(false), 1000);
+    try {
+      await speak(entry.soundWord || entry.name, { rate: 0.7, pitch: 1.25 });
+    } finally {
+      setPlaying(false);
+    }
   };
 
   function renderPanel() {

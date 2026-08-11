@@ -46,7 +46,7 @@ export function PuzzleScreen({ onBack }: { onBack: () => void }) {
   useEffect(() => {
     if (roundData) {
       setOptions([...roundData.options].sort(() => Math.random() - 0.5));
-      if (soundOn) speak("Match the shape!", { rate: 0.9, pitch: 1.1 });
+      if (soundOn) void speak("Match the shape!", { rate: 0.9, pitch: 1.1 });
     }
   }, [currentRound, roundData]);
 
@@ -63,12 +63,12 @@ export function PuzzleScreen({ onBack }: { onBack: () => void }) {
     if (draggedId === roundData.target.id) {
       // Success
       setLockBoard(true);
-      if (soundOn) speak("Great job!", { rate: 0.9, pitch: 1.2 });
+      if (soundOn) void speak("Great job!", { rate: 0.9, pitch: 1.2 });
       
       setTimeout(() => {
         if (currentRound + 1 >= totalRounds) {
           setWon(true);
-          if (soundOn) speak("You completed the puzzle!", { rate: 0.9, pitch: 1.2 });
+          if (soundOn) void speak("You completed the puzzle!", { rate: 0.9, pitch: 1.2 });
         } else {
           setCurrentRound(r => r + 1);
           setLockBoard(false);
@@ -77,7 +77,7 @@ export function PuzzleScreen({ onBack }: { onBack: () => void }) {
     } else {
       // Wrong
       setWrongShape(draggedId);
-      if (soundOn) speak("Oops, try again!", { rate: 0.9, pitch: 1.0 });
+      if (soundOn) void speak("Oops, try again!", { rate: 0.9, pitch: 1.0 });
       setTimeout(() => setWrongShape(null), 600);
     }
   }

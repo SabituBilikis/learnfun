@@ -1,0 +1,93 @@
+[
+  {
+    "id": "a",
+    "letter": "A",
+    "phoneme": "ah",
+    "phonemeDisplay": "/æ/",
+    "color": "#FF3B30",
+    "dark": "#CC2A20",
+    "primary": { "word": "Apple", "emoji": "🍎", "speechText": "ah. Apple!" },
+    "examples": [
+      { "word": "Apple", "emoji": "🍎", "speechText": "Apple" },
+      { "word": "Ant", "emoji": "🐜", "speechText": "Ant" },
+      { "word": "Astronaut", "emoji": "👨‍🚀", "speechText": "Astronaut" },
+      { "word": "Alligator", "emoji": "🐊", "speechText": "Alligator" }
+    ]
+  },
+  {
+    "id": "b",
+    "letter": "B",
+    "phoneme": "buh",
+    "phonemeDisplay": "/b/",
+    "phonemeAudio": "/audio/phonics/phonemes/b.mp3",
+    "color": "#007AFF",
+    "dark": "#0056CC",
+    "primary": { "word": "Ball", "emoji": "⚽", "speechText": "buh. Ball!" },
+    "examples": [
+      { "word": "Ball", "emoji": "⚽", "speechText": "Ball" },
+      { "word": "Banana", "emoji": "🍌", "speechText": "Banana" },
+      { "word": "Book", "emoji": "📚", "speechText": "Book" },
+      { "word": "Balloon", "emoji": "🎈", "speechText": "Balloon" }
+    ]
+  },
+  {
+    "id": "c",
+    "letter": "C",
+    "phoneme": "kuh",
+    "phonemeDisplay": "/k/",
+    "color": "#34C759",
+    "dark": "#28A046",
+    "primary": { "word": "Cat", "emoji": "🐱", "speechText": "kuh. Cat!" },
+    "examples": [
+      { "word": "Cat", "emoji": "🐱", "speechText": "Cat" },
+      { "word": "Car", "emoji": "🚗", "speechText": "Car" },
+      { "word": "Cow", "emoji": "🐮", "speechText": "Cow" },
+      { "word": "Cake", "emoji": "🎂", "speechText": "Cake" }
+    ]
+  },
+  {
+    "id": "m",
+    "letter": "M",
+    "phoneme": "mm",
+    "phonemeDisplay": "/m/",
+    "color": "#FF9500",
+    "dark": "#CC7600",
+    "primary": { "word": "Monkey", "emoji": "🐒", "speechText": "mm. Monkey!" },
+    "examples": [
+      { "word": "Monkey", "emoji": "🐒", "speechText": "Monkey" },
+      { "word": "Milk", "emoji": "🥛", "speechText": "Milk" },
+      { "word": "Moon", "emoji": "🌙", "speechText": "Moon" },
+      { "word": "Mango", "emoji": "🥭", "speechText": "Mango" }
+    ]
+  },
+  {
+    "id": "s",
+    "letter": "S",
+    "phoneme": "sss",
+    "phonemeDisplay": "/s/",
+    "color": "#FFD700",
+    "dark": "#C9A200",
+    "primary": { "word": "Sun", "emoji": "☀️", "speechText": "sss. Sun!" },
+    "examples": [
+      { "word": "Sun", "emoji": "☀️", "speechText": "Sun" },
+      { "word": "Star", "emoji": "⭐", "speechText": "Star" },
+      { "word": "Snake", "emoji": "🐍", "speechText": "Snake" },
+      { "word": "Spider", "emoji": "🕷️", "speechText": "Spider" }
+    ]
+  },
+  {
+    "id": "t",
+    "letter": "T",
+    "phoneme": "tuh",
+    "phonemeDisplay": "/t/",
+    "color": "#AF52DE",
+    "dark": "#8A3DB5",
+    "primary": { "word": "Tiger", "emoji": "🐯", "speechText": "tuh. Tiger!" },
+    "examples": [
+      { "word": "Tiger", "emoji": "🐯", "speechText": "Tiger" },
+      { "word": "Tree", "emoji": "🌲", "speechText": "Tree" },
+      { "word": "Train", "emoji": "🚂", "speechText": "Train" },
+      { "word": "Turtle", "emoji": "🐢", "speechText": "Turtle" }
+    ]
+  }
+]

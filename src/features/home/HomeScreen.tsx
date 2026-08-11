@@ -15,6 +15,7 @@ export function HomeScreen() {
 
   const handleNavigate = (id: string) => {
     if (id === "alphabet") { navigate("/alphabet"); return; }
+    if (id === "phonics")  { navigate("/phonics");  return; }
     if (id === "numbers")  { navigate("/numbers");  return; }
     if (CAT_REGISTRY.some(c => c.id === id)) navigate(`/category/${id}`);
   };

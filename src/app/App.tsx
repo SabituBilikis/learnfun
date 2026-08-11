@@ -8,8 +8,8 @@ import { ScreenTimeEnforcer } from "@/components/layout/ScreenTimeEnforcer";
 import { HomeScreen } from "@/features/home/HomeScreen";
 import { useProgress } from "@/hooks/useProgress";
 
-// Routes
 import { AlphabetRoute, LetterLessonRoute, CompleteRoute } from "@/app/routes/alphabetRoutes";
+import { PhonicsRoute, PhonicsLessonRoute } from "@/app/routes/phonicsRoutes";
 import { NumbersRoute, NumberLessonRoute } from "@/app/routes/numbersRoutes";
 import { CategoryRoute, CategoryLessonRoute } from "@/app/routes/categoryRoutes";
 import { GamesRoute } from "@/app/routes/gamesRoute";
@@ -25,6 +25,9 @@ const PuzzleGame     = lazy(() => import("@/app/modules/puzzle").then(m => ({ de
 const ShadowMatchGame= lazy(() => import("@/app/modules/shadowMatch").then(m => ({ default: m.ShadowMatchGame })));
 const PWAFlow        = lazy(() => import("@/app/modules/pwaFlow").then(m => ({ default: m.PWAFlow })));
 const JourneyFlow    = lazy(() => import("@/app/modules/journey").then(m => ({ default: m.JourneyFlow })));
+const AudioDiagnosticScreen = import.meta.env.DEV
+  ? lazy(() => import("@/features/development/AudioDiagnosticScreen").then(m => ({ default: m.AudioDiagnosticScreen })))
+  : null;
 
 export default function App() {
   const navigate = useNavigate();
@@ -64,6 +67,8 @@ export default function App() {
       <Suspense fallback={<div style={{ height: "100dvh", background: "#F3EEFF" }} />}>
         <Routes>
           <Route path="/" element={<HomeScreen />} />
+          <Route path="/phonics" element={<PhonicsRoute />} />
+          <Route path="/phonics/lesson/:index" element={<PhonicsLessonRoute />} />
           <Route path="/alphabet" element={<AlphabetRoute />} />
           <Route path="/alphabet/lesson/:index" element={<LetterLessonRoute />} />
           <Route path="/complete/:index" element={<CompleteRoute />} />
@@ -82,6 +87,7 @@ export default function App() {
           <Route path="/journey" element={<JourneyFlow onExit={() => navigate("/")} />} />
           <Route path="/pwa" element={<PWAFlow onDone={() => navigate("/")} />} />
           <Route path="/parent" element={<ParentRoute />} />
+          {AudioDiagnosticScreen && <Route path="/__audio-diagnostic" element={<AudioDiagnosticScreen />} />}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

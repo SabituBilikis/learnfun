@@ -90,11 +90,11 @@ export function DragDropGame({ onBack }: { onBack: () => void }) {
 
   function handleHint() {
     setHintActive(h => !h);
-    speak(`${task.zone.hint} Put the ${task.object.label} in the ${task.zone.label}`, { rate: 0.8, pitch: 1.3 });
+    void speak(`${task.zone.hint} Put the ${task.object.label} in the ${task.zone.label}`, { rate: 0.8, pitch: 1.3 });
   }
 
   function handleVoice() {
-    speak(task.voiceLine, { rate: 0.75, pitch: 1.3 });
+    void speak(task.voiceLine, { rate: 0.75, pitch: 1.3 });
   }
 
   function handlePlayAgain() {

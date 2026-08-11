@@ -60,6 +60,7 @@ export interface Category {
 
 export const CATEGORIES: Category[] = [
   { id:"alphabet", emoji:"🔤", title:"Alphabet",   subtitle:"A · B · C",        lessons:LETTERS.length,               progress:65,  color:C.red,    dark:"#CC2A20", state:"active",   deco:["A","B","C"]    },
+  { id:"phonics",  emoji:"🗣️", title:"Phonics",    subtitle:"Learn letter sounds", lessons:6,                          progress:0,   color:C.orange, dark:"#CC7600", state:"new",      deco:["M","🔊","🐒"] },
   { id:"numbers",  emoji:"🔢", title:"Numbers",    subtitle:"1 · 2 · 3",        lessons:NUMBERS_COUNT,                progress:40,  color:C.orange, dark:"#CC7600", state:"active",   deco:["1","2","3"]    },
   { id:"shapes",   emoji:"🔷", title:"Shapes",     subtitle:"○ △ □ ◇",          lessons:CATEGORY_LESSON_COUNTS.shapes,   progress:80,  color:C.blue,   dark:"#0056CC", state:"active",   deco:["○","△","□"]    },
   { id:"colors",   emoji:"🎨", title:"Colors",     subtitle:"Red · Blue · Gold", lessons:CATEGORY_LESSON_COUNTS.colors,   progress:100, color:C.green,  dark:"#28A046", state:"complete", deco:["🔴","🔵","🟡"] },
