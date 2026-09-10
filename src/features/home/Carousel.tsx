@@ -2,10 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { C, CATEGORIES } from "@/app/constants";
-import { Sparkle } from "@/components/feedback/Sparkle";
 import { CategoryCard } from "./CategoryCard";
 import { useProgress } from "@/hooks/useProgress";
-import { categoryPercent } from "@/lib/helpers";
+import { categoryPercent, getUnlockedCategoryCount, getCategoryState } from "@/lib/helpers";
 
 function CarouselArrow({ dir, disabled, onClick }: { dir: "left" | "right"; disabled: boolean; onClick: () => void }) {
   return (
@@ -60,13 +59,13 @@ export function Carousel({ onNavigate }: { onNavigate: (id: string) => void }) {
 
   const canLeft  = pos > 4;
   const canRight = pos < max - 4;
+  const unlockedCount = getUnlockedCategoryCount(CATEGORIES, progress);
 
   return (
     <div className="flex flex-col gap-2 min-h-0">
       {/* Header row */}
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 min-w-0">
-          <Sparkle size={18} color={C.yellow} />
           <h2
             className="truncate"
             style={{
@@ -82,7 +81,7 @@ export function Carousel({ onNavigate }: { onNavigate: (id: string) => void }) {
             className="hidden md:block text-xs font-bold"
             style={{ color: C.mutedFg, fontFamily: "'Nunito',sans-serif", whiteSpace: "nowrap" }}
           >
-            {CATEGORIES.filter(c => c.state !== "locked").length}/{CATEGORIES.length} unlocked
+            {unlockedCount}/{CATEGORIES.length} unlocked
           </span>
           <CarouselArrow dir="left"  disabled={!canLeft}  onClick={() => scrollBy("left")}  />
           <CarouselArrow dir="right" disabled={!canRight} onClick={() => scrollBy("right")} />
@@ -96,7 +95,7 @@ export function Carousel({ onNavigate }: { onNavigate: (id: string) => void }) {
         style={{
           scrollSnapType: "x proximity",
           WebkitOverflowScrolling: "touch",
-          paddingTop: 10, paddingBottom: 14,
+          paddingTop: 10, paddingBottom: 22,
           cursor: "grab",
         }}
         onMouseDown={e => { e.currentTarget.style.cursor = "grabbing"; }}
@@ -105,20 +104,7 @@ export function Carousel({ onNavigate }: { onNavigate: (id: string) => void }) {
       >
         {CATEGORIES.map((c, i) => {
           const pct = categoryPercent(c, progress);
-          
-          // Determine if locked based on previous category's completion (except first 4 which are always unlocked)
-          let isLocked = false;
-          if (i >= 4) {
-            const prevCat = CATEGORIES[i - 1];
-            const prevPct = categoryPercent(prevCat, progress);
-            if (prevPct < 100) isLocked = true;
-          }
-
-          let state = c.state;
-          if (isLocked) state = "locked";
-          else if (pct === 100) state = "complete";
-          else if (pct > 0) state = "active";
-          else state = "new";
+          const state = getCategoryState(i, CATEGORIES, progress);
 
           return (
             <CategoryCard 

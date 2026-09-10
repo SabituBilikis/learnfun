@@ -2,9 +2,23 @@ import { motion } from "motion/react";
 import { C } from "@/app/constants";
 
 // ── Mascot with reactive speech bubble ────────────────────────────────────────
-export function LessonMascot({ reacting }: { reacting: boolean; word?: string }) {
+export function LessonMascot({
+  reacting,
+  prompt = "What is this?",
+  onClick,
+}: {
+  reacting: boolean;
+  prompt?: string;
+  word?: string;
+  onClick?: () => void;
+}) {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <motion.div
+      onClick={onClick}
+      className="flex flex-col items-center gap-2 cursor-pointer select-none"
+      whileHover={{ scale: 1.06 }}
+      whileTap={{ scale: 0.94 }}
+    >
       <motion.span
         className="select-none"
         style={{ fontSize: "clamp(56px,9vw,130px)", lineHeight: 1, display: "block", filter: "drop-shadow(2px 4px 0 rgba(26,0,80,0.3))" }}
@@ -27,9 +41,9 @@ export function LessonMascot({ reacting }: { reacting: boolean; word?: string })
         <div className="absolute" style={{ top: -11, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: `11px solid ${C.navy}` }} />
         <div className="absolute" style={{ top: -7, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "9px solid white" }} />
         <span style={{ fontFamily: "'Fredoka',sans-serif", fontWeight: 700, fontSize: "clamp(13px,1.5vw,18px)", color: reacting ? C.red : C.navy, whiteSpace: "nowrap" }}>
-          {reacting ? "Ayyy! 🎉" : "Tap me! 👆"}
+          {reacting ? "Ayyy! 🎉" : prompt}
         </span>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }

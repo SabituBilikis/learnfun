@@ -8,7 +8,10 @@ async function generateIcons() {
     return;
   }
 
-  const logo = await sharp(input).resize(500, 500, { fit: 'contain' }).png().toBuffer();
+  // 1. Master PWA & Store Icon (512x512)
+  // W3C & Android Maskable safe zone is inner 66% (355px out of 512px).
+  // Scaling logo to 355x355 leaves ~78px padding on all sides.
+  const logo355 = await sharp(input).resize(355, 355, { fit: 'contain' }).png().toBuffer();
   const master = await sharp({
     create: {
       width: 512,
@@ -17,15 +20,22 @@ async function generateIcons() {
       background: { r: 255, g: 255, b: 255, alpha: 1 },
     },
   })
-    .composite([{ input: logo, gravity: 'center' }])
+    .composite([{ input: logo355, gravity: 'center' }])
     .flatten({ background: '#FFFFFF' })
     .png()
     .toBuffer();
+
   fs.mkdirSync('marketing/google-play/icon', { recursive: true });
   await sharp(master).png().toFile('marketing/google-play/icon/learn-fun-icon-512.png');
   await sharp(master).png().toFile('public/icon-512x512.png');
   await sharp(master).resize(192, 192).png().toFile('public/icon-192x192.png');
 
+  if (fs.existsSync('dist')) {
+    await sharp(master).png().toFile('dist/icon-512x512.png');
+    await sharp(master).resize(192, 192).png().toFile('dist/icon-192x192.png');
+  }
+
+  // 2. Native Android Mipmap Icons (ic_launcher, ic_launcher_round, ic_launcher_foreground)
   const androidIconSizes = [
     { directory: 'mipmap-mdpi', size: 48, foregroundSize: 108 },
     { directory: 'mipmap-hdpi', size: 72, foregroundSize: 162 },
@@ -38,21 +48,54 @@ async function generateIcons() {
     const outputDirectory = `android/app/src/main/res/${directory}`;
     fs.mkdirSync(outputDirectory, { recursive: true });
 
-    await sharp(input)
-      .resize(size, size, { fit: 'contain', background: '#FFFFFF' })
+    // Standard & Round Launcher Icons: Logo scaled to 68% of total icon size on white background
+    const innerSize = Math.round(size * 0.68);
+    const innerLogo = await sharp(input).resize(innerSize, innerSize, { fit: 'contain' }).png().toBuffer();
+
+    await sharp({
+      create: {
+        width: size,
+        height: size,
+        channels: 4,
+        background: { r: 255, g: 255, b: 255, alpha: 1 },
+      },
+    })
+      .composite([{ input: innerLogo, gravity: 'center' }])
+      .flatten({ background: '#FFFFFF' })
       .png()
       .toFile(`${outputDirectory}/ic_launcher.png`);
-    await sharp(input)
-      .resize(size, size, { fit: 'contain', background: '#FFFFFF' })
+
+    await sharp({
+      create: {
+        width: size,
+        height: size,
+        channels: 4,
+        background: { r: 255, g: 255, b: 255, alpha: 1 },
+      },
+    })
+      .composite([{ input: innerLogo, gravity: 'center' }])
+      .flatten({ background: '#FFFFFF' })
       .png()
       .toFile(`${outputDirectory}/ic_launcher_round.png`);
-    await sharp(input)
-      .resize(foregroundSize, foregroundSize, { fit: 'contain', background: '#FFFFFF' })
+
+    // Adaptive Foreground Icon: Logo scaled to 64% of foreground canvas size (safely within Android 66% viewport mask)
+    const fgInnerSize = Math.round(foregroundSize * 0.64);
+    const fgLogo = await sharp(input).resize(fgInnerSize, fgInnerSize, { fit: 'contain' }).png().toBuffer();
+
+    await sharp({
+      create: {
+        width: foregroundSize,
+        height: foregroundSize,
+        channels: 4,
+        background: { r: 255, g: 255, b: 255, alpha: 0 },
+      },
+    })
+      .composite([{ input: fgLogo, gravity: 'center' }])
       .png()
       .toFile(`${outputDirectory}/ic_launcher_foreground.png`);
   }
 
-  console.log('Web and Android icons generated successfully.');
+  console.log('Web, PWA, and Android safe-zone icons generated successfully.');
 }
 
 generateIcons().catch(console.error);

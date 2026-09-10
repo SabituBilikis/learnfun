@@ -131,16 +131,32 @@ function CelebrationBg() {
   );
 }
 
+export interface CustomCompleteItem {
+  title: string;
+  word: string;
+  emoji: string;
+  label?: string;
+  nextLabel?: string;
+}
+
 // ── Full lesson complete screen ───────────────────────────────────────────────
-export function LessonCompleteScreen({ letterIndex, onContinue, onPlayAgain, onCategories }: {
-  letterIndex: number;
-  onContinue:  () => void;
+export function LessonCompleteScreen({ letterIndex = 0, item, onContinue, onPlayAgain, onCategories }: {
+  letterIndex?: number;
+  item?: CustomCompleteItem;
+  onContinue?: () => void;
   onPlayAgain: () => void;
   onCategories: () => void;
 }) {
-  const entry    = LESSON_LETTERS[letterIndex];
-  const canNext  = letterIndex < LESSON_LETTERS.length - 1;
-  const next     = canNext ? LESSON_LETTERS[letterIndex + 1] : null;
+  const defaultEntry = LESSON_LETTERS[Math.min(letterIndex, LESSON_LETTERS.length - 1)];
+  const canNextAlphabet = letterIndex < LESSON_LETTERS.length - 1;
+  const nextAlphabet = canNextAlphabet ? LESSON_LETTERS[letterIndex + 1] : null;
+
+  const displayTitle = item?.title ?? defaultEntry.l;
+  const displayWord  = item?.word ?? defaultEntry.word;
+  const displayEmoji = item?.emoji ?? defaultEntry.emoji;
+  const displayLabel = item?.label ?? `${displayWord} · Mastered!`;
+  const nextBtnText  = item ? item.nextLabel : (nextAlphabet ? `${nextAlphabet.l} ${nextAlphabet.emoji}` : null);
+  const showNextBtn  = Boolean(onContinue && nextBtnText);
 
   return (
     <div
@@ -204,7 +220,15 @@ export function LessonCompleteScreen({ letterIndex, onContinue, onPlayAgain, onC
             style={{ fontFamily: "'Nunito',sans-serif", fontWeight: 700, fontSize: "clamp(14px,1.8vw,22px)", color: "rgba(255,255,255,0.88)", marginTop: 6 }}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
           >
-            You learned <span style={{ color: C.yellow }}>{entry.l}</span> is for <span style={{ color: C.yellow }}>{entry.word} {entry.emoji}</span>
+            {item ? (
+              displayTitle === displayWord ? (
+                <>You learned <span style={{ color: C.yellow }}>{displayWord} {displayEmoji}</span></>
+              ) : (
+                <>You learned <span style={{ color: C.yellow }}>{displayTitle}</span> (<span style={{ color: C.yellow }}>{displayWord} {displayEmoji}</span>)</>
+              )
+            ) : (
+              <>You learned <span style={{ color: C.yellow }}>{displayTitle}</span> is for <span style={{ color: C.yellow }}>{displayWord} {displayEmoji}</span></>
+            )}
           </motion.p>
         </motion.div>
 
@@ -212,7 +236,7 @@ export function LessonCompleteScreen({ letterIndex, onContinue, onPlayAgain, onC
         <div className="flex flex-col sm:flex-row items-center justify-center"
           style={{ gap: "clamp(16px,3vw,48px)" }}>
           <ThreeStars earned={3} />
-          <GoldBadge letter={entry.l} emoji={entry.emoji} label={`${entry.word} · Mastered!`} />
+          <GoldBadge letter={displayTitle} emoji={displayEmoji} label={displayLabel} />
         </div>
       </div>
 
@@ -245,7 +269,7 @@ export function LessonCompleteScreen({ letterIndex, onContinue, onPlayAgain, onC
         </motion.button>
 
         {/* Continue — primary green, pulsing */}
-        {canNext && (
+        {showNextBtn && onContinue && (
           <motion.button onClick={onContinue}
             className="flex items-center justify-center gap-2 rounded-2xl"
             style={{ padding: "14px 30px", background: `linear-gradient(135deg,${C.green},#28A046)`, border: `3px solid ${C.navy}`, boxShadow: `4px 6px 0 ${C.navy}`, fontFamily: "'Fredoka',sans-serif", fontWeight: 700, fontSize: "clamp(15px,1.8vw,20px)", color: C.white, whiteSpace: "nowrap" }}
@@ -255,7 +279,7 @@ export function LessonCompleteScreen({ letterIndex, onContinue, onPlayAgain, onC
             whileTap={{ scale: 0.94 }}
           >
             <Play size={17} fill={C.white} />
-            Next: {next?.l} {next?.emoji}
+            Next: {nextBtnText}
             <ChevronRight size={19} strokeWidth={2.5} />
           </motion.button>
         )}

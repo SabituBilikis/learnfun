@@ -44,15 +44,7 @@ export function PhonicsSoundExperienceScreen({
     setTimeout(() => setToastMessage(null), 2200);
   };
 
-  // Auto-play the phoneme sound once when the screen opens
   useEffect(() => {
-    let active = true;
-    const timer = setTimeout(() => {
-      if (active) {
-        void playPhoneme("phoneme", currentItem.phonemeAudio, currentItem.phoneme);
-      }
-    }, 350);
-
     // Record discovering the letter for progress tracking
     const letterKey = `phonics_${currentItem.id}`;
     if (!exploredSetRef.current.has(letterKey)) {
@@ -65,11 +57,9 @@ export function PhonicsSoundExperienceScreen({
     }
 
     return () => {
-      active = false;
-      clearTimeout(timer);
       void stop();
     };
-  }, [safeIndex, currentItem, playPhoneme, stop, updateProgress]);
+  }, [safeIndex, currentItem, stop, updateProgress]);
 
   // Replay phoneme sound /b/
   const handlePlayPhoneme = () => {

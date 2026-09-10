@@ -98,8 +98,11 @@ export class PhonicsAudioService {
     if (audioUrl) {
       const success = await this.tryPlayAudioFile(audioUrl, options);
       if (success) return true;
+      if (typeof window !== "undefined" && import.meta.env?.DEV) {
+        console.warn(`[PhonicsAudio] Educational audio asset missing: ${audioUrl}`);
+      }
       if (requestGeneration !== this.playbackGeneration) return false;
-      options.onError?.(new Error("Recorded audio could not be played."));
+      options.onError?.(new Error(`Educational audio asset missing: ${audioUrl}`));
       return false;
     }
 

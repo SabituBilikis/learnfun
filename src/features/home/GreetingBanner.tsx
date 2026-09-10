@@ -2,11 +2,13 @@ import { motion } from "motion/react";
 import { C, CATEGORIES } from "@/app/constants";
 import { useGreeting } from "@/hooks/useGreeting";
 import { useProgress, formatStreak } from "@/hooks/useProgress";
+import { getUnlockedCategoryCount, calculateEarnedStars } from "@/lib/helpers";
 
 export function GreetingBanner() {
   const g = useGreeting();
   const { progress, activeProfile } = useProgress();
-  const completedCount = CATEGORIES.filter(c => c.state === "complete" || c.state === "active").length;
+  const unlockedCount = getUnlockedCategoryCount(CATEGORIES, progress);
+  const starsCount = Math.max(progress.starsTotal, calculateEarnedStars(CATEGORIES, progress));
 
   return (
     <div className="flex items-center justify-between gap-4 flex-wrap">
@@ -30,7 +32,7 @@ export function GreetingBanner() {
             className="text-xl sm:text-2xl lg:text-3xl leading-tight font-bold"
             style={{ fontFamily: "'Fredoka',sans-serif", color: C.navy }}
           >
-            {activeProfile.name || "Little Explorer"}, what shall we learn? ✨
+            {activeProfile.name || "Little Explorer"}, what shall we learn?
           </p>
         </div>
       </div>
@@ -38,9 +40,9 @@ export function GreetingBanner() {
       {/* Right: quick stats pills — solid white cards for guaranteed contrast */}
       <div className="hidden sm:flex items-center gap-2">
         {[
-          { emoji:"🎯", value:`${completedCount}/${CATEGORIES.length}`,  label:"Unlocked", valueColor: C.blue   },
+          { emoji:"🎯", value:`${unlockedCount}/${CATEGORIES.length}`,  label:"Unlocked", valueColor: C.blue   },
           { emoji:"🔥", value:formatStreak(progress.streakDays),         label:"Streak",   valueColor: C.orange },
-          { emoji:"⭐", value:String(progress.starsTotal),               label:"Stars",    valueColor: "#CC9F00" },
+          { emoji:"⭐", value:String(starsCount),                        label:"Stars",    valueColor: "#CC9F00" },
         ].map(s => (
           <div
             key={s.label}

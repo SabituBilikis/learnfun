@@ -8,7 +8,6 @@ import { CTAButton } from "@/components/ui/CTAButton";
 import { ProgressDots } from "@/components/ui/ProgressDots";
 import { SoundRings } from "@/components/feedback/SoundRings";
 import { ConfettiBurst } from "@/components/feedback/ConfettiBurst";
-import { AmbientSparkles } from "@/components/feedback/Sparkle";
 import { LessonBg } from "@/components/feedback/LessonBg";
 import { useProgress } from "@/hooks/useProgress";
 import { usePhonicsAudio } from "@/hooks/usePhonicsAudio";
@@ -40,34 +39,26 @@ export function PhonicsStepRunner({
 
   const canNextLetter = safeIndex < phonicsData.length - 1;
 
-  // Auto-play phoneme on Step 2 entry
   useEffect(() => {
     setCurrentStep(2);
     setExploredWords(new Set());
     setEarnedCompletionReward(false);
     void stop();
 
-    const timer = setTimeout(() => {
-      void playPhoneme("step2_phoneme", currentItem.phonemeAudio, currentItem.phoneme);
-    }, 350);
-
     return () => {
-      clearTimeout(timer);
       void stop();
     };
-  }, [safeIndex, currentItem, playPhoneme, stop]);
+  }, [safeIndex, currentItem, stop]);
 
   // Handle step completion & rewards
   const handleNextStep = () => {
     void stop();
     if (currentStep === 2) {
       setCurrentStep(3);
-      void playWord("step3_word", undefined, currentItem.primary.word);
     } else if (currentStep === 3) {
       setCurrentStep(4);
     } else if (currentStep === 4) {
       setCurrentStep(5);
-      void playPhoneme("step5_phoneme", currentItem.phonemeAudio, currentItem.phoneme);
     } else if (currentStep === 5) {
       // Complete! Trigger Step 6 celebration
       const isNewCompletion = safeIndex >= (progress.catProgress.phonics ?? 0);
@@ -404,15 +395,6 @@ export function PhonicsStepRunner({
           </div>
         </div>
       )}
-
-      <AmbientSparkles
-        zIndex={5}
-        spots={[
-          { top: "12%", left: "4%", size: 22, color: C.yellow },
-          { top: "22%", right: "5%", size: 18, color: C.orange },
-          { top: "78%", left: "3%", size: 20, color: C.teal },
-        ]}
-      />
     </div>
   );
 }

@@ -5,8 +5,6 @@ import { LessonShell } from "../../features/lesson/LessonShell";
 import { LessonMascot } from "../../features/lesson/LessonMascot";
 import { IllustrationPanel } from "../../features/lesson/IllustrationPanel";
 import { GiantLetter } from "../../features/lesson/GiantLetter";
-import { AmbientSparkles } from "../../components/feedback/Sparkle";
-import { C } from "../constants";
 
 export function LessonScreen({ letterIndex, onBack, onComplete, onNavigate }: {
   letterIndex: number;
@@ -35,42 +33,35 @@ export function LessonScreen({ letterIndex, onBack, onComplete, onNavigate }: {
     setPlaying(true);
     setBurst(b => b + 1);
     setReacting(true);
-    setTimeout(() => setReacting(false), 1100);
+    setTimeout(() => setReacting(false), 1400);
     try {
-      await speak(entry.l, { rate: 0.65, pitch: 1.3 });
+      const ok = await speak(entry.l, { rate: 0.65, pitch: 1.3 });
+      if (ok) {
+        await new Promise((resolve) => setTimeout(resolve, 350));
+        await speak(`${entry.l} for ${entry.word.toLowerCase()}`, { rate: 0.7, pitch: 1.3, cancelPrevious: false });
+      }
     } finally {
       setPlaying(false);
     }
   };
 
   return (
-    <>
-      <LessonShell
-        color={color}
-        dark={dark}
-        letterBg={entry.l}
-        emojiBg={entry.emoji}
-        currentIndex={letterIndex}
-        totalEntries={LESSON_LETTERS.length}
-        playing={playing}
-        burstCount={burst}
-        onBack={onBack}
-        onComplete={onComplete}
-        onNavigate={onNavigate}
-        onSpeak={speakLetter}
-        mascotNode={<LessonMascot reacting={reacting} />}
-        mainNode={<GiantLetter letter={entry.l} color={color} onClick={speakLetter} pulsing={playing} />}
-        panelNode={<IllustrationPanel emoji={entry.emoji} word={entry.word} />}
-      />
-      <AmbientSparkles
-        zIndex={5}
-        spots={[
-          { top:"6%",  left:"2%",   size:20, color:C.yellow },
-          { top:"12%", right:"3%",  size:15, color:"rgba(255,255,255,0.8)" },
-          { top:"80%", left:"3%",   size:18, color:C.yellow },
-          { top:"75%", right:"4%",  size:14, color:"rgba(255,255,255,0.7)" },
-        ]}
-      />
-    </>
+    <LessonShell
+      color={color}
+      dark={dark}
+      letterBg={entry.l}
+      emojiBg={entry.emoji}
+      currentIndex={letterIndex}
+      totalEntries={LESSON_LETTERS.length}
+      playing={playing}
+      burstCount={burst}
+      onBack={onBack}
+      onComplete={onComplete}
+      onNavigate={onNavigate}
+      onSpeak={speakLetter}
+      mascotNode={<LessonMascot reacting={reacting} onClick={speakLetter} prompt="What is this?" />}
+      mainNode={<GiantLetter letter={entry.l} color={color} onClick={speakLetter} pulsing={playing} />}
+      panelNode={<IllustrationPanel emoji={entry.emoji} word={entry.word} />}
+    />
   );
 }

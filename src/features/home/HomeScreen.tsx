@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { C } from "@/app/constants";
 import { CAT_REGISTRY } from "@/app/modules/categories";
-import { AmbientSparkles } from "@/components/feedback/Sparkle";
 import { TopNav } from "@/components/layout/TopNav";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { SettingsModal } from "@/features/settings/SettingsModal";
@@ -37,22 +35,6 @@ export function HomeScreen() {
 
       {/* ── Bottom navigation ───────────────────────────── */}
       <BottomNav onGames={() => navigate("/games")} onRewards={() => navigate("/rewards")} onLearn={() => navigate("/journey")} onParent={() => navigate("/parent")} />
-
-      {/* ── Ambient corner sparkles ─────────────────────── */}
-      <AmbientSparkles
-        zIndex={8}
-        rotate={20}
-        scaleTo={1.2}
-        opacityRange={[0.7, 1]}
-        baseDuration={3.5}
-        durationStep={0.6}
-        spots={[
-          { top:"8%",  left:"3%",   size:24, color:C.yellow },
-          { top:"15%", right:"4%",  size:18, color:C.pink   },
-          { top:"32%", left:"1%",   size:20, color:C.teal   },
-          { top:"6%",  left:"48%",  size:14, color:C.orange },
-        ]}
-      />
     </div>
   );
 }

@@ -11,3 +11,6 @@ android/keystore.properties
 playwright-report/
 test-results/
 tmp/
+*.aab
+*.apk
+*.lnk

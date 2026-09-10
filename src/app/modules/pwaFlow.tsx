@@ -4,23 +4,16 @@ import { Check } from "lucide-react";
 import { C } from "../constants";
 import { CTAButton, Sparkle } from "./primitives";
 import { RainingConfetti } from "./lessonComplete";
+import learnFunLogo from "@/imports/Learn_fun.png";
 
 // ── App icon ─────────────────────────────────────────────────────────────────
 export function LearnFunIcon({ size = 72 }: { size?: number }) {
-  const r = Math.round(size * 0.24);
   return (
-    <div style={{
-      width: size, height: size, borderRadius: r, flexShrink: 0,
-      background: "linear-gradient(145deg,#7B2FF7 0%,#AF52DE 55%,#FF2D9B 100%)",
-      border: `${Math.max(2, size * 0.04)}px solid ${C.navy}`,
-      boxShadow: `${size*0.055}px ${size*0.075}px 0 ${C.navy}`,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      position: "relative", overflow: "hidden",
-    }}>
-      <div style={{ position:"absolute", inset:0, background:"linear-gradient(135deg,rgba(255,255,255,0.3) 0%,transparent 52%)", borderRadius: r }} />
-      <span style={{ fontSize: size * 0.46, lineHeight:1, position:"relative", zIndex:1 }}>📚</span>
-      <span style={{ position:"absolute", bottom: size*0.09, right: size*0.09, fontSize: size*0.24, lineHeight:1, zIndex:2 }}>⭐</span>
-    </div>
+    <img
+      src={learnFunLogo}
+      alt="LearnFun — Play. Learn. Grow."
+      style={{ height: size, width: "auto", objectFit: "contain", flexShrink: 0 }}
+    />
   );
 }
 

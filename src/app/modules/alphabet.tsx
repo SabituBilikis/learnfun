@@ -59,7 +59,12 @@ function LetterCard({ letter, word, emoji, state, index, onTap }: {
   );
 }
 
-export function AlphabetPage({ onBack, onContinue, learnedCount }: { onBack: () => void; onContinue: () => void; learnedCount: number }) {
+export function AlphabetPage({ onBack, onContinue, onSelectLetter, learnedCount }: {
+  onBack: () => void;
+  onContinue: () => void;
+  onSelectLetter?: (index: number) => void;
+  learnedCount: number;
+}) {
   const { progress: userProgress } = useProgress();
   const progress = Math.round((learnedCount / LETTERS.length) * 100);
   const stars    = 2;
@@ -157,7 +162,7 @@ export function AlphabetPage({ onBack, onContinue, learnedCount }: { onBack: () 
         {/* 26 letter cards grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(70px,9vw,108px),1fr))", gap: "clamp(8px,1.2vw,16px)" }}>
           {LETTERS.map((l, i) => (
-            <LetterCard key={l.l} letter={l.l} word={l.word} emoji={l.emoji} state={letterState(i)} index={i} onTap={letterState(i) !== "upcoming" ? () => onContinue() : undefined} />
+            <LetterCard key={l.l} letter={l.l} word={l.word} emoji={l.emoji} state={letterState(i)} index={i} onTap={() => onSelectLetter ? onSelectLetter(i) : onContinue()} />
           ))}
         </div>
 

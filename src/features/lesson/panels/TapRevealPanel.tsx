@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import { speak } from "../../../lib/speech";
+import { playChimeSound } from "../../../lib/soundEffects";
+import { getEmojiName } from "../../../lib/emojiDictionary";
+import { SmartEmoji } from "@/components/icons/EraserIcon";
 
 export function TapRevealPanel({ items, color, onCountChange }: {
   items: string[]; color: string; onCountChange: (c: number) => void;
@@ -14,12 +18,30 @@ export function TapRevealPanel({ items, color, onCountChange }: {
   }, [items.join("")]);
 
   function tap(i: number) {
-    if (revealed[i] || done) return;
-    const next = [...revealed]; next[i] = true; setRevealed(next);
+    playChimeSound(true);
     setLast(i);
-    const c = next.filter(Boolean).length;
-    onCountChange(c);
-    if (c === items.length) setTimeout(() => setDone(true), 400);
+
+    let count = revealed.filter(Boolean).length;
+    if (!revealed[i]) {
+      const next = [...revealed];
+      next[i] = true;
+      setRevealed(next);
+      count = next.filter(Boolean).length;
+      onCountChange(count);
+    }
+
+    const objectName = getEmojiName(items[i]);
+
+    if (count === items.length) {
+      if (!done) {
+        void speak(`${objectName}! Awesome! You found all of them!`, { rate: 0.75, pitch: 1.3 });
+        setTimeout(() => setDone(true), 400);
+      } else {
+        void speak(`${objectName}!`, { rate: 0.8, pitch: 1.35 });
+      }
+    } else {
+      void speak(`${objectName}!`, { rate: 0.8, pitch: 1.35 });
+    }
   }
 
   function reset() {
@@ -35,10 +57,10 @@ export function TapRevealPanel({ items, color, onCountChange }: {
       <div style={{ display:"grid", gridTemplateColumns:`repeat(${Math.min(n, 4)}, ${sz}px)`, gap:8 }}>
         {items.map((em, i) => (
           <motion.button key={i} onClick={() => tap(i)}
-            style={{ width:sz, height:sz, borderRadius:Math.round(sz*0.3), background:revealed[i]?`${color}BB`:"rgba(255,255,255,0.18)", border:`2.5px solid ${revealed[i]?"rgba(255,255,255,0.85)":"rgba(255,255,255,0.3)"}`, fontSize:sz<=44?22:26, display:"flex", alignItems:"center", justifyContent:"center", cursor:revealed[i]?"default":"pointer" }}
-            whileHover={!revealed[i]?{ scale:1.14 }:{}} whileTap={!revealed[i]?{ scale:0.88 }:{}}
+            style={{ width:sz, height:sz, borderRadius:Math.round(sz*0.3), background:revealed[i]?`${color}BB`:"rgba(255,255,255,0.18)", border:`2.5px solid ${revealed[i]?"rgba(255,255,255,0.85)":"rgba(255,255,255,0.3)"}`, fontSize:sz<=44?22:26, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}
+            whileHover={{ scale:1.14 }} whileTap={{ scale:0.88 }}
             animate={i===last?{ scale:[1,1.3,1] }:{}} transition={{ type:"spring", stiffness:400, damping:14 }}>
-            {revealed[i] ? em : "❓"}
+            {revealed[i] ? <SmartEmoji emoji={em} size={sz <= 44 ? 22 : 26} /> : "❓"}
           </motion.button>
         ))}
       </div>

@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import type { CatEntry } from "../../../app/modules/categories";
+import { speak } from "../../../lib/speech";
+import { playChimeSound } from "../../../lib/soundEffects";
+
+import { SmartEmoji } from "../../../components/icons/EraserIcon";
 
 export function SequencePanel({ entries, currentIndex, color, onCountChange }: {
   entries: CatEntry[]; currentIndex: number; color: string; onCountChange: (c: number) => void;
@@ -11,7 +15,11 @@ export function SequencePanel({ entries, currentIndex, color, onCountChange }: {
 
   function tap() {
     if (tapped) return;
+    playChimeSound(true);
     setTapped(true); onCountChange(1);
+    const item = entries[currentIndex];
+    const name = item?.name ?? "";
+    void speak(`Great job! ${name}`, { rate: 0.75, pitch: 1.3 });
   }
 
   return (
@@ -29,7 +37,7 @@ export function SequencePanel({ entries, currentIndex, color, onCountChange }: {
               className="flex flex-col items-center justify-center rounded-xl"
               style={{ width:36, height:40, background:isCur?`${color}DD`:isPast?"rgba(255,255,255,0.22)":"rgba(255,255,255,0.1)", border:`2px solid ${isCur?"rgba(255,255,255,0.9)":isPast?"rgba(255,255,255,0.4)":"rgba(255,255,255,0.15)"}`, transition:"all 0.2s" }}
               animate={isCur?{ scale:[1,1.1,1] }:{}} transition={{ duration:1.8, repeat:Infinity }}>
-              <span style={{ fontSize:isCur?18:14, lineHeight:1, filter:!isPast&&!isCur?"grayscale(1) opacity(0.4)":"none" }}>{e.emoji}</span>
+              <span style={{ fontSize:isCur?18:14, lineHeight:1, filter:!isPast&&!isCur?"grayscale(1) opacity(0.4)":"none" }}><SmartEmoji emoji={e.emoji} size={isCur?18:14} /></span>
               {isCur && <span className="font-fredoka font-bold text-[8px] text-lf-white leading-none">{i+1}</span>}
             </motion.div>
           );
@@ -41,7 +49,7 @@ export function SequencePanel({ entries, currentIndex, color, onCountChange }: {
         style={{ width:100, height:100, background:tapped?`${color}CC`:"rgba(255,255,255,0.18)", border:`3px solid ${tapped?"rgba(255,255,255,0.9)":"rgba(255,255,255,0.4)"}`, cursor:tapped?"default":"pointer" }}
         whileHover={!tapped?{ scale:1.08 }:{}} whileTap={!tapped?{ scale:0.9 }:{}}
         animate={!tapped?{ scale:[1,1.05,1] }:{}} transition={{ duration:2, repeat:!tapped?Infinity:0 }}>
-        <span style={{ fontSize:36 }}>{entries[currentIndex]?.emoji}</span>
+        <span style={{ fontSize:36 }}><SmartEmoji emoji={entries[currentIndex]?.emoji ?? ""} size={36} /></span>
         <span className="font-fredoka font-bold text-[11px] text-lf-white text-center leading-[1.2]">
           {tapped ? entries[currentIndex]?.name : "Tap me!"}
         </span>

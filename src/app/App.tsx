@@ -10,8 +10,8 @@ import { useProgress } from "@/hooks/useProgress";
 
 import { AlphabetRoute, LetterLessonRoute, CompleteRoute } from "@/app/routes/alphabetRoutes";
 import { PhonicsRoute, PhonicsLessonRoute } from "@/app/routes/phonicsRoutes";
-import { NumbersRoute, NumberLessonRoute } from "@/app/routes/numbersRoutes";
-import { CategoryRoute, CategoryLessonRoute } from "@/app/routes/categoryRoutes";
+import { NumbersRoute, NumberLessonRoute, NumberCompleteRoute } from "@/app/routes/numbersRoutes";
+import { CategoryRoute, CategoryLessonRoute, CategoryCompleteRoute } from "@/app/routes/categoryRoutes";
 import { GamesRoute } from "@/app/routes/gamesRoute";
 import { ParentRoute } from "@/app/routes/parentRoutes";
 
@@ -74,8 +74,10 @@ export default function App() {
           <Route path="/complete/:index" element={<CompleteRoute />} />
           <Route path="/numbers" element={<NumbersRoute />} />
           <Route path="/numbers/lesson/:index" element={<NumberLessonRoute />} />
+          <Route path="/numbers/complete/:index" element={<NumberCompleteRoute />} />
           <Route path="/category/:catId" element={<CategoryRoute />} />
           <Route path="/category/:catId/lesson/:index" element={<CategoryLessonRoute />} />
+          <Route path="/category/:catId/complete/:index" element={<CategoryCompleteRoute />} />
           <Route path="/games" element={<GamesRoute />} />
           <Route path="/games/memory" element={<MemoryMatchGame onBack={() => navigate("/games")} />} />
           <Route path="/games/drag" element={<DragDropGame onBack={() => navigate("/games")} />} />

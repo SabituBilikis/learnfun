@@ -42,6 +42,8 @@ export const CAT_REGISTRY: CatDef[] = categoriesData as CatDef[];
 
 // Components moved to src/features/lesson/panels
 
+import { SmartEmoji } from "@/components/icons/EraserIcon";
+
 // ── GiantCatItem — the main visual card (like GiantNumber) ────────────────────
 function GiantCatItem({ entry, onClick, pulsing }: {
   entry: CatEntry; onClick: () => void; pulsing: boolean;
@@ -55,7 +57,7 @@ function GiantCatItem({ entry, onClick, pulsing }: {
           animate={pulsing?{ scale:[1,1.07,1] }:{ scale:1 }}
           transition={{ duration:0.38, repeat:pulsing?Infinity:0 }}
           whileHover={{ scale:1.07 }} whileTap={{ scale:0.91 }}>
-          <span className="text-[clamp(56px,9vw,88px)] leading-none">{entry.emoji}</span>
+          <span className="text-[clamp(56px,9vw,88px)] leading-none"><SmartEmoji emoji={entry.emoji} size="clamp(56px,9vw,88px)" /></span>
         </motion.button>
       </div>
       <motion.div className="px-6 py-2 rounded-2xl bg-white/20 border-2 border-white/50 backdrop-blur-[6px]"
@@ -226,7 +228,7 @@ export function GenericCategoryPage({ catId, onBack, onContinue, learnedCount }:
                   <motion.div className="absolute top-1.5 right-1.5 rounded-full w-2 h-2 bg-lf-orange"
                     animate={{ scale:[1,1.5,1], opacity:[1,0.5,1] }} transition={{ duration:1.2, repeat:Infinity }} />
                 )}
-                <span className={`text-[clamp(24px,4.5vw,32px)] leading-none ${state==="upcoming" ? "grayscale opacity-25" : ""}`}>{entry.emoji}</span>
+                <span className={`text-[clamp(24px,4.5vw,32px)] leading-none ${state==="upcoming" ? "grayscale opacity-25" : ""}`}><SmartEmoji emoji={entry.emoji} size="clamp(24px,4.5vw,32px)" /></span>
                 <span className={`font-fredoka font-bold text-[clamp(9px,1.4vw,13px)] text-center leading-[1.2] ${state==="upcoming" ? "text-lf-mutedFg" : "text-lf-navy"}`}>
                   {state==="upcoming" ? "Locked" : entry.name}
                 </span>

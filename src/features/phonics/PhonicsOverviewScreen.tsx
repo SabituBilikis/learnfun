@@ -3,8 +3,9 @@ import { motion } from "motion/react";
 import { Check, Lock, Star, Volume2, Home } from "lucide-react";
 import { C } from "@/app/constants";
 import { BackButton } from "@/components/ui/BackButton";
-import { AmbientSparkles } from "@/components/feedback/Sparkle";
 import { useProgress } from "@/hooks/useProgress";
+import { usePhonicsAudio } from "@/hooks/usePhonicsAudio";
+import { SoundRings } from "@/components/feedback/SoundRings";
 import phonicsData from "@/data/phonics.json";
 
 export interface PhonemeItem {
@@ -27,6 +28,7 @@ export interface PhonemeItem {
 export function PhonicsOverviewScreen() {
   const navigate = useNavigate();
   const { progress } = useProgress();
+  const { playingAudioId, playPhoneme } = usePhonicsAudio();
 
   const items = phonicsData as PhonemeItem[];
   const learnedCount = Math.min(progress.catProgress.phonics ?? 0, items.length);
@@ -75,7 +77,7 @@ export function PhonicsOverviewScreen() {
         <div className="w-full max-w-4xl grid grid-cols-2 sm:grid-cols-3 gap-[clamp(12px,2.5vw,24px)] my-auto">
           {items.map((item, index) => {
             const isComplete = index < learnedCount;
-            const isUnlocked = index <= learnedCount;
+            const isUnlocked = true; // All available phonics sounds unlocked for open exploration
             return (
               <motion.button
                 key={item.id}
@@ -91,11 +93,31 @@ export function PhonicsOverviewScreen() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.94 }}
               >
-                {/* Audio visualizer active state */}
+                {/* Audio button / status badge */}
                 <div className="absolute top-3 right-3 flex items-center justify-center">
-                  <div className="relative z-10 w-8 h-8 rounded-xl bg-amber-100 border-2 border-lf-navy flex items-center justify-center shadow-[1px_2px_0_var(--color-lf-navy)]">
-                    {isComplete ? <Check size={16} className="text-lf-green" strokeWidth={3} /> : isUnlocked ? <Volume2 size={16} className="text-lf-navy" /> : <Lock size={15} className="text-lf-mutedFg" />}
-                  </div>
+                  <motion.button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isUnlocked) {
+                        void playPhoneme(item.id, item.phonemeAudio, item.phoneme);
+                      }
+                    }}
+                    disabled={!isUnlocked}
+                    aria-label={`Listen to ${item.letter} sound`}
+                    className="relative z-20 w-9 h-9 rounded-xl bg-amber-100 border-2 border-lf-navy flex items-center justify-center shadow-[1px_2px_0_var(--color-lf-navy)] cursor-pointer"
+                    whileHover={isUnlocked ? { scale: 1.12 } : {}}
+                    whileTap={isUnlocked ? { scale: 0.9 } : {}}
+                  >
+                    <SoundRings active={playingAudioId === item.id} />
+                    {isComplete ? (
+                      <Check size={16} className="text-lf-green" strokeWidth={3} />
+                    ) : isUnlocked ? (
+                      <Volume2 size={16} className={`text-lf-navy ${playingAudioId === item.id ? "animate-bounce" : ""}`} />
+                    ) : (
+                      <Lock size={15} className="text-lf-mutedFg" />
+                    )}
+                  </motion.button>
                 </div>
 
                 {/* Top Badge with Large Letter */}
@@ -122,17 +144,6 @@ export function PhonicsOverviewScreen() {
           })}
         </div>
       </div>
-
-      {/* ── Ambient Background Sparkles ──────────────────────── */}
-      <AmbientSparkles
-        zIndex={5}
-        spots={[
-          { top: "12%", left: "4%", size: 24, color: C.yellow },
-          { top: "18%", right: "5%", size: 20, color: C.orange },
-          { top: "75%", left: "3%", size: 22, color: C.teal },
-          { top: "82%", right: "4%", size: 18, color: C.purple },
-        ]}
-      />
     </div>
   );
 }

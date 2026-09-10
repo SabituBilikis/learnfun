@@ -1,10 +1,12 @@
 import React from "react";
 import { motion } from "motion/react";
-import { Download, Settings, Star, Users } from "lucide-react";
+import { Download, RotateCcw, Settings, Star, Users } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import learnFunLogo from "@/imports/Learn_fun.png";
-import { C } from "@/app/constants";
-import { useProgress, formatStreak } from "@/hooks/useProgress";
+import { C, CATEGORIES } from "@/app/constants";
+import { useProgress } from "@/hooks/useProgress";
+import { defaultProgress } from "@/lib/progress";
+import { calculateEarnedStars } from "@/lib/helpers";
 import { usePWAInstall } from "@/hooks/usePWAInstall";
 
 // ── NavPill (reusable nav button) ─────────────────────────────────────────────
@@ -36,14 +38,22 @@ function NavPill({
 
 // ── Top Navigation ────────────────────────────────────────────────────────────
 export function TopNav({ onInstall, onSettings, onParent }: { onInstall?: () => void; onSettings?: () => void; onParent?: () => void }) {
-  const { progress, activeProfile } = useProgress();
+  const { progress, activeProfile, updateProgress } = useProgress();
   const { isInstallable, isInstalled, promptInstall } = usePWAInstall();
+  const displayStars = Math.max(progress.starsTotal, calculateEarnedStars(CATEGORIES, progress));
 
   const handleInstallClick = () => {
     if (isInstallable) {
       promptInstall();
     } else {
       if (onInstall) onInstall();
+    }
+  };
+
+  const handleEraseData = () => {
+    if (confirm("Are you sure you want to erase all learning progress and start fresh?")) {
+      updateProgress(() => defaultProgress());
+      alert("All progress erased! Starting fresh.");
     }
   };
 
@@ -75,14 +85,17 @@ export function TopNav({ onInstall, onSettings, onParent }: { onInstall?: () => 
           </motion.div>
         )}
 
-        {/* Streak — desktop/tablet */}
-        <motion.div
-          className="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-2xl bg-white border-[2.5px] border-lf-navy shadow-[3px_4px_0_var(--color-lf-navy)]"
-          whileHover={{ y: -2 }}
+        {/* Erase / Reset Data Button */}
+        <motion.button
+          onClick={handleEraseData}
+          className="flex items-center gap-1.5 px-3 py-2 rounded-2xl bg-white border-[2.5px] border-lf-navy shadow-[3px_4px_0_var(--color-lf-navy)] cursor-pointer"
+          whileHover={{ y: -2, scale: 1.03 }}
+          whileTap={{ y: 2, scale: 0.95 }}
+          title="Erase all data and start fresh"
         >
-          <span className="text-base">🔥</span>
-          <span className="font-fredoka font-bold text-lf-orange text-[15px]">{formatStreak(progress.streakDays)}</span>
-        </motion.div>
+          <RotateCcw size={16} className="text-lf-red stroke-[2.5]" />
+          <span className="font-fredoka font-bold text-lf-red text-[15px]">Erase</span>
+        </motion.button>
 
         {/* Stars — desktop */}
         <motion.div
@@ -90,7 +103,7 @@ export function TopNav({ onInstall, onSettings, onParent }: { onInstall?: () => 
           whileHover={{ y: -2 }}
         >
           <Star size={15} className="fill-lf-navy text-lf-navy" />
-          <span className="font-fredoka font-bold text-lf-navy text-[15px]">{progress.starsTotal}</span>
+          <span className="font-fredoka font-bold text-lf-navy text-[15px]">{displayStars}</span>
         </motion.div>
 
         {/* Install App */}

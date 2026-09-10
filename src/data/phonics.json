@@ -2,8 +2,9 @@
   {
     "id": "a",
     "letter": "A",
-    "phoneme": "ah",
+    "phoneme": "/æ/",
     "phonemeDisplay": "/æ/",
+    "phonemeAudio": "/audio/phonics/phonemes/a.mp3",
     "color": "#FF3B30",
     "dark": "#CC2A20",
     "primary": { "word": "Apple", "emoji": "🍎", "speechText": "ah. Apple!" },
@@ -17,7 +18,7 @@
   {
     "id": "b",
     "letter": "B",
-    "phoneme": "buh",
+    "phoneme": "/b/",
     "phonemeDisplay": "/b/",
     "phonemeAudio": "/audio/phonics/phonemes/b.mp3",
     "color": "#007AFF",
@@ -33,8 +34,9 @@
   {
     "id": "c",
     "letter": "C",
-    "phoneme": "kuh",
+    "phoneme": "/k/",
     "phonemeDisplay": "/k/",
+    "phonemeAudio": "/audio/phonics/phonemes/c.mp3",
     "color": "#34C759",
     "dark": "#28A046",
     "primary": { "word": "Cat", "emoji": "🐱", "speechText": "kuh. Cat!" },
@@ -48,8 +50,9 @@
   {
     "id": "m",
     "letter": "M",
-    "phoneme": "mm",
+    "phoneme": "/m/",
     "phonemeDisplay": "/m/",
+    "phonemeAudio": "/audio/phonics/phonemes/m.mp3",
     "color": "#FF9500",
     "dark": "#CC7600",
     "primary": { "word": "Monkey", "emoji": "🐒", "speechText": "mm. Monkey!" },
@@ -63,8 +66,9 @@
   {
     "id": "s",
     "letter": "S",
-    "phoneme": "sss",
+    "phoneme": "/s/",
     "phonemeDisplay": "/s/",
+    "phonemeAudio": "/audio/phonics/phonemes/s.mp3",
     "color": "#FFD700",
     "dark": "#C9A200",
     "primary": { "word": "Sun", "emoji": "☀️", "speechText": "sss. Sun!" },
@@ -78,8 +82,9 @@
   {
     "id": "t",
     "letter": "T",
-    "phoneme": "tuh",
+    "phoneme": "/t/",
     "phonemeDisplay": "/t/",
+    "phonemeAudio": "/audio/phonics/phonemes/t.mp3",
     "color": "#AF52DE",
     "dark": "#8A3DB5",
     "primary": { "word": "Tiger", "emoji": "🐯", "speechText": "tuh. Tiger!" },

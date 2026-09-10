@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { ChevronLeft, Users, Settings, BarChart2, Plus, Trash2 } from "lucide-react";
-import { C } from "@/app/constants";
+import { C, CATEGORIES } from "@/app/constants";
 import { useSettings } from "@/hooks/useSettings";
 import { useProgress } from "@/hooks/useProgress";
-import { CATEGORIES } from "@/app/constants";
-import { categoryPercent } from "@/lib/helpers";
+import { categoryPercent, isCategoryUnlocked, calculateEarnedStars } from "@/lib/helpers";
 import { motion } from "motion/react";
 
 export function ParentDashboard({ onBack }: { onBack: () => void }) {
@@ -20,6 +19,8 @@ export function ParentDashboard({ onBack }: { onBack: () => void }) {
       alert("Progress wiped for this profile.");
     }
   };
+
+  const totalStars = Math.max(activeProfile.progress.starsTotal, calculateEarnedStars(CATEGORIES, activeProfile.progress));
 
   return (
     <div className="flex flex-col h-[100dvh] bg-[#F3EEFF] font-fredoka text-lf-navy overflow-hidden">
@@ -56,7 +57,7 @@ export function ParentDashboard({ onBack }: { onBack: () => void }) {
                       <span className="text-5xl">{p.avatar}</span>
                       <div>
                         <h3 className="font-bold text-xl">{p.name}</h3>
-                        <p className="font-nunito text-sm text-gray-500 font-bold">{p.progress.starsTotal} Stars Earned</p>
+                        <p className="font-nunito text-sm text-gray-500 font-bold">{Math.max(p.progress.starsTotal, calculateEarnedStars(CATEGORIES, p.progress))} Stars Earned</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -93,7 +94,7 @@ export function ParentDashboard({ onBack }: { onBack: () => void }) {
               </h2>
               
               <div className="grid grid-cols-2 gap-4">
-                <StatCard label="Total Stars" value={activeProfile.progress.starsTotal} icon="⭐" color={C.yellow} />
+                <StatCard label="Total Stars" value={totalStars} icon="⭐" color={C.yellow} />
                 <StatCard label="Day Streak" value={activeProfile.progress.streakDays} icon="🔥" color={C.orange} />
                 <StatCard label="Letters Learned" value={`${activeProfile.progress.lettersLearned}/26`} icon="🔤" color={C.red} />
                 <StatCard label="Numbers Learned" value={`${activeProfile.progress.numbersLearned}/20`} icon="🔢" color={C.blue} />
@@ -102,9 +103,8 @@ export function ParentDashboard({ onBack }: { onBack: () => void }) {
               <div className="bg-white p-6 rounded-3xl border-4 border-gray-200 shadow-sm">
                 <h3 className="text-xl font-bold mb-5">Category Progress</h3>
                 <div className="space-y-5">
-                  {CATEGORIES.map(c => {
-                    // Only show progress for unlocked categories or if they have some progress
-                    if (c.state === "locked" && !activeProfile.progress.catProgress[c.id]) return null;
+                  {CATEGORIES.map((c, index) => {
+                    if (!isCategoryUnlocked(index, CATEGORIES, activeProfile.progress)) return null;
                     const pct = categoryPercent(c, activeProfile.progress);
                     return (
                       <div key={c.id}>

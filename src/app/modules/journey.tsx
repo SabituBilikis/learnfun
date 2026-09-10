@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 import { C, LETTERS, LETTER_COLORS_FULL, CATEGORIES } from "../constants";
 import { CTAButton, StatPill, Sparkle } from "./primitives";
 import { useProgress } from "../../hooks/useProgress";
+import { categoryPercent } from "../../lib/helpers";
 import { AlphabetPage } from "./alphabet";
 import { LessonScreen } from "./lessonScreen";
 import { MemoryMatchGame } from "./memoryMatch";
@@ -118,8 +119,7 @@ function JHome({ onStartJourney, onExit }: { onStartJourney: () => void; onExit:
       {/* Top nav */}
       <div className="flex items-center justify-between px-4 py-3 flex-shrink-0 bg-white/95 border-b-[3px] border-b-lf-navy shadow-[0_3px_16px_rgba(26,0,80,0.08)]">
         <div className="flex items-center gap-2">
-          <LearnFunIcon size={36} />
-          <span className="font-fredoka font-bold text-[20px] text-lf-navy">LearnFun</span>
+          <LearnFunIcon size={44} />
         </div>
         <button onClick={onExit}
           className="font-nunito font-bold text-[12px] text-lf-mutedFg bg-transparent border-none cursor-pointer">
@@ -153,33 +153,37 @@ function JHome({ onStartJourney, onExit }: { onStartJourney: () => void; onExit:
         <h3 className="font-fredoka font-bold text-[16px] text-lf-navy mb-[10px]">
           📚 Keep Learning
         </h3>
-        {CATEGORIES.slice(0,4).map((cat, i) => (
-          <motion.button key={cat.id}
-            onClick={cat.id === "alphabet" ? onStartJourney : undefined}
-            className="w-full rounded-2xl flex items-center gap-3 mb-3 text-left"
-            style={{ padding:"12px 14px", background:cat.state==="complete"?`${cat.color}18`:"#FFFFFF", border:`2.5px solid ${cat.state==="complete"?cat.color:C.muted}`, boxShadow:cat.id==="alphabet"?`3px 4px 0 ${C.navy}`:`3px 4px 0 rgba(26,0,80,0.10)`, cursor:cat.id==="alphabet"?"pointer":"default" }}
-            initial={{ opacity:0, x:-16 }} animate={{ opacity:1, x:0 }}
-            transition={{ delay:0.08+i*0.07, type:"spring", stiffness:280, damping:22 }}
-            whileHover={cat.id==="alphabet"?{ scale:1.02 }:{}}
-            whileTap={cat.id==="alphabet"?{ scale:0.97 }:{}}>
-            <div className="rounded-2xl flex items-center justify-center flex-shrink-0 w-12 h-12 text-[24px]"
-              style={{ background:`${cat.color}22`, border:`2px solid ${cat.color}55` }}>
-              {cat.emoji}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between">
-                <span className="font-fredoka font-bold text-[15px] text-lf-navy">{cat.title}</span>
-                {cat.id === "alphabet" && (
-                  <span className="rounded-xl px-2 py-0.5 font-fredoka font-bold text-[10px] text-white" style={{ background:cat.color }}>START →</span>
-                )}
+        {CATEGORIES.slice(0,4).map((cat, i) => {
+          const pct = categoryPercent(cat, progress);
+          const isComplete = pct === 100;
+          return (
+            <motion.button key={cat.id}
+              onClick={cat.id === "alphabet" ? onStartJourney : undefined}
+              className="w-full rounded-2xl flex items-center gap-3 mb-3 text-left"
+              style={{ padding:"12px 14px", background:isComplete?`${cat.color}18`:"#FFFFFF", border:`2.5px solid ${isComplete?cat.color:C.muted}`, boxShadow:cat.id==="alphabet"?`3px 4px 0 ${C.navy}`:`3px 4px 0 rgba(26,0,80,0.10)`, cursor:cat.id==="alphabet"?"pointer":"default" }}
+              initial={{ opacity:0, x:-16 }} animate={{ opacity:1, x:0 }}
+              transition={{ delay:0.08+i*0.07, type:"spring", stiffness:280, damping:22 }}
+              whileHover={cat.id==="alphabet"?{ scale:1.02 }:{}}
+              whileTap={cat.id==="alphabet"?{ scale:0.97 }:{}}>
+              <div className="rounded-2xl flex items-center justify-center flex-shrink-0 w-12 h-12 text-[24px]"
+                style={{ background:`${cat.color}22`, border:`2px solid ${cat.color}55` }}>
+                {cat.emoji}
               </div>
-              <div className="h-[5px] bg-lf-muted rounded-full mt-[5px] overflow-hidden">
-                <div className="h-full rounded-full" style={{ width:`${cat.progress}%`, background:cat.color }} />
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between">
+                  <span className="font-fredoka font-bold text-[15px] text-lf-navy">{cat.title}</span>
+                  {cat.id === "alphabet" && (
+                    <span className="rounded-xl px-2 py-0.5 font-fredoka font-bold text-[10px] text-white" style={{ background:cat.color }}>START →</span>
+                  )}
+                </div>
+                <div className="h-[5px] bg-lf-muted rounded-full mt-[5px] overflow-hidden">
+                  <div className="h-full rounded-full" style={{ width:`${pct}%`, background:cat.color }} />
+                </div>
+                <span className="font-nunito text-[10px] text-lf-mutedFg">{pct}% complete</span>
               </div>
-              <span className="font-nunito text-[10px] text-lf-mutedFg">{cat.progress}% complete</span>
-            </div>
-          </motion.button>
-        ))}
+            </motion.button>
+          );
+        })}
       </div>
 
       {/* CTA strip */}
@@ -688,6 +692,7 @@ export function JourneyFlow({ onExit }: { onExit: () => void }) {
             <AlphabetPage
               onBack={() => go("home", "back")}
               onContinue={() => { setLetterIdx(0); go("lesson", "zoom-in"); }}
+              onSelectLetter={(i) => { setLetterIdx(i); go("lesson", "zoom-in"); }}
               learnedCount={0}
             />
           </JScreen>

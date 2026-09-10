@@ -59,12 +59,12 @@ export interface Category {
 }
 
 export const CATEGORIES: Category[] = [
-  { id:"alphabet", emoji:"🔤", title:"Alphabet",   subtitle:"A · B · C",        lessons:LETTERS.length,               progress:65,  color:C.red,    dark:"#CC2A20", state:"active",   deco:["A","B","C"]    },
+  { id:"alphabet", emoji:"🔤", title:"Alphabet",   subtitle:"A · B · C",        lessons:LETTERS.length,               progress:0,   color:C.red,    dark:"#CC2A20", state:"new",      deco:["A","B","C"]    },
   { id:"phonics",  emoji:"🗣️", title:"Phonics",    subtitle:"Learn letter sounds", lessons:6,                          progress:0,   color:C.orange, dark:"#CC7600", state:"new",      deco:["M","🔊","🐒"] },
-  { id:"numbers",  emoji:"🔢", title:"Numbers",    subtitle:"1 · 2 · 3",        lessons:NUMBERS_COUNT,                progress:40,  color:C.orange, dark:"#CC7600", state:"active",   deco:["1","2","3"]    },
-  { id:"shapes",   emoji:"🔷", title:"Shapes",     subtitle:"○ △ □ ◇",          lessons:CATEGORY_LESSON_COUNTS.shapes,   progress:80,  color:C.blue,   dark:"#0056CC", state:"active",   deco:["○","△","□"]    },
-  { id:"colors",   emoji:"🎨", title:"Colors",     subtitle:"Red · Blue · Gold", lessons:CATEGORY_LESSON_COUNTS.colors,   progress:100, color:C.green,  dark:"#28A046", state:"complete", deco:["🔴","🔵","🟡"] },
-  { id:"animals",  emoji:"🐶", title:"Animals",    subtitle:"Farm & Wild",       lessons:CATEGORY_LESSON_COUNTS.animals,  progress:25,  color:C.purple, dark:"#8A3DB5", state:"active",   deco:["🐱","🐮","🐷"] },
+  { id:"numbers",  emoji:"🔢", title:"Numbers",    subtitle:"1 · 2 · 3",        lessons:NUMBERS_COUNT,                progress:0,   color:C.orange, dark:"#CC7600", state:"new",      deco:["1","2","3"]    },
+  { id:"shapes",   emoji:"🔷", title:"Shapes",     subtitle:"○ △ □ ◇",          lessons:CATEGORY_LESSON_COUNTS.shapes,   progress:0,   color:C.blue,   dark:"#0056CC", state:"new",      deco:["○","△","□"]    },
+  { id:"colors",   emoji:"🎨", title:"Colors",     subtitle:"Red · Blue · Gold", lessons:CATEGORY_LESSON_COUNTS.colors,   progress:0,   color:C.green,  dark:"#28A046", state:"new",      deco:["🔴","🔵","🟡"] },
+  { id:"animals",  emoji:"🐶", title:"Animals",    subtitle:"Farm & Wild",       lessons:CATEGORY_LESSON_COUNTS.animals,  progress:0,   color:C.purple, dark:"#8A3DB5", state:"new",      deco:["🐱","🐮","🐷"] },
   { id:"fruits",   emoji:"🍎", title:"Fruits",     subtitle:"Yummy & Sweet",     lessons:CATEGORY_LESSON_COUNTS.fruits,   progress:0,   color:C.pink,   dark:"#CC1F7A", state:"new",      deco:["🍌","🍇","🍊"] },
   { id:"vehicles", emoji:"🚗", title:"Vehicles",   subtitle:"Vroom vroom!",      lessons:CATEGORY_LESSON_COUNTS.vehicles, progress:0,   color:C.teal,   dark:"#009B94", state:"new",      deco:["✈️","🚂","⛵"]  },
   { id:"school",   emoji:"🏫", title:"School",     subtitle:"Learn & Play",      lessons:CATEGORY_LESSON_COUNTS.school,   progress:0,   color:"#F5C518",dark:"#C9A200", state:"locked",   deco:["📚","✏️","📐"]  },

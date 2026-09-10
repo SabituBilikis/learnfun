@@ -13,6 +13,7 @@ export function AlphabetRoute() {
     <AlphabetPage
       onBack={() => navigate("/")}
       onContinue={() => navigate(`/alphabet/lesson/${progress.lettersLearned}`)}
+      onSelectLetter={(i) => navigate(`/alphabet/lesson/${i}`)}
       learnedCount={progress.lettersLearned}
     />
   );

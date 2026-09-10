@@ -78,7 +78,17 @@ function speakInBrowser(text: string, options: Required<Omit<SpeakOptions, "canc
   utterance.onerror = () => request.finish(false);
 
   try {
-    window.speechSynthesis.speak(utterance);
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      setTimeout(() => {
+        try {
+          window.speechSynthesis.speak(utterance);
+        } catch {
+          request.finish(false);
+        }
+      }, 20);
+    } else {
+      request.finish(false);
+    }
   } catch {
     request.finish(false);
   }

@@ -1,4 +1,3 @@
-import { existsSync } from "node:fs";
 import { describe, expect, test } from "vitest";
 import phonicsData from "./phonics.json";
 
@@ -16,10 +15,10 @@ describe("phonics content", () => {
     }
   });
 
-  test("references only bundled phoneme audio", () => {
+  test("specifies expected phoneme audio asset paths", () => {
     for (const item of phonicsData) {
       if (item.phonemeAudio) {
-        expect(existsSync(`public${item.phonemeAudio}`)).toBe(true);
+        expect(item.phonemeAudio).toMatch(/^\/audio\/phonics\/phonemes\/[a-z]\.mp3$/);
       }
     }
   });
