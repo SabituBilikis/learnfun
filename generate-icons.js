@@ -8,10 +8,10 @@ async function generateIcons() {
     return;
   }
 
-  // 1. Master PWA & Store Icon (512x512)
-  // W3C & Android Maskable safe zone is inner 66% (355px out of 512px).
-  // Scaling logo to 355x355 leaves ~78px padding on all sides.
-  const logo355 = await sharp(input).resize(355, 355, { fit: 'contain' }).png().toBuffer();
+  // 1. Master PWA & Google Play Store Icon (512x512)
+  // Matching the Google Play Store icon design: logo centered on a pure white (#FFFFFF) background
+  // 420x420 fit contain fills ~82% of the canvas with clean white margins.
+  const logo420 = await sharp(input).resize(420, 420, { fit: 'contain' }).png().toBuffer();
   const master = await sharp({
     create: {
       width: 512,
@@ -20,7 +20,7 @@ async function generateIcons() {
       background: { r: 255, g: 255, b: 255, alpha: 1 },
     },
   })
-    .composite([{ input: logo355, gravity: 'center' }])
+    .composite([{ input: logo420, gravity: 'center' }])
     .flatten({ background: '#FFFFFF' })
     .png()
     .toBuffer();
@@ -29,10 +29,12 @@ async function generateIcons() {
   await sharp(master).png().toFile('marketing/google-play/icon/learn-fun-icon-512.png');
   await sharp(master).png().toFile('public/icon-512x512.png');
   await sharp(master).resize(192, 192).png().toFile('public/icon-192x192.png');
+  await sharp(master).resize(180, 180).png().toFile('public/apple-touch-icon.png');
 
   if (fs.existsSync('dist')) {
     await sharp(master).png().toFile('dist/icon-512x512.png');
     await sharp(master).resize(192, 192).png().toFile('dist/icon-192x192.png');
+    await sharp(master).resize(180, 180).png().toFile('dist/apple-touch-icon.png');
   }
 
   // 2. Native Android Mipmap Icons (ic_launcher, ic_launcher_round, ic_launcher_foreground)
@@ -48,8 +50,8 @@ async function generateIcons() {
     const outputDirectory = `android/app/src/main/res/${directory}`;
     fs.mkdirSync(outputDirectory, { recursive: true });
 
-    // Standard & Round Launcher Icons: Logo scaled to 68% of total icon size on white background
-    const innerSize = Math.round(size * 0.68);
+    // Legacy & Round Launcher Icons (Solid White #FFFFFF canvas + centered logo at 80% scale)
+    const innerSize = Math.round(size * 0.80);
     const innerLogo = await sharp(input).resize(innerSize, innerSize, { fit: 'contain' }).png().toBuffer();
 
     await sharp({
@@ -78,7 +80,7 @@ async function generateIcons() {
       .png()
       .toFile(`${outputDirectory}/ic_launcher_round.png`);
 
-    // Adaptive Foreground Icon: Logo scaled to 64% of foreground canvas size (safely within Android 66% viewport mask)
+    // Adaptive Foreground Icon (Transparent canvas + logo scaled to 64% of 108dp canvas for safe-zone masking)
     const fgInnerSize = Math.round(foregroundSize * 0.64);
     const fgLogo = await sharp(input).resize(fgInnerSize, fgInnerSize, { fit: 'contain' }).png().toBuffer();
 
@@ -95,7 +97,8 @@ async function generateIcons() {
       .toFile(`${outputDirectory}/ic_launcher_foreground.png`);
   }
 
-  console.log('Web, PWA, and Android safe-zone icons generated successfully.');
+  console.log('Icons generated successfully for Web, PWA, and Android Adaptive Launcher.');
 }
 
 generateIcons().catch(console.error);
+
