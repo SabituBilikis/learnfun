@@ -29,20 +29,63 @@
       <link rel="apple-touch-icon" href="/icon-192x192.png" />
       <meta name="theme-color" content="#FFC800" />
       
-      <!-- Structured Data / JSON-LD -->
+      <!-- Structured Data / JSON-LD for AI SEO & GEO -->
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Learn Fun",
-        "operatingSystem": "Web, Android, iOS",
-        "applicationCategory": "EducationalApplication",
-        "description": "An engaging educational app for children aged 1–5 offering interactive lessons and playful activities that foster early learning and development.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://learnfunkids.vercel.app/#app",
+            "name": "Learn Fun",
+            "url": "https://learnfunkids.vercel.app/",
+            "operatingSystem": "Web, Android, PWA",
+            "applicationCategory": "EducationalApplication",
+            "educationalUse": "Early Childhood Education, Preschool Learning, Phonics, Mathematics, Science",
+            "audience": {
+              "@type": "EducationalAudience",
+              "educationalRole": "student",
+              "suggestedMinAge": "1",
+              "suggestedMaxAge": "10"
+            },
+            "description": "Learn Fun is a free, interactive educational app for kids offering phonics, alphabet games, math puzzles, science activities, spelling, and toddler learning modules.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://learnfunkids.vercel.app/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Learn Fun?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Learn Fun is a free interactive educational web and mobile application designed for children to learn Alphabets, Phonics, Numbers, Math, Science, Spelling, and toddler games."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Learn Fun free for children?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Learn Fun is 100% free to access on the web and on Android devices without subscriptions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What subjects does Learn Fun teach?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Learn Fun teaches preschool and early primary topics including ABC Alphabets, Phonics, Numbers, Addition, Subtraction, Shapes, Colors, Science, Animals, and Spelling."
+                }
+              }
+            ]
+          }
+        ]
       }
       </script>
 

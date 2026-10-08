@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
 
+# Explicitly Allow AI Search Engines & Bots (GEO / AI SEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://learnfunkids.vercel.app/sitemap.xml
