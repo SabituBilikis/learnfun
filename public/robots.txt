@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://learnfun.app/sitemap.xml
+Sitemap: https://learnfunkids.vercel.app/sitemap.xml
