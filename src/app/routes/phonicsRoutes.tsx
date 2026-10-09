@@ -16,8 +16,8 @@ export function PhonicsLessonRoute() {
   return (
     <PhonicsStepRunner
       index={letterIndex}
-      onBack={() => navigate("/phonics")}
-      onNavigate={(i) => navigate(`/phonics/lesson/${i}`)}
+      onBack={() => navigate("/play/phonics")}
+      onNavigate={(i) => navigate(`/play/phonics/lesson/${i}`)}
     />
   );
 }

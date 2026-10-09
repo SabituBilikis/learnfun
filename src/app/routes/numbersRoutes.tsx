@@ -9,8 +9,8 @@ export function NumbersRoute() {
   const { progress } = useProgress();
   return (
     <NumbersPage
-      onBack={() => navigate("/")}
-      onContinue={() => navigate(`/numbers/lesson/${progress.numbersLearned}`)}
+      onBack={() => navigate("/play")}
+      onContinue={() => navigate(`/play/numbers/lesson/${progress.numbersLearned}`)}
       learnedCount={progress.numbersLearned}
     />
   );
@@ -24,12 +24,12 @@ export function NumberLessonRoute() {
   return (
     <NumberLessonScreen
       numIndex={numIndex}
-      onBack={() => navigate("/")}
+      onBack={() => navigate("/play")}
       onComplete={() => {
         updateProgress(p => ({ ...p, numbersLearned: Math.max(p.numbersLearned, numIndex + 1), starsTotal: p.starsTotal + 3 }));
-        navigate(`/numbers/complete/${numIndex}`);
+        navigate(`/play/numbers/complete/${numIndex}`);
       }}
-      onNavigate={(i) => navigate(`/numbers/lesson/${i}`)}
+      onNavigate={(i) => navigate(`/play/numbers/lesson/${i}`)}
     />
   );
 }
@@ -50,9 +50,9 @@ export function NumberCompleteRoute() {
         label: `${entry.word} · Mastered!`,
         nextLabel: next ? `${next.n} ${next.emoji}` : undefined,
       }}
-      onPlayAgain={() => navigate(`/numbers/lesson/${numIndex}`)}
-      onCategories={() => navigate("/")}
-      onContinue={next ? () => navigate(`/numbers/lesson/${numIndex + 1}`) : undefined}
+      onPlayAgain={() => navigate(`/play/numbers/lesson/${numIndex}`)}
+      onCategories={() => navigate("/play")}
+      onContinue={next ? () => navigate(`/play/numbers/lesson/${numIndex + 1}`) : undefined}
     />
   );
 }

@@ -11,9 +11,9 @@ export function AlphabetRoute() {
   const { progress } = useProgress();
   return (
     <AlphabetPage
-      onBack={() => navigate("/")}
-      onContinue={() => navigate(`/alphabet/lesson/${progress.lettersLearned}`)}
-      onSelectLetter={(i) => navigate(`/alphabet/lesson/${i}`)}
+      onBack={() => navigate("/play")}
+      onContinue={() => navigate(`/play/alphabet/lesson/${progress.lettersLearned}`)}
+      onSelectLetter={(i) => navigate(`/play/alphabet/lesson/${i}`)}
       learnedCount={progress.lettersLearned}
     />
   );
@@ -27,12 +27,12 @@ export function LetterLessonRoute() {
   return (
     <LessonScreen
       letterIndex={letterIndex}
-      onBack={() => navigate("/")}
+      onBack={() => navigate("/play")}
       onComplete={() => {
         updateProgress(p => ({ ...p, lettersLearned: Math.max(p.lettersLearned, letterIndex + 1), starsTotal: p.starsTotal + 3 }));
-        navigate(`/complete/${letterIndex}`);
+        navigate(`/play/complete/${letterIndex}`);
       }}
-      onNavigate={(i) => navigate(`/alphabet/lesson/${i}`)}
+      onNavigate={(i) => navigate(`/play/alphabet/lesson/${i}`)}
     />
   );
 }
@@ -44,9 +44,9 @@ export function CompleteRoute() {
   return (
     <LessonCompleteScreen
       letterIndex={letterIndex}
-      onPlayAgain={() => navigate(`/alphabet/lesson/${letterIndex}`)}
-      onCategories={() => navigate("/")}
-      onContinue={() => navigate(`/alphabet/lesson/${Math.min(letterIndex + 1, LESSON_LETTERS.length - 1)}`)}
+      onPlayAgain={() => navigate(`/play/alphabet/lesson/${letterIndex}`)}
+      onCategories={() => navigate("/play")}
+      onContinue={() => navigate(`/play/alphabet/lesson/${Math.min(letterIndex + 1, LESSON_LETTERS.length - 1)}`)}
     />
   );
 }

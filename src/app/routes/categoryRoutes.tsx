@@ -8,13 +8,13 @@ export function CategoryRoute() {
   const navigate = useNavigate();
   const { progress } = useProgress();
   const { catId } = useParams();
-  if (!catId || !CAT_REGISTRY.some(c => c.id === catId)) return <Navigate to="/" replace />;
+  if (!catId || !CAT_REGISTRY.some(c => c.id === catId)) return <Navigate to="/play" replace />;
   const learnedCount = progress.catProgress[catId] ?? 0;
   return (
     <GenericCategoryPage
       catId={catId}
-      onBack={() => navigate("/")}
-      onContinue={() => navigate(`/category/${catId}/lesson/${learnedCount}`)}
+      onBack={() => navigate("/play")}
+      onContinue={() => navigate(`/play/category/${catId}/lesson/${learnedCount}`)}
       learnedCount={learnedCount}
     />
   );
@@ -25,22 +25,22 @@ export function CategoryLessonRoute() {
   const { updateProgress } = useProgress();
   const { catId, index } = useParams();
   const cat = CAT_REGISTRY.find(c => c.id === catId);
-  if (!cat) return <Navigate to="/" replace />;
+  if (!cat) return <Navigate to="/play" replace />;
   const entryIndex = parseIndexParam(index, cat.entries.length);
   return (
     <GenericLessonScreen
       catId={cat.id}
       entryIndex={entryIndex}
-      onBack={() => navigate("/")}
+      onBack={() => navigate("/play")}
       onComplete={() => {
         updateProgress(p => ({
           ...p,
           catProgress: { ...p.catProgress, [cat.id]: Math.max(p.catProgress[cat.id] ?? 0, entryIndex + 1) },
           starsTotal: p.starsTotal + 3,
         }));
-        navigate(`/category/${cat.id}/complete/${entryIndex}`);
+        navigate(`/play/category/${cat.id}/complete/${entryIndex}`);
       }}
-      onNavigate={(i) => navigate(`/category/${cat.id}/lesson/${i}`)}
+      onNavigate={(i) => navigate(`/play/category/${cat.id}/lesson/${i}`)}
     />
   );
 }
@@ -49,7 +49,7 @@ export function CategoryCompleteRoute() {
   const navigate = useNavigate();
   const { catId, index } = useParams();
   const cat = CAT_REGISTRY.find(c => c.id === catId);
-  if (!cat) return <Navigate to="/" replace />;
+  if (!cat) return <Navigate to="/play" replace />;
   const entryIndex = parseIndexParam(index, cat.entries.length);
   const entry = cat.entries[entryIndex];
   const next = entryIndex < cat.entries.length - 1 ? cat.entries[entryIndex + 1] : null;
@@ -63,9 +63,9 @@ export function CategoryCompleteRoute() {
         label: `${entry.name} · Mastered!`,
         nextLabel: next ? `${next.name} ${next.emoji}` : undefined,
       }}
-      onPlayAgain={() => navigate(`/category/${cat.id}/lesson/${entryIndex}`)}
-      onCategories={() => navigate("/")}
-      onContinue={next ? () => navigate(`/category/${cat.id}/lesson/${entryIndex + 1}`) : undefined}
+      onPlayAgain={() => navigate(`/play/category/${cat.id}/lesson/${entryIndex}`)}
+      onCategories={() => navigate("/play")}
+      onContinue={next ? () => navigate(`/play/category/${cat.id}/lesson/${entryIndex + 1}`) : undefined}
     />
   );
 }

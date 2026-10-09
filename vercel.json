@@ -13,5 +13,31 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/features/phonics",
+      "destination": "/features/phonics/index.html"
+    },
+    {
+      "source": "/features/alphabet",
+      "destination": "/features/alphabet/index.html"
+    },
+    {
+      "source": "/features/numbers",
+      "destination": "/features/numbers/index.html"
+    },
+    {
+      "source": "/play/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/play",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!assets/|audio/|.*\\..*).*)",
+      "destination": "/index.html"
+    }
   ]
 }

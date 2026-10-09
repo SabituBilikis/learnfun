@@ -8,8 +8,8 @@ export function ParentRoute() {
   const [authenticated, setAuthenticated] = useState(false);
 
   if (!authenticated) {
-    return <ParentGate onSuccess={() => setAuthenticated(true)} onBack={() => navigate("/")} />;
+    return <ParentGate onSuccess={() => setAuthenticated(true)} onBack={() => navigate("/play")} />;
   }
 
-  return <ParentDashboard onBack={() => navigate("/")} />;
+  return <ParentDashboard onBack={() => navigate("/play")} />;
 }

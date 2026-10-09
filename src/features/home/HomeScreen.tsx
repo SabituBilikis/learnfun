@@ -12,10 +12,10 @@ export function HomeScreen() {
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   const handleNavigate = (id: string) => {
-    if (id === "alphabet") { navigate("/alphabet"); return; }
-    if (id === "phonics")  { navigate("/phonics");  return; }
-    if (id === "numbers")  { navigate("/numbers");  return; }
-    if (CAT_REGISTRY.some(c => c.id === id)) navigate(`/category/${id}`);
+    if (id === "alphabet") { navigate("/play/alphabet"); return; }
+    if (id === "phonics")  { navigate("/play/phonics");  return; }
+    if (id === "numbers")  { navigate("/play/numbers");  return; }
+    if (CAT_REGISTRY.some(c => c.id === id)) navigate(`/play/category/${id}`);
   };
 
   return (
@@ -24,7 +24,7 @@ export function HomeScreen() {
       <style>{`.lf-carousel::-webkit-scrollbar{display:none}.lf-carousel{-ms-overflow-style:none;scrollbar-width:none}`}</style>
 
       {/* ── Top navigation ──────────────────────────────── */}
-      <TopNav onInstall={() => navigate("/pwa")} onSettings={() => setSettingsOpen(true)} onParent={() => navigate("/parent")} />
+      <TopNav onInstall={() => navigate("/play/pwa")} onSettings={() => setSettingsOpen(true)} onParent={() => navigate("/play/parent")} />
       <SettingsModal isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
 
       {/* ── Main content ────────────────────────────────── */}
@@ -34,7 +34,7 @@ export function HomeScreen() {
       </div>
 
       {/* ── Bottom navigation ───────────────────────────── */}
-      <BottomNav onGames={() => navigate("/games")} onRewards={() => navigate("/rewards")} onLearn={() => navigate("/journey")} onParent={() => navigate("/parent")} />
+      <BottomNav onGames={() => navigate("/play/games")} onRewards={() => navigate("/play/rewards")} onLearn={() => navigate("/play/journey")} onParent={() => navigate("/play/parent")} />
     </div>
   );
 }
