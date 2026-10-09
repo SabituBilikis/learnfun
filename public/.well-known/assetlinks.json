@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.learnfunkids.app",
+      "sha256_cert_fingerprints": [
+        "3B:24:D1:23:38:9C:C3:B7:E5:AD:95:D3:50:51:E2:2D:BE:4B:C3:58:17:5B:45:C5:A1:9F:25:4E:06:19:92:F2"
+      ]
+    }
+  }
+]
