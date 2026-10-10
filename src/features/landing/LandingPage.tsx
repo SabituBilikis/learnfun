@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import learnFunLogo from "@/imports/Learn_fun.png";
 
 export function LandingPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -37,19 +38,13 @@ export function LandingPage() {
     <div className="min-h-screen bg-[#F3EEFF] text-[#1E1B4B] font-fredoka flex flex-col selection:bg-[#FFC800] selection:text-[#1E1B4B]">
       {/* ── Top Navigation Bar ──────────────────────────────── */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-purple-100 px-4 md:px-8 py-3.5 flex items-center justify-between shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#7C3AED] to-[#FF5252] flex items-center justify-center text-white text-xl font-bold shadow-md shadow-purple-200">
-            ✨
-          </div>
-          <div>
-            <span className="text-xl md:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-[#7C3AED] via-[#FF5252] to-[#FFC800] bg-clip-text text-transparent">
-              Learn Fun
-            </span>
-            <span className="hidden sm:inline-block ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-[#7C3AED]">
-              Kids Ages 1–5
-            </span>
-          </div>
-        </div>
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={learnFunLogo}
+            alt="Learn Fun Logo"
+            className="h-10 md:h-12 w-auto object-contain mix-blend-multiply"
+          />
+        </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
           <a href="#categories" className="hover:text-[#7C3AED] transition-colors">What Kids Learn</a>

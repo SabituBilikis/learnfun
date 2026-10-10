@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import learnFunLogo from "@/imports/Learn_fun.png";
 
 export function FeatureAlphabetPage() {
   const googlePlayUrl = "https://play.google.com/store/apps/details?id=com.learnfunkids.app";
@@ -6,8 +7,8 @@ export function FeatureAlphabetPage() {
   return (
     <div className="min-h-screen bg-[#F3EEFF] text-[#1E1B4B] font-fredoka flex flex-col">
       <header className="bg-white border-b border-purple-100 px-4 md:px-8 py-4 flex items-center justify-between">
-        <Link to="/" className="text-xl font-black text-[#7C3AED] flex items-center gap-2">
-          <span>✨</span> Learn Fun
+        <Link to="/" className="flex items-center gap-2">
+          <img src={learnFunLogo} alt="Learn Fun Logo" className="h-9 w-auto object-contain mix-blend-multiply" />
         </Link>
         <Link to="/play" className="px-4 py-2 rounded-xl bg-[#7C3AED] text-white text-xs font-extrabold">
           Play Free Online
