@@ -1,0 +1,22 @@
+<svg width="600" height="180" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="180" rx="32" fill="#0A0A0A" stroke="#262626" stroke-width="4"/>
+  
+  <!-- Google Play Multi-color Play Icon -->
+  <g transform="translate(45, 32) scale(1.5)">
+    <!-- Blue -->
+    <path d="M 5,2 L 42,39 L 5,76 Z" fill="#00E5FF"/>
+    <path d="M 5,2 L 42,39 L 24,20 Z" fill="#00B0FF"/>
+    <!-- Green -->
+    <path d="M 42,39 L 52,29 L 5,2 Z" fill="#00E676"/>
+    <!-- Red/Orange -->
+    <path d="M 42,39 L 5,76 L 52,49 Z" fill="#FF3D00"/>
+    <!-- Yellow -->
+    <path d="M 42,39 L 52,29 L 60,39 L 52,49 Z" fill="#FFC400"/>
+  </g>
+  
+  <!-- Text: GET IT ON -->
+  <text x="175" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="3">GET IT ON</text>
+  
+  <!-- Text: Google Play -->
+  <text x="175" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="54" font-weight="700" fill="#FFFFFF" letter-spacing="1">Google Play</text>
+</svg>

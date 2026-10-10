@@ -37,7 +37,7 @@ export function LandingPage() {
   return (
     <div className="min-h-screen bg-[#F3EEFF] text-[#1E1B4B] font-fredoka flex flex-col selection:bg-[#FFC800] selection:text-[#1E1B4B]">
       {/* ── Top Navigation Bar ──────────────────────────────── */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-purple-100 px-4 md:px-8 py-3.5 flex items-center justify-between shadow-sm">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-purple-100 px-4 md:px-8 py-3 flex items-center justify-between shadow-sm">
         <Link to="/" className="flex items-center gap-3">
           <img
             src={learnFunLogo}
@@ -58,13 +58,13 @@ export function LandingPage() {
             href={googlePlayUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl border-2 border-gray-200 hover:border-purple-300 text-xs md:text-sm font-bold text-gray-800 bg-white hover:bg-purple-50 transition-all shadow-sm"
+            className="hidden sm:inline-flex items-center hover:scale-105 active:scale-95 transition-transform"
           >
-            <span>🤖</span> Google Play
+            <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-10 w-auto" />
           </a>
           <Link
             to="/play"
-            className="flex items-center gap-2 px-4 md:px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-white text-xs md:text-sm font-bold shadow-md shadow-purple-300 hover:scale-105 active:scale-95 transition-all"
+            className="flex items-center gap-2 px-4 md:px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-white text-xs md:text-sm font-bold shadow-md shadow-purple-300 hover:scale-105 active:scale-95 transition-all"
           >
             <span>🚀</span> Play Free Online
           </Link>
@@ -86,7 +86,7 @@ export function LandingPage() {
             Help little learners ages 1–5 explore ABCs, human audio phonics, numbers 1–20, shapes, colors, animals, and mini-games in a safe, ad-free environment.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-2">
             <Link
               to="/play"
               className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#5B21B6] text-white text-base font-extrabold shadow-lg shadow-purple-300 hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2"
@@ -97,9 +97,9 @@ export function LandingPage() {
               href={googlePlayUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white border-2 border-purple-200 text-[#1E1B4B] text-base font-extrabold shadow-md hover:bg-purple-50 hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2"
+              className="w-full sm:w-auto inline-flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
             >
-              <span>📱</span> Get on Google Play
+              <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-14 w-auto" />
             </a>
           </div>
 
@@ -339,9 +339,9 @@ export function LandingPage() {
               href={googlePlayUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white text-purple-950 text-base font-black shadow-lg hover:bg-purple-50 hover:scale-105 active:scale-95 transition-all text-center"
+              className="w-full sm:w-auto inline-flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
             >
-              🤖 Download on Google Play
+              <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-14 w-auto" />
             </a>
           </div>
         </div>

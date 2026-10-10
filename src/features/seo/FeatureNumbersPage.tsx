@@ -45,12 +45,12 @@ export function FeatureNumbersPage() {
           <p className="text-sm md:text-base text-purple-200 font-medium leading-relaxed">
             Play the numbers module online in your browser or download the Android app.
           </p>
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link to="/play" className="px-6 py-3 rounded-xl bg-amber-400 text-purple-950 font-black text-sm">
               Play Numbers Game
             </Link>
-            <a href={googlePlayUrl} target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-xl bg-white text-purple-950 font-black text-sm">
-              Get on Google Play
+            <a href={googlePlayUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:scale-105 transition-transform">
+              <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-12 w-auto" />
             </a>
           </div>
         </section>
