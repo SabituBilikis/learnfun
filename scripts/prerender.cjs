@@ -30,8 +30,17 @@ const routes = [
         <section>
           <h1>Learn Fun – Offline Learning App for Toddlers & Preschoolers</h1>
           <p>Help little learners ages 1–5 explore ABCs, human audio phonics, numbers 1–20, shapes, colors, animals, and mini-games in a safe, ad-free environment.</p>
-          <div style="margin: 20px 0;">
-            <video src="/learn-fun-demo.mp4" autoplay loop muted playsinline controls style="max-width: 100%; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);"></video>
+          <div style="margin: 24px 0; border-radius: 20px; overflow: hidden; background: #DFE1E5; border: 1px solid #CCC; box-shadow: 0 20px 50px rgba(0,0,0,0.18);">
+            <div style="padding: 10px 14px 6px; display: flex; align-items: center; gap: 8px;">
+              <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #FF5F56;"></span>
+              <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #FFBD2E;"></span>
+              <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #27C93F;"></span>
+              <span style="margin-left: 8px; font-size: 12px; font-weight: bold; background: white; padding: 4px 12px; border-radius: 8px 8px 0 0;">learn Fun</span>
+            </div>
+            <div style="padding: 6px 14px; background: white; border-bottom: 1px solid #E0E0E0; font-size: 12px; color: #555;">
+              <span>https://learnfunkids.vercel.app/play</span>
+            </div>
+            <video src="/learn-fun-demo.mp4" autoplay loop muted playsinline controls style="width: 100%; display: block; background: #000;"></video>
           </div>
           <a href="/play">Play Now in Browser</a>
           <a href="https://play.google.com/store/apps/details?id=com.learnfunkids.app">Get on Google Play</a>

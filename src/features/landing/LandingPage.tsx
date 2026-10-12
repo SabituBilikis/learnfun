@@ -110,27 +110,74 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* Hero Video Device Mockup */}
-        <div className="flex-1 w-full max-w-lg md:max-w-none relative">
+        {/* macOS Chrome Browser Mockup */}
+        <div className="flex-1 w-full max-w-lg md:max-w-xl lg:max-w-2xl relative">
           {/* Decorative Background Glow */}
-          <div className="absolute -inset-2 bg-gradient-to-tr from-[#7C3AED]/30 via-[#FF5252]/20 to-[#FFC800]/30 rounded-[48px] blur-xl opacity-70 -z-10" />
+          <div className="absolute -inset-3 bg-gradient-to-tr from-[#7C3AED]/25 via-[#FF5252]/15 to-[#FFC800]/25 rounded-[36px] blur-2xl opacity-70 -z-10" />
 
-          {/* Floating Pill Badges */}
-          <div className="hidden sm:flex items-center gap-2 absolute -top-4 -left-4 z-20 px-3.5 py-1.5 rounded-full bg-white border-2 border-purple-200 shadow-md text-xs font-black text-[#1E1B4B]">
-            <span>✨</span> Real App Gameplay
+          {/* Floating Badge */}
+          <div className="hidden sm:flex items-center gap-2 absolute -top-3.5 -right-3 z-20 px-3.5 py-1.5 rounded-full bg-white border border-purple-200 shadow-md text-xs font-black text-[#1E1B4B]">
+            <span>✨</span> Interactive Gameplay
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 absolute -bottom-4 -right-4 z-20 px-3.5 py-1.5 rounded-full bg-white border-2 border-purple-200 shadow-md text-xs font-black text-[#1E1B4B]">
-            <span>🎧</span> Human Audio Phonics
-          </div>
+          {/* Browser Window Frame */}
+          <div className="rounded-2xl sm:rounded-3xl bg-[#DFE1E5] border border-gray-300 shadow-[0_25px_60px_-15px_rgba(26,0,80,0.18)] overflow-hidden">
+            {/* Top Chrome Tab Bar */}
+            <div className="px-3 sm:px-4 pt-2.5 pb-1 flex items-center gap-2 bg-[#DFE1E5] select-none">
+              {/* Traffic Light Dots */}
+              <div className="flex items-center gap-1.5 mr-2">
+                <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]" />
+                <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]" />
+                <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]" />
+              </div>
 
-          {/* Tablet Frame Mockup */}
-          <div className="p-3 sm:p-4 rounded-[36px] sm:rounded-[44px] bg-[#1E1B4B] border-4 border-slate-700 shadow-2xl shadow-purple-500/25 relative overflow-hidden">
-            {/* Tablet Camera Dot */}
-            <div className="w-2.5 h-2.5 rounded-full bg-slate-800 border border-slate-600 mx-auto mb-2.5" />
+              {/* Tabs */}
+              <div className="flex items-center gap-1 flex-1 overflow-hidden">
+                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 text-[11px] text-gray-600 rounded-t-lg">
+                  <span className="w-2 h-2 rounded-full bg-pink-400" />
+                  <span className="truncate">Portfolio</span>
+                </div>
 
-            {/* Inner Video Container */}
-            <div className="rounded-[24px] sm:rounded-[32px] overflow-hidden bg-black aspect-video sm:aspect-[16/10] relative shadow-inner">
+                {/* Active Tab */}
+                <div className="flex items-center gap-2 px-3 py-1 bg-white text-[11px] font-bold text-gray-800 rounded-t-xl shadow-sm border-t border-x border-gray-200">
+                  <span className="truncate">learn Fun</span>
+                  <span className="text-gray-400 text-xs ml-1">×</span>
+                </div>
+
+                <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 text-[11px] text-gray-500 rounded-t-lg">
+                  <span className="truncate">Landing Page</span>
+                </div>
+
+                <span className="text-gray-500 text-xs font-bold px-1 cursor-default">+</span>
+              </div>
+            </div>
+
+            {/* Address Bar */}
+            <div className="px-3 sm:px-4 py-1.5 bg-white border-b border-gray-200 flex items-center gap-2 sm:gap-3">
+              <div className="flex items-center gap-2 text-gray-400 text-xs">
+                <span>←</span>
+                <span>→</span>
+                <span>⟳</span>
+              </div>
+
+              {/* URL Omnibox */}
+              <div className="flex-1 flex items-center justify-between px-3 py-0.5 rounded-full bg-[#F1F3F4] text-[11px] text-gray-700 font-medium border border-gray-200/60">
+                <div className="flex items-center gap-1.5 truncate">
+                  <span className="font-bold text-[#4285F4] text-xs">G</span>
+                  <span className="truncate text-gray-800">Learn Fun</span>
+                </div>
+                <span className="text-gray-400 text-xs ml-1">☆</span>
+              </div>
+
+              <div className="hidden sm:flex items-center">
+                <div className="w-5 h-5 rounded-full bg-pink-500 text-white text-[10px] font-bold flex items-center justify-center">
+                  A
+                </div>
+              </div>
+            </div>
+
+            {/* Video Viewport */}
+            <div className="relative bg-slate-950 aspect-video sm:aspect-[16/10] overflow-hidden">
               <video
                 src="/learn-fun-demo.mp4"
                 autoPlay
@@ -138,13 +185,17 @@ export function LandingPage() {
                 muted
                 playsInline
                 controls
-                preload="metadata"
+                preload="auto"
                 className="w-full h-full object-cover"
               >
                 Your browser does not support the video tag.
               </video>
             </div>
           </div>
+
+          <p className="text-center text-[11px] font-medium text-gray-500 mt-2">
+            Learn Fun – Desktop Chrome browser experience showing interactive lesson modules, phonics, and touch-first interactions.
+          </p>
         </div>
       </section>
 
