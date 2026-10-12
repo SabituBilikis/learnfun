@@ -30,6 +30,9 @@ const routes = [
         <section>
           <h1>Learn Fun – Offline Learning App for Toddlers & Preschoolers</h1>
           <p>Help little learners ages 1–5 explore ABCs, human audio phonics, numbers 1–20, shapes, colors, animals, and mini-games in a safe, ad-free environment.</p>
+          <div style="margin: 20px 0;">
+            <video src="/learn-fun-demo.mp4" autoplay loop muted playsinline controls style="max-width: 100%; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);"></video>
+          </div>
           <a href="/play">Play Now in Browser</a>
           <a href="https://play.google.com/store/apps/details?id=com.learnfunkids.app">Get on Google Play</a>
         </section>
