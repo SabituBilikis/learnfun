@@ -9,35 +9,35 @@ export function LandingPage() {
 
   const faqs = [
     {
+      q: "Does Learn Fun work completely offline without Wi-Fi?",
+      a: "Yes! Learn Fun is built offline-first from the ground up. Once installed from Google Play or loaded in your browser, all letter cards, human voice audio phonics, numbers 1–20, and mini-games function without any internet connection."
+    },
+    {
+      q: "Are there any third-party ads, popups, or in-app purchases?",
+      a: "Never. Learn Fun is 100% ad-free and free of subscriptions or hidden purchases. Toddlers can safely tap and explore without seeing commercial ads or encountering accidental paywalls."
+    },
+    {
       q: "What age range is Learn Fun designed for?",
-      a: "Learn Fun is specially crafted for toddlers and preschoolers aged 1 to 5 years old. The interface features large touch targets, vibrant colors, and simple navigation tailored for early childhood development."
+      a: "Learn Fun is thoughtfully designed for toddlers and preschoolers aged 1 to 5 years old. The interface has high-contrast visuals, large touch targets, and intuitive audio feedback suited for little fingers."
     },
     {
-      q: "Does Learn Fun work offline without Wi-Fi?",
-      a: "Yes! Learn Fun is 100% offline-first. Once installed on Android or loaded in the web browser, children can learn ABCs, phonics, numbers, and mini-games anywhere without needing an active internet connection."
+      q: "How does the human-recorded voice phonics system work?",
+      a: "Unlike robotic synthetic speech engines that can mispronounce early letter sounds, Learn Fun utilizes natural human voice recordings for phonics, helping children develop accurate articulation and phonemic awareness."
     },
     {
-      q: "Are there any third-party ads or subscriptions?",
-      a: "No. Learn Fun is completely ad-free and subscription-free. There are no popups, banners, or third-party ad networks, ensuring a safe learning environment for children."
+      q: "How does the star unlock and streak system motivate kids?",
+      a: "Children earn cheerful stars when finishing interactive learning sessions. Star milestones and daily streaks gently unlock upcoming categories and games, celebrating consistency without stress."
     },
     {
-      q: "How does the phonics and speech system work?",
-      a: "Learn Fun features human-recorded audio pronunciations for letters and phonics sounds, backed by browser Web Speech synthesis fallback, helping children hear clear and accurate letter pronunciations."
-    },
-    {
-      q: "How does the lesson unlocking system work?",
-      a: "Children earn stars by completing interactive learning sessions. As they earn stars and maintain daily learning streaks, upcoming categories and advanced lessons unlock progressively."
-    },
-    {
-      q: "How do parent controls and PIN settings work?",
-      a: "Learn Fun includes a dedicated Parent Zone guarded by a child-proof PIN security gate (math question or custom PIN), allowing parents to manage student profiles, monitor progress, and configure settings safely."
+      q: "How do parent controls and the security PIN work?",
+      a: "The dedicated Parent Zone is protected behind a child-proof PIN security gate (math verification challenge or custom code), ensuring toddlers remain in the safe learning view while parents manage profiles and progress."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#F3EEFF] text-[#1E1B4B] font-fredoka flex flex-col selection:bg-[#FFC800] selection:text-[#1E1B4B]">
-      {/* ── Top Navigation Bar ──────────────────────────────── */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-purple-100 px-4 md:px-8 py-3 flex items-center justify-between shadow-sm">
+    <div className="min-h-screen bg-[#F8F9FC] text-[#1E1B4B] font-fredoka flex flex-col selection:bg-[#FFC800] selection:text-[#1E1B4B]">
+      {/* ── 1. Top Navigation Bar ──────────────────────────────── */}
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 md:px-8 py-3.5 flex items-center justify-between shadow-sm">
         <Link to="/" className="flex items-center gap-3">
           <img
             src={learnFunLogo}
@@ -46,11 +46,14 @@ export function LandingPage() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
-          <a href="#categories" className="hover:text-[#7C3AED] transition-colors">What Kids Learn</a>
-          <a href="#why-us" className="hover:text-[#7C3AED] transition-colors">Why Offline</a>
-          <a href="#how-it-works" className="hover:text-[#7C3AED] transition-colors">How It Works</a>
-          <a href="#faq" className="hover:text-[#7C3AED] transition-colors">Parents FAQ</a>
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold text-gray-600">
+          <a href="#overview" className="hover:text-[#7C3AED] transition-colors">Overview</a>
+          <a href="#phonics" className="hover:text-[#7C3AED] transition-colors">Phonics</a>
+          <a href="#numbers" className="hover:text-[#7C3AED] transition-colors">Numbers & Math</a>
+          <a href="#showcase" className="hover:text-[#7C3AED] transition-colors">App Features</a>
+          <a href="#pricing" className="hover:text-[#7C3AED] transition-colors">100% Free</a>
+          <a href="#faq" className="hover:text-[#7C3AED] transition-colors">Parent FAQ</a>
+          <a href="#resources" className="hover:text-[#7C3AED] transition-colors">Resources</a>
         </nav>
 
         <div className="flex items-center gap-2 md:gap-3">
@@ -64,75 +67,98 @@ export function LandingPage() {
           </a>
           <Link
             to="/play"
-            className="flex items-center gap-2 px-4 md:px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-white text-xs md:text-sm font-bold shadow-md shadow-purple-300 hover:scale-105 active:scale-95 transition-all"
+            className="flex items-center gap-1.5 px-4 md:px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white text-xs md:text-sm font-bold shadow-md shadow-blue-200 hover:from-[#1D4ED8] hover:to-[#1E40AF] hover:scale-105 active:scale-95 transition-all"
           >
-            <span>🚀</span> Play Free Online
+            <span>Play Online</span>
+            <span className="text-xs">›</span>
           </Link>
         </div>
       </header>
 
-      {/* ── Hero Section ──────────────────────────────────────── */}
-      <section className="relative px-4 md:px-8 pt-10 md:pt-16 pb-16 max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-10">
-        <div className="flex-1 text-center md:text-left space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold shadow-sm">
-            <span>⭐</span> 100% Free & Offline Learning App for Toddlers
-          </div>
+      {/* ── 2. Centered Hero Section (Matching Reference SaaS Layout) ─── */}
+      <section id="overview" className="relative pt-12 md:pt-20 pb-20 px-4 md:px-8 max-w-6xl mx-auto w-full text-center flex flex-col items-center">
+        {/* Floating Accent Background Glows */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-3/4 max-w-3xl h-96 bg-gradient-to-b from-blue-100/60 via-purple-100/40 to-transparent blur-3xl -z-10 rounded-full" />
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1E1B4B] leading-tight tracking-tight">
-            Learn Fun – Offline Learning App for <span className="bg-gradient-to-r from-[#7C3AED] via-[#FF5252] to-[#10B981] bg-clip-text text-transparent">Toddlers & Preschoolers</span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-gray-600 font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
-            Help little learners ages 1–5 explore ABCs, human audio phonics, numbers 1–20, shapes, colors, animals, and mini-games in a safe, ad-free environment.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-2">
-            <Link
-              to="/play"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#5B21B6] text-white text-base font-extrabold shadow-lg shadow-purple-300 hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2"
-            >
-              <span>🎮</span> Play Now in Browser
-            </Link>
-            <a
-              href={googlePlayUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
-            >
-              <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-14 w-auto" />
-            </a>
-          </div>
-
-          <div className="flex items-center justify-center md:justify-start gap-6 text-xs font-bold text-gray-500 pt-3">
-            <span className="flex items-center gap-1.5">✅ No Ads</span>
-            <span className="flex items-center gap-1.5">✅ Works Offline</span>
-            <span className="flex items-center gap-1.5">✅ Ages 1–5</span>
-          </div>
+        {/* Small Category Badge Pill */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold shadow-sm mb-6">
+          <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+          Offline-First Early Learning for Ages 1–5
         </div>
 
-        {/* Minimal Browser Mockup (Matching User Reference) */}
-        <div className="flex-1 w-full max-w-lg md:max-w-xl lg:max-w-2xl relative">
-          {/* Decorative Background Glow */}
-          <div className="absolute -inset-3 bg-gradient-to-tr from-[#7C3AED]/20 via-[#FF5252]/10 to-[#FFC800]/20 rounded-[36px] blur-2xl opacity-70 -z-10" />
+        {/* Hero Title */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1E1B4B] max-w-4xl leading-[1.15] tracking-tight">
+          Simplify, Engage, and Inspire With Our Intuitive <span className="bg-gradient-to-r from-[#2563EB] via-[#7C3AED] to-[#0D9488] bg-clip-text text-transparent">Kids Learning App</span>
+        </h1>
 
-          {/* Minimal Browser Window Frame */}
-          <div className="rounded-2xl sm:rounded-3xl bg-white border border-gray-200/80 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.14)] overflow-hidden">
-            {/* Minimal Browser Header */}
+        {/* Hero Subtitle */}
+        <p className="text-base sm:text-lg text-gray-600 font-medium max-w-2xl mt-5 leading-relaxed">
+          An ad-free, interactive learning world helping toddlers and preschoolers master ABCs, human audio phonics, numbers 1–20, shapes, colors, and mini-games.
+        </p>
+
+        {/* Dual Centered CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 w-full sm:w-auto">
+          <Link
+            to="/play"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white text-sm md:text-base font-extrabold shadow-lg shadow-blue-300 hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2"
+          >
+            <span>GET STARTED</span>
+            <span className="text-sm">›</span>
+          </Link>
+          <a
+            href={googlePlayUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto inline-flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+          >
+            <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-12 w-auto" />
+          </a>
+        </div>
+
+        {/* ── Central Mockup Container with Curved Arch & Floating Pills ── */}
+        <div className="relative mt-14 w-full max-w-4xl mx-auto flex flex-col items-center">
+          {/* Curved Semicircular Backdrop Arch (Matching Reference Design) */}
+          <div className="absolute bottom-0 w-[80%] max-w-xl h-56 sm:h-72 rounded-t-full bg-gradient-to-t from-[#2563EB] via-[#38BDF8] to-[#60A5FA] opacity-90 -z-10" />
+
+          {/* Floating Pill Tag 1 - Top Left */}
+          <div className="hidden md:flex absolute -top-4 left-4 lg:-left-6 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-purple-100 shadow-xl shadow-purple-900/5 text-xs font-bold text-[#7C3AED] animate-bounce [animation-duration:4s]">
+            <span className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-sm">🎙️</span>
+            <span>Human Voice Phonics</span>
+          </div>
+
+          {/* Floating Pill Tag 2 - Top Right */}
+          <div className="hidden md:flex absolute -top-2 right-4 lg:-right-6 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-emerald-100 shadow-xl shadow-emerald-900/5 text-xs font-bold text-emerald-700 animate-bounce [animation-duration:5s]">
+            <span className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-sm">📶</span>
+            <span>100% Offline-First</span>
+          </div>
+
+          {/* Floating Pill Tag 3 - Bottom Left */}
+          <div className="hidden md:flex absolute bottom-12 -left-4 lg:-left-12 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-amber-100 shadow-xl shadow-amber-900/5 text-xs font-bold text-amber-800">
+            <span className="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center text-sm">⭐</span>
+            <span>Star Unlocks & Streaks</span>
+          </div>
+
+          {/* Floating Pill Tag 4 - Bottom Right */}
+          <div className="hidden md:flex absolute bottom-12 -right-4 lg:-right-12 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-blue-100 shadow-xl shadow-blue-900/5 text-xs font-bold text-blue-700">
+            <span className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-sm">🛡️</span>
+            <span>100% Ad-Free & Safe</span>
+          </div>
+
+          {/* Minimal White Browser Mockup with Uncropped Demo Video */}
+          <div className="w-full rounded-2xl sm:rounded-3xl bg-white border border-gray-200/90 shadow-[0_25px_60px_-15px_rgba(30,27,75,0.18)] overflow-hidden">
+            {/* Minimal Browser Header with Traffic Light Dots & Domain */}
             <div className="px-4 sm:px-5 py-3 sm:py-3.5 bg-white border-b border-gray-100 flex items-center gap-3 sm:gap-4 select-none">
-              {/* Traffic Light Dots */}
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF5F56] inline-block" />
                 <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFBD2E] inline-block" />
                 <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] inline-block" />
               </div>
-
-              {/* Minimal URL Address */}
               <div className="truncate text-xs sm:text-sm font-medium text-gray-500 font-sans tracking-tight">
                 https://learnfunkids.vercel.app
               </div>
             </div>
 
-            {/* Video Viewport - 100% Full Frame Display */}
+            {/* Video Viewport: Uncropped Natural Video Display */}
             <div className="relative bg-[#1A0050] overflow-hidden w-full">
               <video
                 src="/learn-fun-demo.mp4"
@@ -149,200 +175,652 @@ export function LandingPage() {
             </div>
           </div>
 
-          <p className="text-center text-[11px] font-medium text-gray-500 mt-2">
-            Learn Fun – Desktop browser experience showing interactive lesson modules, phonics, and touch-first interactions.
+          <p className="text-center text-[11px] sm:text-xs font-medium text-gray-500 mt-3">
+            Real desktop and tablet browser experience showing interactive lesson modules, phonics, and touch-first interactions.
           </p>
         </div>
       </section>
 
-      {/* ── What Children Can Learn ──────────────────────────── */}
-      <section id="categories" className="py-16 px-4 md:px-8 bg-white border-y border-purple-100">
-        <div className="max-w-6xl mx-auto space-y-12">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-xs font-black uppercase tracking-widest text-[#7C3AED] bg-purple-100 px-3 py-1 rounded-full">
-              Learning Modules
+      {/* ── 3. Trust & Core Values Bar (Matching Reference Partner Bar) ─── */}
+      <section className="border-y border-gray-200/70 bg-white py-8 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+          <div className="shrink-0">
+            <span className="text-xs font-black uppercase tracking-wider text-gray-400 block">
+              BUILT FOR EARLY CHILDHOOD 💙
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
-              Interactive Learning Categories for Toddlers
-            </h2>
-            <p className="text-sm md:text-base text-gray-600 font-medium">
-              Explore 12 interactive subjects designed to build early language, numerical, and cognitive skills.
-            </p>
+            <span className="text-sm font-extrabold text-[#1E1B4B]">
+              Core Commitments to Parents & Educators
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: "🔤",
-                title: "Alphabet & Letters",
-                desc: "Discover A to Z with letter sound pronunciation, upper & lowercase letters, and picture words.",
-                color: "bg-purple-50 border-purple-200 text-purple-900"
-              },
-              {
-                icon: "🎙️",
-                title: "Phonics & Sound Experience",
-                desc: "Listen to real human-recorded phonics audio to master early letter sounds and pronunciation.",
-                color: "bg-pink-50 border-pink-200 text-pink-900"
-              },
-              {
-                icon: "🔢",
-                title: "Numbers 1–20",
-                desc: "Learn to count from 1 to 20 with visual object counting, numbers, and audio counting.",
-                color: "bg-amber-50 border-amber-200 text-amber-900"
-              },
-              {
-                icon: "🔷",
-                title: "Shapes & Colors",
-                desc: "Identify circles, squares, stars, and 12 vibrant colors through interactive color swatches.",
-                color: "bg-blue-50 border-blue-200 text-blue-900"
-              },
-              {
-                icon: "🐶",
-                title: "Animals & Nature",
-                desc: "Explore farm animals, wild animals, fruits, vehicles, school items, and body parts.",
-                color: "bg-emerald-50 border-emerald-200 text-emerald-900"
-              },
-              {
-                icon: "🧩",
-                title: "Interactive Mini-Games",
-                desc: "Play Memory Match, Drag & Drop, Find Object, Balloon Pop, Puzzles, and Shadow Matching.",
-                color: "bg-orange-50 border-orange-200 text-orange-900"
-              }
-            ].map((cat, idx) => (
-              <div key={idx} className={`p-6 rounded-3xl border-2 ${cat.color} space-y-3 shadow-sm hover:shadow-md transition-all`}>
-                <div className="text-4xl">{cat.icon}</div>
-                <h3 className="text-xl font-extrabold">{cat.title}</h3>
-                <p className="text-sm opacity-90 leading-relaxed font-medium">{cat.desc}</p>
-              </div>
-            ))}
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-6 text-xs sm:text-sm font-bold text-gray-700">
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
+              <span className="text-blue-600">✓</span> 100% Offline-First
+            </span>
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
+              <span className="text-blue-600">✓</span> Zero Third-Party Ads
+            </span>
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
+              <span className="text-blue-600">✓</span> Human Voice Audio
+            </span>
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
+              <span className="text-blue-600">✓</span> Child-Proof PIN Gate
+            </span>
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
+              <span className="text-blue-600">✓</span> Ages 1–5 Tailored
+            </span>
           </div>
         </div>
       </section>
 
-      {/* ── Why Choose Learn Fun? ──────────────────────────────── */}
-      <section id="why-us" className="py-16 px-4 md:px-8 max-w-6xl mx-auto w-full space-y-12">
-        <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <span className="text-xs font-black uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
-            Parent & Educator Approved
+      {/* ── 4. Split Section 1: Phonics & Language (Media Left / Content Right) ─── */}
+      <section id="phonics" className="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Media / Visual Graphic on Left */}
+          <div className="lg:col-span-5 relative flex justify-center">
+            {/* Curved Blue Arch Backdrop */}
+            <div className="absolute -bottom-4 w-64 sm:w-72 h-72 sm:h-80 rounded-t-full bg-gradient-to-t from-blue-600 via-sky-400 to-indigo-300 opacity-90 -z-10" />
+
+            {/* Phonics Interactive Preview Card */}
+            <div className="w-full max-w-sm rounded-3xl bg-white border border-gray-100 p-6 shadow-2xl shadow-blue-900/10 space-y-5">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+                <span className="text-xs font-black uppercase text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
+                  Audio Phonics
+                </span>
+                <span className="text-xs font-bold text-gray-400">Letter Sound "A"</span>
+              </div>
+
+              {/* Letter Card Display */}
+              <div className="rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 p-6 text-center border border-purple-100 space-y-2">
+                <div className="text-6xl font-black text-[#7C3AED]">Aa</div>
+                <div className="text-3xl">🍎</div>
+                <div className="text-sm font-bold text-[#1E1B4B]">Apple • /æ/</div>
+              </div>
+
+              {/* Audio Soundwave Simulation */}
+              <div className="bg-gray-50 rounded-xl p-3.5 border border-gray-100 flex items-center justify-between gap-3">
+                <span className="w-8 h-8 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs">
+                  ▶
+                </span>
+                <div className="flex-1 flex items-center gap-1 justify-center">
+                  <span className="w-1 h-3 bg-purple-400 rounded-full animate-pulse" />
+                  <span className="w-1 h-6 bg-purple-600 rounded-full animate-pulse" />
+                  <span className="w-1 h-8 bg-purple-700 rounded-full animate-pulse" />
+                  <span className="w-1 h-5 bg-purple-500 rounded-full animate-pulse" />
+                  <span className="w-1 h-7 bg-purple-600 rounded-full animate-pulse" />
+                  <span className="w-1 h-4 bg-purple-400 rounded-full animate-pulse" />
+                  <span className="w-1 h-2 bg-purple-300 rounded-full" />
+                </div>
+                <span className="text-[11px] font-bold text-gray-500">Human Voice</span>
+              </div>
+
+              {/* Floating Accuracy Badge */}
+              <div className="rounded-xl bg-blue-50 border border-blue-200 p-3 flex items-center gap-3">
+                <span className="text-2xl">🎙️</span>
+                <div>
+                  <div className="text-xs font-black text-blue-900">Crystal Human Voice</div>
+                  <div className="text-[11px] font-medium text-blue-700">Clean pronunciation for toddler speech</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Text Content on Right (Matching Reference Bullet Style) */}
+          <div className="lg:col-span-7 space-y-6 text-left">
+            <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
+              Phonics & Speech Foundation
+            </span>
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B] leading-tight">
+              Work smarter with clear, human-recorded voice phonics
+            </h2>
+
+            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+              Every letter of the alphabet comes with recorded human voice pronunciation, paired with recognizable visual vocabulary words to anchor early phonetic awareness.
+            </p>
+
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start gap-4 p-3.5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-purple-200 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg shrink-0">
+                  🎙️
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-[#1E1B4B]">Human Voice Clarity</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-0.5">
+                    Real recorded voice clips rather than robotic text-to-speech, ensuring toddlers hear authentic articulation and phonics.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-3.5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-200 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg shrink-0">
+                  🔤
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-[#1E1B4B]">A–Z Picture Associations</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-0.5">
+                    Pairing letters with colorful, familiar objects (A for Apple, B for Ball) to reinforce vocabulary and letter memory.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-3.5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-emerald-200 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shrink-0">
+                  👂
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-[#1E1B4B]">Independent Tap-to-Listen</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-0.5">
+                    Large touch targets allow toddlers to repeat letter sounds as many times as they want without needing adult intervention.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <Link
+                to="/features/phonics"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#2563EB] text-white text-xs sm:text-sm font-extrabold shadow-md shadow-blue-200 hover:bg-[#1D4ED8] hover:scale-105 active:scale-95 transition-all"
+              >
+                <span>LEARN MORE ABOUT PHONICS</span>
+                <span>›</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. Split Section 2: Numbers, Shapes & Colors (Content Left / Media Right) ─── */}
+      <section id="numbers" className="py-20 px-4 md:px-8 bg-white border-y border-gray-200/70">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Text Content on Left */}
+          <div className="lg:col-span-7 space-y-6 text-left order-2 lg:order-1">
+            <span className="text-xs font-black uppercase tracking-wider text-amber-700 bg-amber-50 px-3.5 py-1.5 rounded-full">
+              Numbers & Early Cognition
+            </span>
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B] leading-tight">
+              Build confident number sense and shapes from 1 to 20
+            </h2>
+
+            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+              Counting isn't just reciting numbers—it's connecting symbols to real quantities. Learn Fun combines visual items, spoken counts, shapes, and colors.
+            </p>
+
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start gap-4 p-3.5 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm hover:border-amber-200 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg shrink-0">
+                  🔢
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-[#1E1B4B]">Concrete Item Counting</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-0.5">
+                    Count apples, stars, and balls with one-to-one touch confirmation so toddlers understand actual quantity relationships.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-3.5 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm hover:border-pink-200 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center text-lg shrink-0">
+                  🔷
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-[#1E1B4B]">10 Shapes & 12 Colors</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-0.5">
+                    Circles, squares, triangles, stars, and rich color palettes designed to strengthen early visual categorization skills.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-3.5 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm hover:border-purple-200 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg shrink-0">
+                  🏆
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-[#1E1B4B]">Milestone Achievements</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-0.5">
+                    Celebrate small wins with cheerful audio rewards and star points that motivate young minds to keep learning daily.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <Link
+                to="/features/numbers"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#2563EB] text-white text-xs sm:text-sm font-extrabold shadow-md shadow-blue-200 hover:bg-[#1D4ED8] hover:scale-105 active:scale-95 transition-all"
+              >
+                <span>EXPLORE NUMBERS & MATH</span>
+                <span>›</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Media Graphic on Right */}
+          <div className="lg:col-span-5 relative flex justify-center order-1 lg:order-2">
+            {/* Curved Sky-Blue Arch Backdrop */}
+            <div className="absolute -bottom-4 w-64 sm:w-72 h-72 sm:h-80 rounded-t-full bg-gradient-to-t from-sky-500 via-blue-400 to-indigo-300 opacity-90 -z-10" />
+
+            {/* Numbers & Shapes Showcase Card */}
+            <div className="w-full max-w-sm rounded-3xl bg-white border border-gray-100 p-6 shadow-2xl shadow-blue-900/10 space-y-5">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+                <span className="text-xs font-black uppercase text-amber-700 bg-amber-50 px-3 py-1 rounded-full">
+                  Numbers 1–20
+                </span>
+                <span className="text-xs font-bold text-gray-400">Counting Session</span>
+              </div>
+
+              {/* Number Card Display */}
+              <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center border border-amber-100 space-y-3">
+                <div className="text-5xl font-black text-amber-600">5</div>
+                <div className="flex items-center justify-center gap-1.5 text-2xl">
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                </div>
+                <div className="text-sm font-bold text-[#1E1B4B]">Five Stars Counted!</div>
+              </div>
+
+              {/* Shapes & Colors Swatch Preview */}
+              <div className="grid grid-cols-4 gap-2 pt-1">
+                <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-center">
+                  <div className="text-lg">🔵</div>
+                  <div className="text-[10px] font-bold text-gray-600 mt-1">Circle</div>
+                </div>
+                <div className="p-2.5 rounded-xl bg-pink-50 border border-pink-100 text-center">
+                  <div className="text-lg">🔺</div>
+                  <div className="text-[10px] font-bold text-gray-600 mt-1">Triangle</div>
+                </div>
+                <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-100 text-center">
+                  <div className="text-lg">🟩</div>
+                  <div className="text-[10px] font-bold text-gray-600 mt-1">Square</div>
+                </div>
+                <div className="p-2.5 rounded-xl bg-purple-50 border border-purple-100 text-center">
+                  <div className="text-lg">⭐</div>
+                  <div className="text-[10px] font-bold text-gray-600 mt-1">Star</div>
+                </div>
+              </div>
+
+              {/* Reward Status */}
+              <div className="rounded-xl bg-amber-50 border border-amber-200 p-3 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">🌟</span>
+                  <span className="text-xs font-extrabold text-amber-900">Session Complete</span>
+                </div>
+                <span className="text-xs font-black text-amber-700">+3 Stars</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. Centered App Showcase Section (Symmetrical 3-Column Layout) ─── */}
+      <section id="showcase" className="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full text-center space-y-14">
+        <div className="max-w-2xl mx-auto space-y-3">
+          <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
+            All-In-One Toddler Platform
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
-            Why Parents Love Learn Fun
+            Everything Your Child Needs in One Safe App
           </h2>
           <p className="text-sm md:text-base text-gray-600 font-medium">
-            Designed to give toddlers a joyful, safe, and effective learning experience without distractions.
+            A comprehensive early learning ecosystem thoughtfully built for toddler hands and growing minds.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            {
-              icon: "📶",
-              title: "100% Offline-First",
-              desc: "Works completely offline without Wi-Fi or cellular data after initial setup."
-            },
-            {
-              icon: "🛡️",
-              title: "Safe & Ad-Free",
-              desc: "Zero third-party ads, popups, or hidden purchases. Safe for toddlers to navigate alone."
-            },
-            {
-              icon: "🎙️",
-              title: "Human Voice Phonics",
-              desc: "Recorded human voice audio ensures clean, clear, and child-friendly letter pronunciations."
-            },
-            {
-              icon: "🔒",
-              title: "Parent PIN Gate",
-              desc: "Protected parent zone with security verifier PIN lock for profile management."
-            }
-          ].map((feature, i) => (
-            <div key={i} className="p-6 rounded-3xl bg-white border border-purple-100 shadow-md space-y-3 text-center">
-              <div className="text-4xl">{feature.icon}</div>
-              <h3 className="text-lg font-extrabold text-[#1E1B4B]">{feature.title}</h3>
-              <p className="text-xs md:text-sm text-gray-600 font-medium leading-relaxed">{feature.desc}</p>
+        {/* Symmetrical 3-Column Grid (Left Features, Center Device, Right Features) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          {/* Left Column: 3 Feature Cards */}
+          <div className="md:col-span-4 space-y-4 text-left">
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-200 transition-all space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
+                📶
+              </div>
+              <h3 className="text-base font-extrabold text-[#1E1B4B]">100% Offline-First</h3>
+              <p className="text-xs text-gray-600 font-medium leading-relaxed">
+                Learn on road trips, airplane flights, or quiet afternoons without requiring Wi-Fi or mobile data.
+              </p>
             </div>
-          ))}
+
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-purple-200 transition-all space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
+                🎙️
+              </div>
+              <h3 className="text-base font-extrabold text-[#1E1B4B]">Human Voice Phonics</h3>
+              <p className="text-xs text-gray-600 font-medium leading-relaxed">
+                Authentic, gentle spoken pronunciations for every letter and vocabulary word to nurture natural speech.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-amber-200 transition-all space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+                🧩
+              </div>
+              <h3 className="text-base font-extrabold text-[#1E1B4B]">6 Interactive Mini-Games</h3>
+              <p className="text-xs text-gray-600 font-medium leading-relaxed">
+                Memory Match, Balloon Pop, Shadow Matching, Drag & Drop, and Puzzles designed for fine motor development.
+              </p>
+            </div>
+          </div>
+
+          {/* Center Column: App Graphic with Curved Arch Backdrop */}
+          <div className="md:col-span-4 relative flex justify-center py-4">
+            {/* Semicircular Backdrop Arch */}
+            <div className="absolute bottom-0 w-64 sm:w-72 h-80 sm:h-96 rounded-t-full bg-gradient-to-t from-[#2563EB] via-[#38BDF8] to-[#93C5FD] opacity-90 -z-10" />
+
+            {/* Mobile Showcase Bezel Frame */}
+            <div className="w-64 sm:w-72 rounded-[36px] bg-[#1E1B4B] p-3 shadow-2xl shadow-blue-900/20 border-4 border-white/80">
+              <div className="rounded-[28px] bg-[#F3EEFF] p-4 space-y-4 overflow-hidden text-left">
+                {/* Simulated App Top Bar */}
+                <div className="flex items-center justify-between border-b border-purple-200 pb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-bold">
+                      LF
+                    </span>
+                    <span className="text-xs font-black text-[#1E1B4B]">Learn Fun</span>
+                  </div>
+                  <div className="flex items-center gap-1 bg-amber-100 px-2 py-0.5 rounded-full text-[11px] font-bold text-amber-900">
+                    <span>⭐</span> 48
+                  </div>
+                </div>
+
+                {/* Simulated Lesson Categories */}
+                <div className="grid grid-cols-2 gap-2 text-center text-xs">
+                  <div className="p-3 rounded-xl bg-white border border-purple-100 shadow-sm">
+                    <div className="text-2xl">🔤</div>
+                    <div className="font-extrabold text-[#1E1B4B] mt-1 text-[11px]">Alphabet</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white border border-purple-100 shadow-sm">
+                    <div className="text-2xl">🔢</div>
+                    <div className="font-extrabold text-[#1E1B4B] mt-1 text-[11px]">Numbers</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white border border-purple-100 shadow-sm">
+                    <div className="text-2xl">🔷</div>
+                    <div className="font-extrabold text-[#1E1B4B] mt-1 text-[11px]">Shapes</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white border border-purple-100 shadow-sm">
+                    <div className="text-2xl">🐶</div>
+                    <div className="font-extrabold text-[#1E1B4B] mt-1 text-[11px]">Animals</div>
+                  </div>
+                </div>
+
+                {/* Simulated Streak Card */}
+                <div className="rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 p-3 text-white text-center space-y-1 shadow-md">
+                  <div className="text-xs font-black">🔥 5-Day Streak Active!</div>
+                  <div className="text-[10px] text-purple-200">Consistency creates confidence</div>
+                </div>
+
+                {/* Action button inside mockup */}
+                <Link
+                  to="/play"
+                  className="block w-full py-2 rounded-xl bg-amber-400 text-purple-950 text-center text-xs font-black shadow hover:bg-amber-300 transition-colors"
+                >
+                  Start Lesson Now
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: 3 Feature Cards */}
+          <div className="md:col-span-4 space-y-4 text-left">
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-emerald-200 transition-all space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+                ⭐
+              </div>
+              <h3 className="text-base font-extrabold text-[#1E1B4B]">Star Rewards & Streaks</h3>
+              <p className="text-xs text-gray-600 font-medium leading-relaxed">
+                Gentle encouragement through stars and milestone unlocks that celebrate learning efforts without frustration.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-200 transition-all space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
+                🔒
+              </div>
+              <h3 className="text-base font-extrabold text-[#1E1B4B]">Parent PIN Security Gate</h3>
+              <p className="text-xs text-gray-600 font-medium leading-relaxed">
+                Settings and profile management are protected by a parent verification challenge to keep toddlers in the game.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-pink-200 transition-all space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-lg">
+                🛡️
+              </div>
+              <h3 className="text-base font-extrabold text-[#1E1B4B]">Zero Commercial Ads</h3>
+              <p className="text-xs text-gray-600 font-medium leading-relaxed">
+                No third-party trackers, no banner distractions, and no popups ensuring peace of mind for every family.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── How It Works ──────────────────────────────────────── */}
-      <section id="how-it-works" className="py-16 px-4 md:px-8 bg-purple-900 text-white">
-        <div className="max-w-6xl mx-auto space-y-12">
+      {/* ── 7. 100% Free Transparency & Parents FAQ (Replacing SaaS Pricing) ─── */}
+      <section id="pricing" className="py-20 px-4 md:px-8 bg-white border-y border-gray-200/70">
+        <div className="max-w-6xl mx-auto space-y-16">
+          {/* Transparency Heading */}
           <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-xs font-black uppercase tracking-widest text-amber-300 bg-purple-800 px-3 py-1 rounded-full">
-              Simple Step-by-Step Flow
+            <span className="text-xs font-black uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3.5 py-1.5 rounded-full">
+              100% Free Commitment
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black">
-              How Children Learn with Learn Fun
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
+              Transparent, 100% Free Education for Every Child
             </h2>
-            <p className="text-sm md:text-base text-purple-200 font-medium">
-              Encouraging independent exploration through bite-sized interactive lessons and rewards.
+            <p className="text-sm md:text-base text-gray-600 font-medium">
+              No subscription tiers. No paywalled levels. No hidden charges. Just open early childhood education.
             </p>
           </div>
 
+          {/* 4 Transparency Benefit Cards (Matching the 4-Column Pricing Card Layout) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { step: "01", title: "Select a Category", desc: "Choose ABCs, Phonics, Numbers, Shapes, Animals, or Mini-Games." },
-              { step: "02", title: "Tap & Listen", desc: "Interact with letter cards, human voice sounds, and visual items." },
-              { step: "03", title: "Earn Star Rewards", desc: "Complete sessions to earn stars and build daily learning streaks." },
-              { step: "04", title: "Progressive Unlock", desc: "Unlock new categories and advanced lessons as skills grow." }
-            ].map((s, idx) => (
-              <div key={idx} className="p-6 rounded-3xl bg-purple-800/80 border border-purple-700 space-y-3 relative overflow-hidden">
-                <span className="text-4xl font-black text-amber-400 opacity-60">{s.step}</span>
-                <h3 className="text-lg font-extrabold text-white">{s.title}</h3>
-                <p className="text-xs md:text-sm text-purple-200 font-medium leading-relaxed">{s.desc}</p>
+            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left">
+              <span className="text-xs font-bold text-gray-500 uppercase">Browser Edition</span>
+              <div className="text-3xl font-black text-[#1E1B4B]">$0 <span className="text-xs font-bold text-gray-400">/ forever</span></div>
+              <ul className="text-xs text-gray-600 font-medium space-y-2.5">
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> Instant web browser play</li>
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> All 12 subject categories</li>
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> No account or login required</li>
+              </ul>
+              <Link to="/play" className="block w-full py-2.5 rounded-xl bg-white border border-gray-200 text-[#1E1B4B] text-xs font-extrabold text-center hover:bg-gray-100 transition-colors">
+                Play in Browser
+              </Link>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-blue-600 text-white space-y-4 text-left shadow-xl shadow-blue-600/20 relative">
+              <div className="absolute top-4 right-4 bg-blue-400 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                Recommended
               </div>
-            ))}
+              <span className="text-xs font-bold text-blue-200 uppercase">Android App</span>
+              <div className="text-3xl font-black text-white">$0 <span className="text-xs font-bold text-blue-200">/ forever</span></div>
+              <ul className="text-xs text-blue-100 font-medium space-y-2.5">
+                <li className="flex items-center gap-2"><span>✓</span> Full 100% offline access</li>
+                <li className="flex items-center gap-2"><span>✓</span> Human voice audio phonics</li>
+                <li className="flex items-center gap-2"><span>✓</span> Zero cellular data consumption</li>
+              </ul>
+              <a href={googlePlayUrl} target="_blank" rel="noopener noreferrer" className="block w-full py-2.5 rounded-xl bg-white text-blue-700 text-xs font-extrabold text-center hover:bg-blue-50 transition-colors">
+                Install on Android
+              </a>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left">
+              <span className="text-xs font-bold text-gray-500 uppercase">Parent Zone</span>
+              <div className="text-3xl font-black text-[#1E1B4B]">$0 <span className="text-xs font-bold text-gray-400">/ forever</span></div>
+              <ul className="text-xs text-gray-600 font-medium space-y-2.5">
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> Child-proof PIN protection</li>
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> Multiple child student profiles</li>
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> Progress & streak tracking</li>
+              </ul>
+              <Link to="/play" className="block w-full py-2.5 rounded-xl bg-white border border-gray-200 text-[#1E1B4B] text-xs font-extrabold text-center hover:bg-gray-100 transition-colors">
+                Explore Features
+              </Link>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left">
+              <span className="text-xs font-bold text-gray-500 uppercase">Full Curriculum</span>
+              <div className="text-3xl font-black text-[#1E1B4B]">$0 <span className="text-xs font-bold text-gray-400">/ forever</span></div>
+              <ul className="text-xs text-gray-600 font-medium space-y-2.5">
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> ABCs, Phonics & Numbers 1–20</li>
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> Shapes, Colors & Animals</li>
+                <li className="flex items-center gap-2"><span className="text-emerald-500 font-bold">✓</span> 6 Interactive Mini-Games</li>
+              </ul>
+              <Link to="/play" className="block w-full py-2.5 rounded-xl bg-white border border-gray-200 text-[#1E1B4B] text-xs font-extrabold text-center hover:bg-gray-100 transition-colors">
+                Start Learning
+              </Link>
+            </div>
+          </div>
+
+          {/* ── 2x2 FAQ Accordion / Grid ── */}
+          <div id="faq" className="pt-8 space-y-8 max-w-4xl mx-auto">
+            <div className="text-center space-y-2">
+              <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
+                Parent Questions Answered
+              </span>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-[#1E1B4B]">
+                Frequently Asked Questions
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className="rounded-2xl bg-gray-50 border border-gray-200/80 overflow-hidden text-left">
+                  <button
+                    onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
+                    className="w-full p-5 text-left font-extrabold text-xs sm:text-sm text-[#1E1B4B] flex items-center justify-between gap-3 hover:bg-gray-100 transition-colors"
+                  >
+                    <span>{faq.q}</span>
+                    <span className="text-base text-blue-600 shrink-0">{activeFaq === idx ? "➖" : "➕"}</span>
+                  </button>
+                  {activeFaq === idx && (
+                    <div className="px-5 pb-5 text-xs text-gray-600 font-medium leading-relaxed border-t border-gray-200 pt-3">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Parent FAQ ────────────────────────────────────────── */}
-      <section id="faq" className="py-16 px-4 md:px-8 max-w-4xl mx-auto w-full space-y-8">
-        <div className="text-center space-y-3">
-          <span className="text-xs font-black uppercase tracking-widest text-[#7C3AED] bg-purple-100 px-3 py-1 rounded-full">
-            Parent Questions Answered
+      {/* ── 8. Educational Resources Hub (Matching Reference Article Grid) ─── */}
+      <section id="resources" className="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full space-y-12 text-center">
+        <div className="max-w-2xl mx-auto space-y-3">
+          <span className="text-xs font-black uppercase tracking-wider text-purple-600 bg-purple-50 px-3.5 py-1.5 rounded-full">
+            Early Childhood Learning Guides
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
-            Frequently Asked Questions
+            Useful Resources for Parents & Educators
           </h2>
+          <p className="text-sm md:text-base text-gray-600 font-medium">
+            Explore our deep-dive learning guides on speech development, phonics, and early mathematical cognition.
+          </p>
         </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, idx) => (
-            <div key={idx} className="rounded-2xl bg-white border border-purple-100 shadow-sm overflow-hidden">
-              <button
-                onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                className="w-full p-5 text-left font-extrabold text-sm md:text-base text-[#1E1B4B] flex items-center justify-between gap-4 hover:bg-purple-50/50 transition-colors"
-              >
-                <span>{faq.q}</span>
-                <span className="text-lg text-[#7C3AED]">{activeFaq === idx ? "➖" : "➕"}</span>
-              </button>
-              {activeFaq === idx && (
-                <div className="px-5 pb-5 text-xs md:text-sm text-gray-600 font-medium leading-relaxed border-t border-purple-50 pt-3">
-                  {faq.a}
-                </div>
-              )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          {/* Resource Card 1 - Phonics */}
+          <Link
+            to="/features/phonics"
+            className="group rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
+          >
+            <div className="h-44 bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-600 p-6 flex flex-col justify-between text-white">
+              <span className="text-xs font-black uppercase tracking-wider bg-white/20 backdrop-blur-md px-3 py-1 rounded-full w-max">
+                Speech & Phonics
+              </span>
+              <div className="text-4xl">🎙️</div>
             </div>
-          ))}
+            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-base font-extrabold text-[#1E1B4B] group-hover:text-blue-600 transition-colors">
+                  Why Human Voice Audio Matters in Phonics Learning
+                </h3>
+                <p className="text-xs text-gray-600 font-medium mt-2 leading-relaxed">
+                  Discover how authentic human speech articulation helps toddlers develop clean phonemic awareness faster than synthetic speech.
+                </p>
+              </div>
+              <div className="pt-4 flex items-center text-xs font-bold text-blue-600 gap-1">
+                <span>Read Full Guide</span>
+                <span>›</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Resource Card 2 - Alphabet */}
+          <Link
+            to="/features/alphabet"
+            className="group rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
+          >
+            <div className="h-44 bg-gradient-to-br from-blue-500 via-sky-500 to-teal-400 p-6 flex flex-col justify-between text-white">
+              <span className="text-xs font-black uppercase tracking-wider bg-white/20 backdrop-blur-md px-3 py-1 rounded-full w-max">
+                Letter Mastery
+              </span>
+              <div className="text-4xl">🔤</div>
+            </div>
+            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-base font-extrabold text-[#1E1B4B] group-hover:text-blue-600 transition-colors">
+                  The Foundation of Early Letter Recognition & ABCs
+                </h3>
+                <p className="text-xs text-gray-600 font-medium mt-2 leading-relaxed">
+                  Learn how uppercase and lowercase letter pairs combined with concrete vocabulary build preschool reading readiness.
+                </p>
+              </div>
+              <div className="pt-4 flex items-center text-xs font-bold text-blue-600 gap-1">
+                <span>Read Full Guide</span>
+                <span>›</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Resource Card 3 - Numbers */}
+          <Link
+            to="/features/numbers"
+            className="group rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
+          >
+            <div className="h-44 bg-gradient-to-br from-amber-500 via-orange-500 to-pink-500 p-6 flex flex-col justify-between text-white">
+              <span className="text-xs font-black uppercase tracking-wider bg-white/20 backdrop-blur-md px-3 py-1 rounded-full w-max">
+                Early Numeracy
+              </span>
+              <div className="text-4xl">🔢</div>
+            </div>
+            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-base font-extrabold text-[#1E1B4B] group-hover:text-blue-600 transition-colors">
+                  Building Concrete Number Sense from 1 to 20
+                </h3>
+                <p className="text-xs text-gray-600 font-medium mt-2 leading-relaxed">
+                  Why tactile visual item counting and shape identification form the bedrock of early mathematical confidence.
+                </p>
+              </div>
+              <div className="pt-4 flex items-center text-xs font-bold text-blue-600 gap-1">
+                <span>Read Full Guide</span>
+                <span>›</span>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
-      {/* ── Final Call to Action ──────────────────────────────── */}
+      {/* ── 9. Final Call to Action Banner & Multi-Column Footer ─── */}
       <section className="py-16 px-4 md:px-8 max-w-5xl mx-auto w-full">
-        <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-r from-[#7C3AED] via-[#6D28D9] to-[#5B21B6] text-white text-center space-y-6 shadow-2xl shadow-purple-300">
+        <div className="p-8 md:p-14 rounded-3xl bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#1E40AF] text-white text-center space-y-6 shadow-2xl shadow-blue-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-blue-100 text-xs font-bold">
+            <span>✨</span> Start Learning in Seconds
+          </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black">
-            Start Your Child's Learning Journey Today
+            Give Your Child the Joy of Independent Learning
           </h2>
-          <p className="text-sm md:text-base text-purple-100 font-medium max-w-xl mx-auto leading-relaxed">
-            Play online in your browser or install on Android. 100% free, offline-first, and ad-free.
+          <p className="text-sm md:text-base text-blue-100 font-medium max-w-xl mx-auto leading-relaxed">
+            Play online in your browser or install on Android. 100% free, offline-first, and completely ad-free.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Link
               to="/play"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-amber-400 text-purple-950 text-base font-black shadow-lg hover:bg-amber-300 hover:scale-105 active:scale-95 transition-all text-center"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-400 text-purple-950 text-base font-black shadow-lg hover:bg-amber-300 hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2"
             >
-              🚀 Play Online Free
+              <span>🎮</span> Play Online Free
             </Link>
             <a
               href={googlePlayUrl}
@@ -356,20 +834,46 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* ── SEO Footer & Feature Navigation ───────────────────── */}
-      <footer className="mt-auto bg-white border-t border-purple-100 py-10 px-4 md:px-8 text-xs font-medium text-gray-600">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center md:text-left">
-            <p className="font-bold text-sm text-[#1E1B4B]">Learn Fun Kids Educational App</p>
-            <p>© 2026 Learn Fun. All rights reserved.</p>
+      {/* ── Multi-Column SEO Footer ───────────────────────────── */}
+      <footer className="mt-auto bg-white border-t border-gray-200 py-12 px-4 md:px-8 text-xs font-medium text-gray-500">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          {/* Column 1: Brand & Description */}
+          <div className="md:col-span-5 space-y-3 text-left">
+            <Link to="/" className="inline-block">
+              <img
+                src={learnFunLogo}
+                alt="Learn Fun Logo"
+                className="h-9 w-auto object-contain mix-blend-multiply"
+              />
+            </Link>
+            <p className="text-xs text-gray-500 leading-relaxed max-w-sm">
+              Learn Fun is an offline-first early childhood educational app helping toddlers and preschoolers aged 1–5 master ABCs, human voice phonics, numbers 1–20, shapes, and colors without ads.
+            </p>
+            <p className="text-[11px] text-gray-400 pt-1">
+              © 2026 Learn Fun Kids Educational App. All rights reserved.
+            </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 font-semibold text-[#7C3AED]">
-            <Link to="/play" className="hover:underline">Play App</Link>
-            <Link to="/features/phonics" className="hover:underline">Phonics Feature</Link>
-            <Link to="/features/alphabet" className="hover:underline">Alphabet Feature</Link>
-            <Link to="/features/numbers" className="hover:underline">Numbers Feature</Link>
-            <a href="/privacy.html" className="hover:underline">Privacy Policy</a>
+          {/* Column 2: Interactive Modules */}
+          <div className="md:col-span-3 space-y-2 text-left">
+            <div className="font-extrabold text-sm text-[#1E1B4B]">Learning Modules</div>
+            <ul className="space-y-1.5 pt-1">
+              <li><Link to="/play" className="hover:text-blue-600 transition-colors">Play Online Game</Link></li>
+              <li><Link to="/features/phonics" className="hover:text-blue-600 transition-colors">Human Audio Phonics</Link></li>
+              <li><Link to="/features/alphabet" className="hover:text-blue-600 transition-colors">Alphabet & Letter Cards</Link></li>
+              <li><Link to="/features/numbers" className="hover:text-blue-600 transition-colors">Numbers 1–20 & Counting</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Safety & Legal */}
+          <div className="md:col-span-4 space-y-2 text-left">
+            <div className="font-extrabold text-sm text-[#1E1B4B]">Safety & Trust</div>
+            <ul className="space-y-1.5 pt-1">
+              <li><span className="text-emerald-600 font-bold">✓</span> 100% Free & No Subscriptions</li>
+              <li><span className="text-emerald-600 font-bold">✓</span> Zero Third-Party Advertising</li>
+              <li><span className="text-emerald-600 font-bold">✓</span> Child-Proof PIN Parent Gate</li>
+              <li><a href="/privacy.html" className="text-blue-600 hover:underline">Privacy Policy</a></li>
+            </ul>
           </div>
         </div>
       </footer>

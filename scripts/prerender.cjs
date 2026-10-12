@@ -43,24 +43,36 @@ const routes = [
           <a href="https://play.google.com/store/apps/details?id=com.learnfunkids.app">Get on Google Play</a>
         </section>
         <section>
-          <h2>What Children Can Learn</h2>
+          <h2>Phonics & Speech Foundation</h2>
+          <p>Work smarter with clear, human-recorded voice phonics. Every letter of the alphabet comes with recorded human voice pronunciation, paired with recognizable visual vocabulary words.</p>
+          <a href="/features/phonics">Learn More About Phonics</a>
+        </section>
+        <section>
+          <h2>Numbers 1–20 & Early Mathematical Cognition</h2>
+          <p>Build confident number sense and shapes from 1 to 20 with concrete visual counting, 10 shapes, and 12 vibrant colors.</p>
+          <a href="/features/numbers">Explore Numbers & Math</a>
+        </section>
+        <section>
+          <h2>Everything Your Child Needs in One Safe App</h2>
           <ul>
-            <li><strong>Alphabet & Letters:</strong> A to Z letter sounds and vocabulary words.</li>
-            <li><strong>Phonics:</strong> Human-recorded phonics audio for clear pronunciation.</li>
-            <li><strong>Numbers 1–20:</strong> Visual item counting and numerical mastery.</li>
-            <li><strong>Shapes & Colors:</strong> 10 basic shapes and 12 vibrant colors.</li>
-            <li><strong>Animals & Vocabulary:</strong> Farm animals, wild animals, fruits, and vehicles.</li>
-            <li><strong>Interactive Mini-Games:</strong> Memory match, drag & drop, balloon pop, puzzles, shadow match.</li>
+            <li>100% Offline-First (No Wi-Fi Needed)</li>
+            <li>Human Voice Phonics Recording</li>
+            <li>6 Interactive Mini-Games</li>
+            <li>Star Rewards & Learning Streaks</li>
+            <li>Child-Proof Parent PIN Security Gate</li>
+            <li>Zero Commercial Ads or Popups</li>
           </ul>
         </section>
         <section>
-          <h2>Why Parents Love Learn Fun</h2>
+          <h2>100% Free & Transparent Education</h2>
+          <p>No subscriptions, no paywalled levels, no hidden in-app purchases. Always free for every family.</p>
+        </section>
+        <section>
+          <h2>Useful Resources for Parents & Educators</h2>
           <ul>
-            <li>100% Offline-First Learning</li>
-            <li>Safe & Ad-Free Environment</li>
-            <li>Human Voice Recorded Phonics</li>
-            <li>Progressive Star Unlock System</li>
-            <li>Child-Proof Parent PIN Security</li>
+            <li><a href="/features/phonics">Why Human Voice Audio Matters in Phonics Learning</a></li>
+            <li><a href="/features/alphabet">The Foundation of Early Letter Recognition & ABCs</a></li>
+            <li><a href="/features/numbers">Building Concrete Number Sense from 1 to 20</a></li>
           </ul>
         </section>
       </main>
