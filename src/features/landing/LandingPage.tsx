@@ -17,10 +17,10 @@ export function LandingPage() {
   const googlePlayUrl = "https://play.google.com/store/apps/details?id=com.learnfunkids.app";
 
   const phonicsLetters = [
-    { letter: "Aa", word: "Apple", sound: "/æ/", emoji: "🍎", phrase: "A is for Apple! Ah, ah, apple." },
-    { letter: "Bb", word: "Ball", sound: "/b/", emoji: "⚽", phrase: "B is for Ball! Buh, buh, ball." },
-    { letter: "Cc", word: "Cat", sound: "/k/", emoji: "🐱", phrase: "C is for Cat! Kuh, kuh, cat." },
-    { letter: "Dd", word: "Duck", sound: "/d/", emoji: "🦆", phrase: "D is for Duck! Duh, duh, duck." }
+    { letter: "Aa", word: "Apple", sound: "/æ/", emoji: "🍎", phrase: "A is for Apple! Ah, ah, apple.", color: "#E8291C" },
+    { letter: "Bb", word: "Ball", sound: "/b/", emoji: "⚽", phrase: "B is for Ball! Buh, buh, ball.", color: "#2563EB" },
+    { letter: "Cc", word: "Cat", sound: "/k/", emoji: "🐱", phrase: "C is for Cat! Kuh, kuh, cat.", color: "#059669" },
+    { letter: "Dd", word: "Duck", sound: "/d/", emoji: "🦆", phrase: "D is for Duck! Duh, duh, duck.", color: "#D97706" }
   ];
 
   const handlePlayPhonics = async (index: number) => {
@@ -282,95 +282,104 @@ export function LandingPage() {
       {/* ── 4. Split Section 1: Phonics & Language (Media Left / Content Right) ─── */}
       <section id="phonics" className="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Media / Visual Graphic on Left */}
+          {/* Media / Visual Graphic on Left — Real App UI Recreation */}
           <div className="lg:col-span-5 relative flex justify-center">
-            {/* Curved Blue Arch Backdrop */}
-            <div className="absolute -bottom-4 w-64 sm:w-72 h-72 sm:h-80 rounded-t-full bg-gradient-to-t from-blue-600 via-sky-400 to-indigo-300 opacity-90 -z-10" />
+            {/* Decorative glow */}
+            <div className="absolute -inset-6 bg-gradient-to-tr from-red-400/20 via-purple-400/10 to-indigo-300/20 blur-3xl rounded-full -z-10" />
 
-            {/* Phonics Interactive Preview Card */}
-            <div className="w-full max-w-sm rounded-3xl bg-white border border-gray-100 p-6 shadow-2xl shadow-blue-900/10 space-y-5 relative">
-              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                <span className="text-xs font-black uppercase text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
-                  Interactive Audio Phonics
-                </span>
-                <span className="text-xs font-bold text-gray-400">Tap to Listen</span>
+            {/* Phone frame — real app phonics lesson screen */}
+            <div className="w-full max-w-[270px] sm:max-w-[290px] relative select-none mx-auto">
+              {/* Phone bezel */}
+              <div className="rounded-[36px] bg-[#1E1B4B] p-[5px] shadow-2xl shadow-indigo-900/30 border-2 border-white/20">
+                <div className="rounded-[32px] overflow-hidden bg-[#E8291C] flex flex-col relative" style={{ minHeight: "510px" }}>
+
+                  {/* Ghost letters in background */}
+                  <span className="absolute top-[12%] left-[5%] text-[90px] font-black text-white/10 leading-none pointer-events-none">A</span>
+                  <span className="absolute top-[26%] right-[5%] text-[80px] font-black text-white/10 leading-none pointer-events-none">a</span>
+                  <span className="absolute bottom-[30%] left-[7%] text-[60px] font-black text-white/10 leading-none pointer-events-none">a</span>
+
+                  {/* Top Nav Bar */}
+                  <div className="flex items-center justify-between px-3 pt-4 pb-2 shrink-0">
+                    <div className="flex items-center gap-1.5">
+                      <button onClick={() => handlePlayPhonics(selectedPhonicsLetter)}
+                        className="flex items-center gap-1 px-2.5 py-1.5 rounded-2xl bg-white border-2 border-[#1E1B4B] shadow-[2px_2px_0_#1E1B4B] text-[#1E1B4B] text-[11px] font-extrabold">
+                        ‹ Back
+                      </button>
+                      <button className="flex items-center gap-1 px-2.5 py-1.5 rounded-2xl bg-white/20 border border-white/40 text-white text-[11px] font-bold">
+                        ⌂ Home
+                      </button>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="w-4 h-1.5 rounded-full bg-amber-400" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                    </div>
+                    <div className="flex items-center gap-1 px-2.5 py-1.5 rounded-2xl bg-white/20 border border-white/30 text-white text-[11px] font-bold">
+                      ⭐ 0
+                    </div>
+                  </div>
+
+                  {/* Letter tabs */}
+                  <div className="px-3 pt-1 flex gap-1.5 shrink-0">
+                    {phonicsLetters.map((p, i) => (
+                      <button key={i} onClick={() => handlePlayPhonics(i)}
+                        className={`flex-1 py-1.5 rounded-2xl text-[11px] font-extrabold transition-all ${
+                          selectedPhonicsLetter === i
+                            ? "bg-white text-[#1E1B4B] shadow-[2px_3px_0_rgba(0,0,0,0.3)]"
+                            : "bg-white/20 text-white/80 border border-white/20"
+                        }`}>
+                        {p.letter}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Main lesson content */}
+                  <div className="flex-1 flex flex-col items-center justify-center px-5 pt-3 pb-2 gap-3">
+                    {/* Big letter card — exact match to screenshot */}
+                    <div className="w-[110px] h-[110px] rounded-3xl flex items-center justify-center border-[3px] border-[#1E1B4B] shadow-[5px_8px_0_#1E1B4B]"
+                      style={{ backgroundColor: phonicsLetters[selectedPhonicsLetter].color }}>
+                      <span className="text-6xl font-black text-white leading-none">
+                        {phonicsLetters[selectedPhonicsLetter].letter.charAt(0)}
+                      </span>
+                    </div>
+
+                    {/* Phoneme pill /æ/ */}
+                    <div className="px-7 py-2 rounded-2xl bg-white border-2 border-[#1E1B4B] shadow-[2px_3px_0_#1E1B4B]">
+                      <span className="text-lg font-black text-[#1E1B4B]">
+                        {phonicsLetters[selectedPhonicsLetter].sound}
+                      </span>
+                    </div>
+
+                    {/* Purple "Tap to hear sound" button */}
+                    <button onClick={() => handlePlayPhonics(selectedPhonicsLetter)}
+                      className={`w-full py-3.5 rounded-3xl border-2 border-[#1E1B4B] shadow-[3px_5px_0_#1E1B4B] flex items-center justify-center gap-2 text-sm font-extrabold transition-all active:scale-95 active:shadow-none active:translate-y-1 ${
+                        isPlayingAudio ? "bg-amber-400 text-[#1E1B4B]" : "bg-[#7C3AED] text-white"
+                      }`}>
+                      <span className="text-base">🔊</span>
+                      {isPlayingAudio ? "Playing..." : "Tap to hear sound"}
+                    </button>
+                  </div>
+
+                  {/* Bottom Next button */}
+                  <div className="px-5 pb-5 pt-2 border-t border-white/20 flex justify-center shrink-0">
+                    <button onClick={() => handlePlayPhonics((selectedPhonicsLetter + 1) % phonicsLetters.length)}
+                      className="px-8 py-2.5 rounded-3xl bg-[#E8291C] border-2 border-[#1E1B4B] shadow-[3px_4px_0_#1E1B4B] text-white font-extrabold text-sm flex items-center gap-2 hover:scale-105 active:scale-95 transition-transform">
+                      Next →
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              {/* Letter Card Selector Tabs */}
-              <div className="grid grid-cols-4 gap-1.5">
-                {phonicsLetters.map((p, i) => (
-                  <button
-                    key={i}
-                    onClick={() => handlePlayPhonics(i)}
-                    className={`py-1.5 rounded-xl text-xs font-extrabold transition-all ${
-                      selectedPhonicsLetter === i
-                        ? "bg-[#7C3AED] text-white shadow-md scale-105"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
-                  >
-                    {p.letter}
-                  </button>
-                ))}
-              </div>
-
-              {/* Active Letter Card Display */}
-              <div className="rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 p-5 text-center border border-purple-100 space-y-2">
-                <div className="text-5xl font-black text-[#7C3AED]">
-                  {phonicsLetters[selectedPhonicsLetter].letter}
-                </div>
-                <div className="text-3xl animate-bounce [animation-duration:2s]">
-                  {phonicsLetters[selectedPhonicsLetter].emoji}
-                </div>
-                <div className="text-sm font-bold text-[#1E1B4B]">
-                  {phonicsLetters[selectedPhonicsLetter].word} • {phonicsLetters[selectedPhonicsLetter].sound}
-                </div>
-              </div>
-
-              {/* Audio Soundwave Simulation & Play Button */}
-              <div className="bg-gray-50 rounded-xl p-3 border border-gray-100 flex items-center justify-between gap-3">
-                <button
-                  onClick={() => handlePlayPhonics(selectedPhonicsLetter)}
-                  className={`w-9 h-9 rounded-full flex items-center justify-center text-xs transition-transform active:scale-90 ${
-                    isPlayingAudio ? "bg-amber-400 text-purple-950 scale-105" : "bg-[#7C3AED] text-white hover:scale-105"
-                  }`}
-                  aria-label="Play sound"
-                >
-                  {isPlayingAudio ? "🔊" : "▶"}
-                </button>
-                <div className="flex-1 flex items-center gap-1 justify-center">
-                  <span className={`w-1 h-3 bg-purple-400 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
-                  <span className={`w-1 h-6 bg-purple-600 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
-                  <span className={`w-1 h-8 bg-purple-700 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
-                  <span className={`w-1 h-5 bg-purple-500 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
-                  <span className={`w-1 h-7 bg-purple-600 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
-                  <span className={`w-1 h-4 bg-purple-400 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
-                  <span className={`w-1 h-2 bg-purple-300 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
-                </div>
-                <span className="text-[11px] font-bold text-gray-500">
-                  {isPlayingAudio ? "Speaking..." : "Human Voice"}
-                </span>
-              </div>
-
-              {/* Circular Progress Badge (Matching 85% Downloading in Reference) */}
-              <div className="absolute -bottom-4 -right-3 rounded-2xl bg-white border border-amber-200 p-2.5 shadow-xl flex items-center gap-2.5">
-                <div className="relative w-8 h-8 flex items-center justify-center">
-                  <svg className="w-8 h-8 -rotate-90" viewBox="0 0 36 36">
-                    <path
-                      className="text-gray-200"
-                      strokeWidth="3.5"
-                      stroke="currentColor"
-                      fill="none"
-                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
-                    <path
-                      className="text-amber-500"
-                      strokeDasharray="100, 100"
-                      strokeWidth="3.5"
-                      strokeLinecap="round"
-                      stroke="currentColor"
-                      fill="none"
-                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
+              {/* Floating Offline Audio badge */}
+              <div className="absolute -bottom-5 -right-4 rounded-2xl bg-white border border-amber-200 p-2.5 shadow-xl flex items-center gap-2 z-10">
+                <div className="relative w-9 h-9 flex items-center justify-center shrink-0">
+                  <svg className="w-9 h-9 -rotate-90" viewBox="0 0 36 36">
+                    <path className="text-gray-200" strokeWidth="3" stroke="currentColor" fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path className="text-amber-500" strokeDasharray="100, 100" strokeWidth="3"
+                      strokeLinecap="round" stroke="currentColor" fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                   </svg>
                   <span className="absolute text-[9px] font-black text-amber-700">100%</span>
                 </div>
@@ -381,6 +390,7 @@ export function LandingPage() {
               </div>
             </div>
           </div>
+
 
           {/* Text Content on Right (Matching Reference Bullet Style) */}
           <div className="lg:col-span-7 space-y-6 text-left">
