@@ -176,8 +176,8 @@ export function LandingPage() {
               </div>
             </div>
 
-            {/* Video Viewport */}
-            <div className="relative bg-slate-950 aspect-video sm:aspect-[16/10] overflow-hidden">
+            {/* Video Viewport - 100% Full Frame Display (No Cropping or Cut-off) */}
+            <div className="relative bg-[#1A0050] overflow-hidden w-full">
               <video
                 src="/learn-fun-demo.mp4"
                 autoPlay
@@ -186,7 +186,7 @@ export function LandingPage() {
                 playsInline
                 controls
                 preload="auto"
-                className="w-full h-full object-cover"
+                className="w-full h-auto block object-contain"
               >
                 Your browser does not support the video tag.
               </video>

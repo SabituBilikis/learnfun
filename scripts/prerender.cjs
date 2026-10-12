@@ -40,7 +40,7 @@ const routes = [
             <div style="padding: 6px 14px; background: white; border-bottom: 1px solid #E0E0E0; font-size: 12px; color: #555;">
               <span>https://learnfunkids.vercel.app/play</span>
             </div>
-            <video src="/learn-fun-demo.mp4" autoplay loop muted playsinline controls style="width: 100%; display: block; background: #000;"></video>
+            <video src="/learn-fun-demo.mp4" autoplay loop muted playsinline controls style="width: 100%; height: auto; display: block; background: #1A0050;"></video>
           </div>
           <a href="/play">Play Now in Browser</a>
           <a href="https://play.google.com/store/apps/details?id=com.learnfunkids.app">Get on Google Play</a>
