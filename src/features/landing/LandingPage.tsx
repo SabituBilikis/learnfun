@@ -140,7 +140,7 @@ export function LandingPage() {
 
         {/* Hero Title */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1E1B4B] max-w-4xl leading-[1.15] tracking-tight">
-          Simplify, Engage, and Inspire With Our Intuitive <span className="bg-gradient-to-r from-[#2563EB] via-[#7C3AED] to-[#0D9488] bg-clip-text text-transparent">Kids Learning App</span>
+          Offline Learning App for Toddlers & Preschoolers <span className="bg-gradient-to-r from-[#2563EB] via-[#7C3AED] to-[#0D9488] bg-clip-text text-transparent">Ages 1–5</span>
         </h1>
 
         {/* Hero Subtitle */}
