@@ -1,11 +1,41 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import learnFunLogo from "@/imports/Learn_fun.png";
+import { speak } from "@/lib/speech";
 
 export function LandingPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Interactive Phonics State
+  const [selectedPhonicsLetter, setSelectedPhonicsLetter] = useState(0);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  // Interactive Number Counting State
+  const [countedStars, setCountedStars] = useState(5);
 
   const googlePlayUrl = "https://play.google.com/store/apps/details?id=com.learnfunkids.app";
+
+  const phonicsLetters = [
+    { letter: "Aa", word: "Apple", sound: "/æ/", emoji: "🍎", phrase: "A is for Apple! Ah, ah, apple." },
+    { letter: "Bb", word: "Ball", sound: "/b/", emoji: "⚽", phrase: "B is for Ball! Buh, buh, ball." },
+    { letter: "Cc", word: "Cat", sound: "/k/", emoji: "🐱", phrase: "C is for Cat! Kuh, kuh, cat." },
+    { letter: "Dd", word: "Duck", sound: "/d/", emoji: "🦆", phrase: "D is for Duck! Duh, duh, duck." }
+  ];
+
+  const handlePlayPhonics = async (index: number) => {
+    setSelectedPhonicsLetter(index);
+    setIsPlayingAudio(true);
+    const item = phonicsLetters[index];
+    await speak(item.phrase, { rate: 0.75, pitch: 1.3 });
+    setIsPlayingAudio(false);
+  };
+
+  const handleStarClick = async (starIndex: number) => {
+    const newCount = starIndex + 1;
+    setCountedStars(newCount);
+    await speak(`${newCount}! ${newCount === 1 ? "star" : "stars"}!`, { rate: 0.8, pitch: 1.35 });
+  };
 
   const faqs = [
     {
@@ -35,7 +65,7 @@ export function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8F9FC] text-[#1E1B4B] font-fredoka flex flex-col selection:bg-[#FFC800] selection:text-[#1E1B4B]">
+    <div className="min-h-screen bg-[#F8F9FC] text-[#1E1B4B] font-fredoka flex flex-col selection:bg-[#FFC800] selection:text-[#1E1B4B] scroll-smooth">
       {/* ── 1. Top Navigation Bar ──────────────────────────────── */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 md:px-8 py-3.5 flex items-center justify-between shadow-sm">
         <Link to="/" className="flex items-center gap-3">
@@ -46,14 +76,15 @@ export function LandingPage() {
           />
         </Link>
 
+        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold text-gray-600">
-          <a href="#overview" className="hover:text-[#7C3AED] transition-colors">Overview</a>
-          <a href="#phonics" className="hover:text-[#7C3AED] transition-colors">Phonics</a>
-          <a href="#numbers" className="hover:text-[#7C3AED] transition-colors">Numbers & Math</a>
-          <a href="#showcase" className="hover:text-[#7C3AED] transition-colors">App Features</a>
-          <a href="#pricing" className="hover:text-[#7C3AED] transition-colors">100% Free</a>
-          <a href="#faq" className="hover:text-[#7C3AED] transition-colors">Parent FAQ</a>
-          <a href="#resources" className="hover:text-[#7C3AED] transition-colors">Resources</a>
+          <a href="#overview" className="hover:text-[#2563EB] transition-colors">Overview</a>
+          <a href="#phonics" className="hover:text-[#2563EB] transition-colors">Phonics</a>
+          <a href="#numbers" className="hover:text-[#2563EB] transition-colors">Numbers & Math</a>
+          <a href="#showcase" className="hover:text-[#2563EB] transition-colors">App Features</a>
+          <a href="#pricing" className="hover:text-[#2563EB] transition-colors">100% Free</a>
+          <a href="#faq" className="hover:text-[#2563EB] transition-colors">Parent FAQ</a>
+          <a href="#resources" className="hover:text-[#2563EB] transition-colors">Resources</a>
         </nav>
 
         <div className="flex items-center gap-2 md:gap-3">
@@ -72,8 +103,29 @@ export function LandingPage() {
             <span>Play Online</span>
             <span className="text-xs">›</span>
           </Link>
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 rounded-xl text-gray-700 hover:bg-gray-100 transition-colors"
+            aria-label="Toggle Navigation Menu"
+          >
+            <span className="text-xl">{mobileMenuOpen ? "✕" : "☰"}</span>
+          </button>
         </div>
       </header>
+
+      {/* Mobile Nav Dropdown */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-gray-200 px-6 py-4 flex flex-col gap-3 font-semibold text-sm shadow-lg z-40">
+          <a href="#overview" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Overview</a>
+          <a href="#phonics" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Phonics</a>
+          <a href="#numbers" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Numbers & Math</a>
+          <a href="#showcase" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">App Features</a>
+          <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">100% Free</a>
+          <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Parent FAQ</a>
+          <a href="#resources" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Resources</a>
+        </div>
+      )}
 
       {/* ── 2. Centered Hero Section (Matching Reference SaaS Layout) ─── */}
       <section id="overview" className="relative pt-12 md:pt-20 pb-20 px-4 md:px-8 max-w-6xl mx-auto w-full text-center flex flex-col items-center">
@@ -115,33 +167,47 @@ export function LandingPage() {
           </a>
         </div>
 
-        {/* ── Central Mockup Container with Curved Arch & Floating Pills ── */}
+        {/* ── Central Mockup Container with Curved Arch & Floating Badges ── */}
         <div className="relative mt-14 w-full max-w-4xl mx-auto flex flex-col items-center">
           {/* Curved Semicircular Backdrop Arch (Matching Reference Design) */}
           <div className="absolute bottom-0 w-[80%] max-w-xl h-56 sm:h-72 rounded-t-full bg-gradient-to-t from-[#2563EB] via-[#38BDF8] to-[#60A5FA] opacity-90 -z-10" />
 
           {/* Floating Pill Tag 1 - Top Left */}
-          <div className="hidden md:flex absolute -top-4 left-4 lg:-left-6 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-purple-100 shadow-xl shadow-purple-900/5 text-xs font-bold text-[#7C3AED] animate-bounce [animation-duration:4s]">
+          <div className="hidden md:flex absolute -top-4 left-4 lg:-left-6 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-purple-100 shadow-xl shadow-purple-900/5 text-xs font-bold text-[#7C3AED] hover:scale-105 transition-transform">
             <span className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-sm">🎙️</span>
             <span>Human Voice Phonics</span>
           </div>
 
           {/* Floating Pill Tag 2 - Top Right */}
-          <div className="hidden md:flex absolute -top-2 right-4 lg:-right-6 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-emerald-100 shadow-xl shadow-emerald-900/5 text-xs font-bold text-emerald-700 animate-bounce [animation-duration:5s]">
+          <div className="hidden md:flex absolute -top-2 right-4 lg:-right-6 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-emerald-100 shadow-xl shadow-emerald-900/5 text-xs font-bold text-emerald-700 hover:scale-105 transition-transform">
             <span className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-sm">📶</span>
             <span>100% Offline-First</span>
           </div>
 
           {/* Floating Pill Tag 3 - Bottom Left */}
-          <div className="hidden md:flex absolute bottom-12 -left-4 lg:-left-12 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-amber-100 shadow-xl shadow-amber-900/5 text-xs font-bold text-amber-800">
+          <div className="hidden md:flex absolute bottom-12 -left-4 lg:-left-12 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-amber-100 shadow-xl shadow-amber-900/5 text-xs font-bold text-amber-800 hover:scale-105 transition-transform">
             <span className="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center text-sm">⭐</span>
             <span>Star Unlocks & Streaks</span>
           </div>
 
           {/* Floating Pill Tag 4 - Bottom Right */}
-          <div className="hidden md:flex absolute bottom-12 -right-4 lg:-right-12 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-blue-100 shadow-xl shadow-blue-900/5 text-xs font-bold text-blue-700">
+          <div className="hidden md:flex absolute bottom-12 -right-4 lg:-right-12 items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-blue-100 shadow-xl shadow-blue-900/5 text-xs font-bold text-blue-700 hover:scale-105 transition-transform">
             <span className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-sm">🛡️</span>
             <span>100% Ad-Free & Safe</span>
+          </div>
+
+          {/* Floating App Icon Bubbles (Scattered around the mockup matching reference) */}
+          <div className="hidden sm:flex absolute -top-10 left-1/4 w-10 h-10 rounded-2xl bg-blue-500 text-white items-center justify-center text-lg shadow-lg -rotate-12 animate-pulse [animation-duration:6s]">
+            🔤
+          </div>
+          <div className="hidden sm:flex absolute -top-8 right-1/4 w-10 h-10 rounded-2xl bg-emerald-500 text-white items-center justify-center text-lg shadow-lg rotate-12 animate-pulse [animation-duration:5s]">
+            🔢
+          </div>
+          <div className="hidden lg:flex absolute top-1/2 -left-16 w-11 h-11 rounded-2xl bg-amber-400 text-purple-950 items-center justify-center text-xl shadow-lg -rotate-6">
+            🧩
+          </div>
+          <div className="hidden lg:flex absolute top-1/2 -right-16 w-11 h-11 rounded-2xl bg-pink-500 text-white items-center justify-center text-xl shadow-lg rotate-6">
+            🎨
           </div>
 
           {/* Minimal White Browser Mockup with Uncropped Demo Video */}
@@ -222,44 +288,95 @@ export function LandingPage() {
             <div className="absolute -bottom-4 w-64 sm:w-72 h-72 sm:h-80 rounded-t-full bg-gradient-to-t from-blue-600 via-sky-400 to-indigo-300 opacity-90 -z-10" />
 
             {/* Phonics Interactive Preview Card */}
-            <div className="w-full max-w-sm rounded-3xl bg-white border border-gray-100 p-6 shadow-2xl shadow-blue-900/10 space-y-5">
-              <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+            <div className="w-full max-w-sm rounded-3xl bg-white border border-gray-100 p-6 shadow-2xl shadow-blue-900/10 space-y-5 relative">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
                 <span className="text-xs font-black uppercase text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
-                  Audio Phonics
+                  Interactive Audio Phonics
                 </span>
-                <span className="text-xs font-bold text-gray-400">Letter Sound "A"</span>
+                <span className="text-xs font-bold text-gray-400">Tap to Listen</span>
               </div>
 
-              {/* Letter Card Display */}
-              <div className="rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 p-6 text-center border border-purple-100 space-y-2">
-                <div className="text-6xl font-black text-[#7C3AED]">Aa</div>
-                <div className="text-3xl">🍎</div>
-                <div className="text-sm font-bold text-[#1E1B4B]">Apple • /æ/</div>
+              {/* Letter Card Selector Tabs */}
+              <div className="grid grid-cols-4 gap-1.5">
+                {phonicsLetters.map((p, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handlePlayPhonics(i)}
+                    className={`py-1.5 rounded-xl text-xs font-extrabold transition-all ${
+                      selectedPhonicsLetter === i
+                        ? "bg-[#7C3AED] text-white shadow-md scale-105"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {p.letter}
+                  </button>
+                ))}
               </div>
 
-              {/* Audio Soundwave Simulation */}
-              <div className="bg-gray-50 rounded-xl p-3.5 border border-gray-100 flex items-center justify-between gap-3">
-                <span className="w-8 h-8 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs">
-                  ▶
-                </span>
-                <div className="flex-1 flex items-center gap-1 justify-center">
-                  <span className="w-1 h-3 bg-purple-400 rounded-full animate-pulse" />
-                  <span className="w-1 h-6 bg-purple-600 rounded-full animate-pulse" />
-                  <span className="w-1 h-8 bg-purple-700 rounded-full animate-pulse" />
-                  <span className="w-1 h-5 bg-purple-500 rounded-full animate-pulse" />
-                  <span className="w-1 h-7 bg-purple-600 rounded-full animate-pulse" />
-                  <span className="w-1 h-4 bg-purple-400 rounded-full animate-pulse" />
-                  <span className="w-1 h-2 bg-purple-300 rounded-full" />
+              {/* Active Letter Card Display */}
+              <div className="rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 p-5 text-center border border-purple-100 space-y-2">
+                <div className="text-5xl font-black text-[#7C3AED]">
+                  {phonicsLetters[selectedPhonicsLetter].letter}
                 </div>
-                <span className="text-[11px] font-bold text-gray-500">Human Voice</span>
+                <div className="text-3xl animate-bounce [animation-duration:2s]">
+                  {phonicsLetters[selectedPhonicsLetter].emoji}
+                </div>
+                <div className="text-sm font-bold text-[#1E1B4B]">
+                  {phonicsLetters[selectedPhonicsLetter].word} • {phonicsLetters[selectedPhonicsLetter].sound}
+                </div>
               </div>
 
-              {/* Floating Accuracy Badge */}
-              <div className="rounded-xl bg-blue-50 border border-blue-200 p-3 flex items-center gap-3">
-                <span className="text-2xl">🎙️</span>
+              {/* Audio Soundwave Simulation & Play Button */}
+              <div className="bg-gray-50 rounded-xl p-3 border border-gray-100 flex items-center justify-between gap-3">
+                <button
+                  onClick={() => handlePlayPhonics(selectedPhonicsLetter)}
+                  className={`w-9 h-9 rounded-full flex items-center justify-center text-xs transition-transform active:scale-90 ${
+                    isPlayingAudio ? "bg-amber-400 text-purple-950 scale-105" : "bg-[#7C3AED] text-white hover:scale-105"
+                  }`}
+                  aria-label="Play sound"
+                >
+                  {isPlayingAudio ? "🔊" : "▶"}
+                </button>
+                <div className="flex-1 flex items-center gap-1 justify-center">
+                  <span className={`w-1 h-3 bg-purple-400 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
+                  <span className={`w-1 h-6 bg-purple-600 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
+                  <span className={`w-1 h-8 bg-purple-700 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
+                  <span className={`w-1 h-5 bg-purple-500 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
+                  <span className={`w-1 h-7 bg-purple-600 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
+                  <span className={`w-1 h-4 bg-purple-400 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
+                  <span className={`w-1 h-2 bg-purple-300 rounded-full ${isPlayingAudio ? "animate-pulse" : ""}`} />
+                </div>
+                <span className="text-[11px] font-bold text-gray-500">
+                  {isPlayingAudio ? "Speaking..." : "Human Voice"}
+                </span>
+              </div>
+
+              {/* Circular Progress Badge (Matching 85% Downloading in Reference) */}
+              <div className="absolute -bottom-4 -right-3 rounded-2xl bg-white border border-amber-200 p-2.5 shadow-xl flex items-center gap-2.5">
+                <div className="relative w-8 h-8 flex items-center justify-center">
+                  <svg className="w-8 h-8 -rotate-90" viewBox="0 0 36 36">
+                    <path
+                      className="text-gray-200"
+                      strokeWidth="3.5"
+                      stroke="currentColor"
+                      fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      className="text-amber-500"
+                      strokeDasharray="100, 100"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                      fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                  </svg>
+                  <span className="absolute text-[9px] font-black text-amber-700">100%</span>
+                </div>
                 <div>
-                  <div className="text-xs font-black text-blue-900">Crystal Human Voice</div>
-                  <div className="text-[11px] font-medium text-blue-700">Clean pronunciation for toddler speech</div>
+                  <div className="text-[11px] font-black text-[#1E1B4B]">Offline Audio</div>
+                  <div className="text-[9px] text-gray-500 font-semibold">Zero Streaming Lag</div>
                 </div>
               </div>
             </div>
@@ -403,41 +520,51 @@ export function LandingPage() {
 
             {/* Numbers & Shapes Showcase Card */}
             <div className="w-full max-w-sm rounded-3xl bg-white border border-gray-100 p-6 shadow-2xl shadow-blue-900/10 space-y-5">
-              <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
                 <span className="text-xs font-black uppercase text-amber-700 bg-amber-50 px-3 py-1 rounded-full">
                   Numbers 1–20
                 </span>
-                <span className="text-xs font-bold text-gray-400">Counting Session</span>
+                <span className="text-xs font-bold text-gray-400">Tap Stars to Count</span>
               </div>
 
               {/* Number Card Display */}
               <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center border border-amber-100 space-y-3">
-                <div className="text-5xl font-black text-amber-600">5</div>
-                <div className="flex items-center justify-center gap-1.5 text-2xl">
-                  <span>⭐</span>
-                  <span>⭐</span>
-                  <span>⭐</span>
-                  <span>⭐</span>
-                  <span>⭐</span>
+                <div className="text-5xl font-black text-amber-600">{countedStars}</div>
+                {/* Clickable Star Counter */}
+                <div className="flex items-center justify-center gap-2 text-2xl select-none">
+                  {[0, 1, 2, 3, 4].map((idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleStarClick(idx)}
+                      className={`transition-transform hover:scale-125 active:scale-95 ${
+                        idx < countedStars ? "opacity-100 scale-105" : "opacity-30 grayscale"
+                      }`}
+                      aria-label={`Count star ${idx + 1}`}
+                    >
+                      ⭐
+                    </button>
+                  ))}
                 </div>
-                <div className="text-sm font-bold text-[#1E1B4B]">Five Stars Counted!</div>
+                <div className="text-sm font-bold text-[#1E1B4B]">
+                  {countedStars} {countedStars === 1 ? "Star" : "Stars"} Counted!
+                </div>
               </div>
 
               {/* Shapes & Colors Swatch Preview */}
               <div className="grid grid-cols-4 gap-2 pt-1">
-                <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-center">
+                <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-center hover:scale-105 transition-transform">
                   <div className="text-lg">🔵</div>
                   <div className="text-[10px] font-bold text-gray-600 mt-1">Circle</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-pink-50 border border-pink-100 text-center">
+                <div className="p-2.5 rounded-xl bg-pink-50 border border-pink-100 text-center hover:scale-105 transition-transform">
                   <div className="text-lg">🔺</div>
                   <div className="text-[10px] font-bold text-gray-600 mt-1">Triangle</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-100 text-center">
+                <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-100 text-center hover:scale-105 transition-transform">
                   <div className="text-lg">🟩</div>
                   <div className="text-[10px] font-bold text-gray-600 mt-1">Square</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-purple-50 border border-purple-100 text-center">
+                <div className="p-2.5 rounded-xl bg-purple-50 border border-purple-100 text-center hover:scale-105 transition-transform">
                   <div className="text-lg">⭐</div>
                   <div className="text-[10px] font-bold text-gray-600 mt-1">Star</div>
                 </div>
@@ -449,7 +576,7 @@ export function LandingPage() {
                   <span className="text-xl">🌟</span>
                   <span className="text-xs font-extrabold text-amber-900">Session Complete</span>
                 </div>
-                <span className="text-xs font-black text-amber-700">+3 Stars</span>
+                <span className="text-xs font-black text-amber-700">+{countedStars} Stars</span>
               </div>
             </div>
           </div>
@@ -457,9 +584,15 @@ export function LandingPage() {
       </section>
 
       {/* ── 6. Centered App Showcase Section (Symmetrical 3-Column Layout) ─── */}
-      <section id="showcase" className="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full text-center space-y-14">
+      <section id="showcase" className="py-24 px-4 md:px-8 bg-[#EFF6FF]/60 border-b border-gray-200/70 w-full text-center space-y-14 relative overflow-hidden">
+        {/* Subtle Decorative Sparkles matching reference */}
+        <div className="hidden md:block absolute top-1/4 left-10 text-coral-400 text-2xl select-none opacity-60">✦</div>
+        <div className="hidden md:block absolute top-1/3 right-10 text-blue-400 text-2xl select-none opacity-60">✦</div>
+        <div className="hidden md:block absolute bottom-1/4 left-20 text-blue-400 text-xl select-none opacity-50">✳</div>
+        <div className="hidden md:block absolute bottom-1/3 right-20 text-rose-400 text-xl select-none opacity-50">✳</div>
+
         <div className="max-w-2xl mx-auto space-y-3">
-          <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
+          <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-white border border-blue-100 px-3.5 py-1.5 rounded-full shadow-sm">
             All-In-One Toddler Platform
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
@@ -471,10 +604,10 @@ export function LandingPage() {
         </div>
 
         {/* Symmetrical 3-Column Grid (Left Features, Center Device, Right Features) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           {/* Left Column: 3 Feature Cards */}
           <div className="md:col-span-4 space-y-4 text-left">
-            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-200 transition-all space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-200 hover:shadow-md transition-all space-y-2">
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
                 📶
               </div>
@@ -484,7 +617,7 @@ export function LandingPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-purple-200 transition-all space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-purple-200 hover:shadow-md transition-all space-y-2">
               <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
                 🎙️
               </div>
@@ -494,7 +627,7 @@ export function LandingPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-amber-200 transition-all space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-amber-200 hover:shadow-md transition-all space-y-2">
               <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
                 🧩
               </div>
@@ -565,7 +698,7 @@ export function LandingPage() {
 
           {/* Right Column: 3 Feature Cards */}
           <div className="md:col-span-4 space-y-4 text-left">
-            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-emerald-200 transition-all space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all space-y-2">
               <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
                 ⭐
               </div>
@@ -575,7 +708,7 @@ export function LandingPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-200 transition-all space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-blue-200 hover:shadow-md transition-all space-y-2">
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
                 🔒
               </div>
@@ -585,7 +718,7 @@ export function LandingPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-pink-200 transition-all space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:border-pink-200 hover:shadow-md transition-all space-y-2">
               <div className="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-lg">
                 🛡️
               </div>
@@ -599,7 +732,7 @@ export function LandingPage() {
       </section>
 
       {/* ── 7. 100% Free Transparency & Parents FAQ (Replacing SaaS Pricing) ─── */}
-      <section id="pricing" className="py-20 px-4 md:px-8 bg-white border-y border-gray-200/70">
+      <section id="pricing" className="py-20 px-4 md:px-8 bg-white border-b border-gray-200/70">
         <div className="max-w-6xl mx-auto space-y-16">
           {/* Transparency Heading */}
           <div className="text-center space-y-3 max-w-2xl mx-auto">
@@ -616,7 +749,7 @@ export function LandingPage() {
 
           {/* 4 Transparency Benefit Cards (Matching the 4-Column Pricing Card Layout) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left">
+            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left hover:border-blue-200 transition-colors">
               <span className="text-xs font-bold text-gray-500 uppercase">Browser Edition</span>
               <div className="text-3xl font-black text-[#1E1B4B]">$0 <span className="text-xs font-bold text-gray-400">/ forever</span></div>
               <ul className="text-xs text-gray-600 font-medium space-y-2.5">
@@ -629,7 +762,7 @@ export function LandingPage() {
               </Link>
             </div>
 
-            <div className="p-6 rounded-3xl bg-blue-600 text-white space-y-4 text-left shadow-xl shadow-blue-600/20 relative">
+            <div className="p-6 rounded-3xl bg-blue-600 text-white space-y-4 text-left shadow-xl shadow-blue-600/20 relative hover:bg-blue-700 transition-colors">
               <div className="absolute top-4 right-4 bg-blue-400 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
                 Recommended
               </div>
@@ -645,7 +778,7 @@ export function LandingPage() {
               </a>
             </div>
 
-            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left">
+            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left hover:border-blue-200 transition-colors">
               <span className="text-xs font-bold text-gray-500 uppercase">Parent Zone</span>
               <div className="text-3xl font-black text-[#1E1B4B]">$0 <span className="text-xs font-bold text-gray-400">/ forever</span></div>
               <ul className="text-xs text-gray-600 font-medium space-y-2.5">
@@ -658,7 +791,7 @@ export function LandingPage() {
               </Link>
             </div>
 
-            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left">
+            <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 space-y-4 text-left hover:border-blue-200 transition-colors">
               <span className="text-xs font-bold text-gray-500 uppercase">Full Curriculum</span>
               <div className="text-3xl font-black text-[#1E1B4B]">$0 <span className="text-xs font-bold text-gray-400">/ forever</span></div>
               <ul className="text-xs text-gray-600 font-medium space-y-2.5">
@@ -725,7 +858,8 @@ export function LandingPage() {
             to="/features/phonics"
             className="group rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
           >
-            <div className="h-44 bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-600 p-6 flex flex-col justify-between text-white">
+            <div className="h-44 bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-600 p-6 flex flex-col justify-between text-white relative overflow-hidden">
+              <div className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-white/10 blur-sm" />
               <span className="text-xs font-black uppercase tracking-wider bg-white/20 backdrop-blur-md px-3 py-1 rounded-full w-max">
                 Speech & Phonics
               </span>
@@ -752,7 +886,8 @@ export function LandingPage() {
             to="/features/alphabet"
             className="group rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
           >
-            <div className="h-44 bg-gradient-to-br from-blue-500 via-sky-500 to-teal-400 p-6 flex flex-col justify-between text-white">
+            <div className="h-44 bg-gradient-to-br from-blue-500 via-sky-500 to-teal-400 p-6 flex flex-col justify-between text-white relative overflow-hidden">
+              <div className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-white/10 blur-sm" />
               <span className="text-xs font-black uppercase tracking-wider bg-white/20 backdrop-blur-md px-3 py-1 rounded-full w-max">
                 Letter Mastery
               </span>
@@ -779,7 +914,8 @@ export function LandingPage() {
             to="/features/numbers"
             className="group rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
           >
-            <div className="h-44 bg-gradient-to-br from-amber-500 via-orange-500 to-pink-500 p-6 flex flex-col justify-between text-white">
+            <div className="h-44 bg-gradient-to-br from-amber-500 via-orange-500 to-pink-500 p-6 flex flex-col justify-between text-white relative overflow-hidden">
+              <div className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-white/10 blur-sm" />
               <span className="text-xs font-black uppercase tracking-wider bg-white/20 backdrop-blur-md px-3 py-1 rounded-full w-max">
                 Early Numeracy
               </span>
