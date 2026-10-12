@@ -34,7 +34,7 @@ export function PhonicsOverviewScreen() {
   const learnedCount = Math.min(progress.catProgress.phonics ?? 0, items.length);
 
   const handleCardTap = (index: number) => {
-    navigate(`/phonics/lesson/${index}`);
+    navigate(`/play/phonics/lesson/${index}`);
   };
 
   return (
