@@ -110,37 +110,39 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* Hero Card Visual */}
-        <div className="flex-1 w-full max-w-md md:max-w-none">
-          <div className="relative p-6 rounded-3xl bg-white border-4 border-purple-200 shadow-2xl shadow-purple-200/80 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-purple-100">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🅰️</span>
-                <div>
-                  <h3 className="font-extrabold text-sm text-[#1E1B4B]">Alphabet & Phonics</h3>
-                  <p className="text-xs text-gray-500">Human Voice Audio</p>
-                </div>
-              </div>
-              <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">Unlocked</span>
-            </div>
+        {/* Hero Video Device Mockup */}
+        <div className="flex-1 w-full max-w-lg md:max-w-none relative">
+          {/* Decorative Background Glow */}
+          <div className="absolute -inset-2 bg-gradient-to-tr from-[#7C3AED]/30 via-[#FF5252]/20 to-[#FFC800]/30 rounded-[48px] blur-xl opacity-70 -z-10" />
 
-            <div className="grid grid-cols-4 gap-2.5 py-2">
-              {[
-                { label: "A", sub: "Apple 🍎", color: "bg-red-100 text-red-700 border-red-200" },
-                { label: "B", sub: "Ball ⚽", color: "bg-blue-100 text-blue-700 border-blue-200" },
-                { label: "C", sub: "Cat 🐱", color: "bg-amber-100 text-amber-700 border-amber-200" },
-                { label: "D", sub: "Dog 🐶", color: "bg-emerald-100 text-emerald-700 border-emerald-200" },
-              ].map((card, i) => (
-                <div key={i} className={`p-3 rounded-2xl border ${card.color} text-center font-black flex flex-col items-center justify-center shadow-sm hover:scale-105 transition-transform cursor-default`}>
-                  <span className="text-xl">{card.label}</span>
-                  <span className="text-[10px] font-bold mt-1 opacity-80">{card.sub}</span>
-                </div>
-              ))}
-            </div>
+          {/* Floating Pill Badges */}
+          <div className="hidden sm:flex items-center gap-2 absolute -top-4 -left-4 z-20 px-3.5 py-1.5 rounded-full bg-white border-2 border-purple-200 shadow-md text-xs font-black text-[#1E1B4B]">
+            <span>✨</span> Real App Gameplay
+          </div>
 
-            <div className="flex items-center justify-between p-3 rounded-2xl bg-purple-50 border border-purple-100 text-xs font-bold text-purple-900">
-              <span className="flex items-center gap-1.5">⭐ Earn Stars & Daily Streaks</span>
-              <span className="px-2 py-0.5 rounded-lg bg-amber-400 text-purple-950 font-black">100% Free</span>
+          <div className="hidden sm:flex items-center gap-2 absolute -bottom-4 -right-4 z-20 px-3.5 py-1.5 rounded-full bg-white border-2 border-purple-200 shadow-md text-xs font-black text-[#1E1B4B]">
+            <span>🎧</span> Human Audio Phonics
+          </div>
+
+          {/* Tablet Frame Mockup */}
+          <div className="p-3 sm:p-4 rounded-[36px] sm:rounded-[44px] bg-[#1E1B4B] border-4 border-slate-700 shadow-2xl shadow-purple-500/25 relative overflow-hidden">
+            {/* Tablet Camera Dot */}
+            <div className="w-2.5 h-2.5 rounded-full bg-slate-800 border border-slate-600 mx-auto mb-2.5" />
+
+            {/* Inner Video Container */}
+            <div className="rounded-[24px] sm:rounded-[32px] overflow-hidden bg-black aspect-video sm:aspect-[16/10] relative shadow-inner">
+              <video
+                src="/learn-fun-demo.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                preload="metadata"
+                className="w-full h-full object-cover"
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
