@@ -110,73 +110,29 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* macOS Chrome Browser Mockup */}
+        {/* Minimal Browser Mockup (Matching User Reference) */}
         <div className="flex-1 w-full max-w-lg md:max-w-xl lg:max-w-2xl relative">
           {/* Decorative Background Glow */}
-          <div className="absolute -inset-3 bg-gradient-to-tr from-[#7C3AED]/25 via-[#FF5252]/15 to-[#FFC800]/25 rounded-[36px] blur-2xl opacity-70 -z-10" />
+          <div className="absolute -inset-3 bg-gradient-to-tr from-[#7C3AED]/20 via-[#FF5252]/10 to-[#FFC800]/20 rounded-[36px] blur-2xl opacity-70 -z-10" />
 
-          {/* Floating Badge */}
-          <div className="hidden sm:flex items-center gap-2 absolute -top-3.5 -right-3 z-20 px-3.5 py-1.5 rounded-full bg-white border border-purple-200 shadow-md text-xs font-black text-[#1E1B4B]">
-            <span>✨</span> Interactive Gameplay
-          </div>
-
-          {/* Browser Window Frame */}
-          <div className="rounded-2xl sm:rounded-3xl bg-[#DFE1E5] border border-gray-300 shadow-[0_25px_60px_-15px_rgba(26,0,80,0.18)] overflow-hidden">
-            {/* Top Chrome Tab Bar */}
-            <div className="px-3 sm:px-4 pt-2.5 pb-1 flex items-center gap-2 bg-[#DFE1E5] select-none">
+          {/* Minimal Browser Window Frame */}
+          <div className="rounded-2xl sm:rounded-3xl bg-white border border-gray-200/80 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.14)] overflow-hidden">
+            {/* Minimal Browser Header */}
+            <div className="px-4 sm:px-5 py-3 sm:py-3.5 bg-white border-b border-gray-100 flex items-center gap-3 sm:gap-4 select-none">
               {/* Traffic Light Dots */}
-              <div className="flex items-center gap-1.5 mr-2">
-                <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]" />
-                <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]" />
-                <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]" />
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF5F56] inline-block" />
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFBD2E] inline-block" />
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] inline-block" />
               </div>
 
-              {/* Tabs */}
-              <div className="flex items-center gap-1 flex-1 overflow-hidden">
-                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 text-[11px] text-gray-600 rounded-t-lg">
-                  <span className="w-2 h-2 rounded-full bg-pink-400" />
-                  <span className="truncate">Portfolio</span>
-                </div>
-
-                {/* Active Tab */}
-                <div className="flex items-center gap-2 px-3 py-1 bg-white text-[11px] font-bold text-gray-800 rounded-t-xl shadow-sm border-t border-x border-gray-200">
-                  <span className="truncate">learn Fun</span>
-                  <span className="text-gray-400 text-xs ml-1">×</span>
-                </div>
-
-                <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 text-[11px] text-gray-500 rounded-t-lg">
-                  <span className="truncate">Landing Page</span>
-                </div>
-
-                <span className="text-gray-500 text-xs font-bold px-1 cursor-default">+</span>
+              {/* Minimal URL Address */}
+              <div className="truncate text-xs sm:text-sm font-medium text-gray-500 font-sans tracking-tight">
+                https://learnfunkids.vercel.app
               </div>
             </div>
 
-            {/* Address Bar */}
-            <div className="px-3 sm:px-4 py-1.5 bg-white border-b border-gray-200 flex items-center gap-2 sm:gap-3">
-              <div className="flex items-center gap-2 text-gray-400 text-xs">
-                <span>←</span>
-                <span>→</span>
-                <span>⟳</span>
-              </div>
-
-              {/* URL Omnibox */}
-              <div className="flex-1 flex items-center justify-between px-3 py-0.5 rounded-full bg-[#F1F3F4] text-[11px] text-gray-700 font-medium border border-gray-200/60">
-                <div className="flex items-center gap-1.5 truncate">
-                  <span className="font-bold text-[#4285F4] text-xs">G</span>
-                  <span className="truncate text-gray-800">Learn Fun</span>
-                </div>
-                <span className="text-gray-400 text-xs ml-1">☆</span>
-              </div>
-
-              <div className="hidden sm:flex items-center">
-                <div className="w-5 h-5 rounded-full bg-pink-500 text-white text-[10px] font-bold flex items-center justify-center">
-                  A
-                </div>
-              </div>
-            </div>
-
-            {/* Video Viewport - 100% Full Frame Display (No Cropping or Cut-off) */}
+            {/* Video Viewport - 100% Full Frame Display */}
             <div className="relative bg-[#1A0050] overflow-hidden w-full">
               <video
                 src="/learn-fun-demo.mp4"
@@ -194,7 +150,7 @@ export function LandingPage() {
           </div>
 
           <p className="text-center text-[11px] font-medium text-gray-500 mt-2">
-            Learn Fun – Desktop Chrome browser experience showing interactive lesson modules, phonics, and touch-first interactions.
+            Learn Fun – Desktop browser experience showing interactive lesson modules, phonics, and touch-first interactions.
           </p>
         </div>
       </section>
