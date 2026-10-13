@@ -39,12 +39,12 @@ export function LandingPage() {
 
   const faqs = [
     {
-      q: "Does Learn Fun work completely offline without Wi-Fi?",
-      a: "Yes! Learn Fun is built offline-first from the ground up. Once installed from Google Play or loaded in your browser, all letter cards, human voice audio phonics, numbers 1–20, and mini-games function without any internet connection."
+      q: "Does Learn Fun work offline without Wi-Fi?",
+      a: "The Android app works fully offline after the one-time installation from Google Play — no Wi-Fi needed for lessons, phonics audio, or mini-games. The browser version requires an initial internet connection to load, but cached sessions can run without data once the page is loaded."
     },
     {
       q: "Are there any third-party ads, popups, or in-app purchases?",
-      a: "Never. Learn Fun is 100% ad-free and free of subscriptions or hidden purchases. Toddlers can safely tap and explore without seeing commercial ads or encountering accidental paywalls."
+      a: "No. Learn Fun is completely ad-free and contains no subscriptions, in-app purchases, or hidden charges. Toddlers can safely tap and explore without encountering commercial ads or accidental paywalls."
     },
     {
       q: "What age range is Learn Fun designed for?",
@@ -395,7 +395,7 @@ export function LandingPage() {
           {/* Text Content on Right (Matching Reference Bullet Style) */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
-              Phonics & Speech Foundation
+              Learn Letter Sounds with Phonics
             </span>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B] leading-tight">
@@ -463,11 +463,11 @@ export function LandingPage() {
           {/* Text Content on Left */}
           <div className="lg:col-span-7 space-y-6 text-left order-2 lg:order-1">
             <span className="text-xs font-black uppercase tracking-wider text-amber-700 bg-amber-50 px-3.5 py-1.5 rounded-full">
-              Numbers & Early Cognition
+              Learn Numbers 1–20 Through Play
             </span>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B] leading-tight">
-              Build confident number sense and shapes from 1 to 20
+              Fun counting activities for preschoolers ages 1–5
             </h2>
 
             <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
@@ -830,7 +830,7 @@ export function LandingPage() {
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
                 🔒
               </div>
-              <h3 className="text-base font-extrabold text-[#1E1B4B]">Parent PIN Security Gate</h3>
+              <h3 className="text-base font-extrabold text-[#1E1B4B]">Parent-Protected Settings</h3>
               <p className="text-xs text-gray-600 font-medium leading-relaxed">
                 Settings and profile management are protected by a parent verification challenge to keep toddlers in the game.
               </p>
@@ -855,13 +855,13 @@ export function LandingPage() {
           {/* Transparency Heading */}
           <div className="text-center space-y-3 max-w-2xl mx-auto">
             <span className="text-xs font-black uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3.5 py-1.5 rounded-full">
-              100% Free Commitment
+              Always Free — No Hidden Costs
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
-              Transparent, 100% Free Education for Every Child
+              Free Education for Every Child — No Subscriptions
             </h2>
             <p className="text-sm md:text-base text-gray-600 font-medium">
-              No subscription tiers. No paywalled levels. No hidden charges. Just open early childhood education.
+              No subscription tiers. No paywalled levels. No hidden charges. The Android app works fully offline after a one-time install. Browser play requires an initial connection.
             </p>
           </div>
 
@@ -887,9 +887,9 @@ export function LandingPage() {
               <span className="text-xs font-bold text-blue-200 uppercase">Android App</span>
               <div className="text-3xl font-black text-white">$0 <span className="text-xs font-bold text-blue-200">/ forever</span></div>
               <ul className="text-xs text-blue-100 font-medium space-y-2.5">
-                <li className="flex items-center gap-2"><span>✓</span> Full 100% offline access</li>
+                <li className="flex items-center gap-2"><span>✓</span> Fully offline after install</li>
                 <li className="flex items-center gap-2"><span>✓</span> Human voice audio phonics</li>
-                <li className="flex items-center gap-2"><span>✓</span> Zero cellular data consumption</li>
+                <li className="flex items-center gap-2"><span>✓</span> No Wi-Fi needed post-install</li>
               </ul>
               <a href={googlePlayUrl} target="_blank" rel="noopener noreferrer" className="block w-full py-2.5 rounded-xl bg-white text-blue-700 text-xs font-extrabold text-center hover:bg-blue-50 transition-colors">
                 Install on Android
@@ -1042,7 +1042,7 @@ export function LandingPage() {
             <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-base font-extrabold text-[#1E1B4B] group-hover:text-blue-600 transition-colors">
-                  Building Concrete Number Sense from 1 to 20
+                  Fun Counting Activities for Preschoolers
                 </h3>
                 <p className="text-xs text-gray-600 font-medium mt-2 leading-relaxed">
                   Why tactile visual item counting and shape identification form the bedrock of early mathematical confidence.
