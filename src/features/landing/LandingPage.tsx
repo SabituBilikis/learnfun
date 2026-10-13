@@ -523,70 +523,107 @@ export function LandingPage() {
             </div>
           </div>
 
-          {/* Media Graphic on Right */}
+          {/* Media Graphic on Right — Real App Numbers Screen */}
           <div className="lg:col-span-5 relative flex justify-center order-1 lg:order-2">
-            {/* Curved Sky-Blue Arch Backdrop */}
-            <div className="absolute -bottom-4 w-64 sm:w-72 h-72 sm:h-80 rounded-t-full bg-gradient-to-t from-sky-500 via-blue-400 to-indigo-300 opacity-90 -z-10" />
+            {/* Decorative glow */}
+            <div className="absolute -inset-6 bg-gradient-to-tr from-amber-400/20 via-orange-300/10 to-indigo-300/20 blur-3xl rounded-full -z-10" />
 
-            {/* Numbers & Shapes Showcase Card */}
-            <div className="w-full max-w-sm rounded-3xl bg-white border border-gray-100 p-6 shadow-2xl shadow-blue-900/10 space-y-5">
-              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                <span className="text-xs font-black uppercase text-amber-700 bg-amber-50 px-3 py-1 rounded-full">
-                  Numbers 1–20
-                </span>
-                <span className="text-xs font-bold text-gray-400">Tap Stars to Count</span>
-              </div>
+            {/* Phone frame */}
+            <div className="w-full max-w-[270px] sm:max-w-[290px] relative select-none mx-auto">
+              <div className="rounded-[36px] bg-[#1E1B4B] p-[5px] shadow-2xl shadow-indigo-900/30 border-2 border-white/20">
+                <div className="rounded-[32px] overflow-hidden flex flex-col" style={{ minHeight: "520px", background: "#1E1B4B" }}>
 
-              {/* Number Card Display */}
-              <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center border border-amber-100 space-y-3">
-                <div className="text-5xl font-black text-amber-600">{countedStars}</div>
-                {/* Clickable Star Counter */}
-                <div className="flex items-center justify-center gap-2 text-2xl select-none">
-                  {[0, 1, 2, 3, 4].map((idx) => (
+                  {/* ── Orange Header Section (matches real app) ── */}
+                  <div className="bg-gradient-to-b from-[#F97316] to-[#F59E0B] px-4 pt-4 pb-3 shrink-0">
+                    {/* Back button row */}
+                    <div className="flex items-center justify-between mb-2">
+                      <button className="flex items-center gap-1 px-3 py-1.5 rounded-2xl bg-white border-2 border-[#1E1B4B] shadow-[2px_2px_0_#1E1B4B] text-[#1E1B4B] text-[11px] font-extrabold">
+                        ‹ Back
+                      </button>
+                      <div className="w-9 h-9 rounded-xl bg-blue-500 border-2 border-[#1E1B4B] shadow-[2px_2px_0_#1E1B4B] flex items-center justify-center">
+                        <span className="text-[10px] font-black text-white leading-tight text-center">1 2<br/>3 4</span>
+                      </div>
+                    </div>
+
+                    {/* Title & Subtitle */}
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <div className="w-7 h-7 rounded-lg bg-blue-500 border border-[#1E1B4B] flex items-center justify-center shrink-0">
+                        <span className="text-[9px] font-black text-white leading-tight text-center">1 2<br/>3 4</span>
+                      </div>
+                      <span className="text-lg font-black text-white">Numbers</span>
+                    </div>
+                    <p className="text-[11px] font-semibold text-white/80 mb-2">Learn to count from 1 to 20!</p>
+
+                    {/* Progress bar */}
+                    <div className="flex items-center justify-between text-[10px] font-bold text-white/90 mb-1">
+                      <span>0 of 20 numbers learned</span>
+                      <span>0%</span>
+                    </div>
+                    <div className="w-full h-2 rounded-full bg-white/30 mb-3">
+                      <div className="h-full w-[5%] rounded-full bg-white/80" />
+                    </div>
+
+                    {/* Stats row: Learned / Stars / Total */}
+                    <div className="grid grid-cols-3 gap-2">
+                      <div className="rounded-2xl bg-white border-2 border-[#1E1B4B] shadow-[2px_2px_0_#1E1B4B] py-2 flex flex-col items-center justify-center">
+                        <div className="flex items-center gap-1">
+                          <span className="w-4 h-4 rounded bg-emerald-500 flex items-center justify-center text-white text-[9px]">✓</span>
+                          <span className="text-base font-black text-[#1E1B4B]">0</span>
+                        </div>
+                        <span className="text-[9px] font-bold text-gray-500">Learned</span>
+                      </div>
+                      <div className="rounded-2xl bg-white border-2 border-[#1E1B4B] shadow-[2px_2px_0_#1E1B4B] py-2 flex flex-col items-center justify-center">
+                        <div className="flex items-center gap-1">
+                          <span className="text-sm">⭐</span>
+                          <span className="text-base font-black text-[#1E1B4B]">56</span>
+                        </div>
+                        <span className="text-[9px] font-bold text-gray-500">Stars</span>
+                      </div>
+                      <div className="rounded-2xl bg-white border-2 border-[#1E1B4B] shadow-[2px_2px_0_#1E1B4B] py-2 flex flex-col items-center justify-center">
+                        <div className="w-5 h-5 rounded bg-blue-500 flex items-center justify-center mx-auto mb-0.5">
+                          <span className="text-[8px] font-black text-white leading-tight text-center">1 2<br/>3 4</span>
+                        </div>
+                        <span className="text-[9px] font-bold text-gray-500">Total</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ── Number Grid ── */}
+                  <div className="flex-1 bg-[#F3EEFF] overflow-hidden px-3 pt-3 pb-2">
+                    <div className="grid grid-cols-5 gap-1.5">
+                      {/* Card 1: Unlocked */}
+                      <button
+                        onClick={() => handleStarClick(0)}
+                        className="rounded-2xl bg-white border-2 border-[#1E1B4B] shadow-[2px_3px_0_#1E1B4B] py-2 flex flex-col items-center gap-0.5 hover:scale-105 active:scale-95 transition-transform"
+                      >
+                        <span className="text-[11px] font-black text-red-500">1</span>
+                        <span className="text-lg leading-none">🍎</span>
+                        <span className="text-[9px] font-bold text-[#1E1B4B]">One</span>
+                      </button>
+                      {/* Cards 2–20: Locked */}
+                      {Array.from({ length: 19 }).map((_, i) => (
+                        <div key={i + 2} className="rounded-2xl bg-[#DDD6FE] border border-purple-200 py-2 flex flex-col items-center gap-0.5 opacity-70">
+                          <span className="text-[13px] font-black text-purple-400">?</span>
+                          <span className="text-base leading-none opacity-40">
+                            {["⭐","🌙","🦋","🌺","🐦","🎪","🌈","🦊","🎭","🌟","🐉","🎨","🏰","🦁","🎯","🌊","🎵","🦄","🎃"][i]}
+                          </span>
+                          <span className="text-[9px] font-bold text-purple-400">Locked</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* ── Continue Button ── */}
+                  <div className="bg-[#F3EEFF] px-4 pb-4 pt-2 shrink-0">
                     <button
-                      key={idx}
-                      onClick={() => handleStarClick(idx)}
-                      className={`transition-transform hover:scale-125 active:scale-95 ${
-                        idx < countedStars ? "opacity-100 scale-105" : "opacity-30 grayscale"
-                      }`}
-                      aria-label={`Count star ${idx + 1}`}
+                      onClick={() => handleStarClick(countedStars < 5 ? countedStars : 4)}
+                      className="w-full py-3 rounded-3xl bg-gradient-to-r from-[#F97316] to-[#F59E0B] border-2 border-[#1E1B4B] shadow-[3px_4px_0_#1E1B4B] text-white font-extrabold text-sm flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-transform"
                     >
-                      ⭐
+                      Continue: One →
                     </button>
-                  ))}
-                </div>
-                <div className="text-sm font-bold text-[#1E1B4B]">
-                  {countedStars} {countedStars === 1 ? "Star" : "Stars"} Counted!
-                </div>
-              </div>
+                  </div>
 
-              {/* Shapes & Colors Swatch Preview */}
-              <div className="grid grid-cols-4 gap-2 pt-1">
-                <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-center hover:scale-105 transition-transform">
-                  <div className="text-lg">🔵</div>
-                  <div className="text-[10px] font-bold text-gray-600 mt-1">Circle</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-pink-50 border border-pink-100 text-center hover:scale-105 transition-transform">
-                  <div className="text-lg">🔺</div>
-                  <div className="text-[10px] font-bold text-gray-600 mt-1">Triangle</div>
-                </div>
-                <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-100 text-center hover:scale-105 transition-transform">
-                  <div className="text-lg">🟩</div>
-                  <div className="text-[10px] font-bold text-gray-600 mt-1">Square</div>
-                </div>
-                <div className="p-2.5 rounded-xl bg-purple-50 border border-purple-100 text-center hover:scale-105 transition-transform">
-                  <div className="text-lg">⭐</div>
-                  <div className="text-[10px] font-bold text-gray-600 mt-1">Star</div>
-                </div>
-              </div>
-
-              {/* Reward Status */}
-              <div className="rounded-xl bg-amber-50 border border-amber-200 p-3 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🌟</span>
-                  <span className="text-xs font-extrabold text-amber-900">Session Complete</span>
-                </div>
-                <span className="text-xs font-black text-amber-700">+{countedStars} Stars</span>
               </div>
             </div>
           </div>
@@ -648,63 +685,134 @@ export function LandingPage() {
             </div>
           </div>
 
-          {/* Center Column: App Graphic with Curved Arch Backdrop */}
+          {/* Center Column: Real App Home Screen */}
           <div className="md:col-span-4 relative flex justify-center py-4">
-            {/* Semicircular Backdrop Arch */}
-            <div className="absolute bottom-0 w-64 sm:w-72 h-80 sm:h-96 rounded-t-full bg-gradient-to-t from-[#2563EB] via-[#38BDF8] to-[#93C5FD] opacity-90 -z-10" />
+            {/* Subtle glow behind device */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#2563EB]/20 via-[#7C3AED]/10 to-transparent blur-2xl -z-10 rounded-full" />
 
-            {/* Mobile Showcase Bezel Frame */}
-            <div className="w-64 sm:w-72 rounded-[36px] bg-[#1E1B4B] p-3 shadow-2xl shadow-blue-900/20 border-4 border-white/80">
-              <div className="rounded-[28px] bg-[#F3EEFF] p-4 space-y-4 overflow-hidden text-left">
-                {/* Simulated App Top Bar */}
-                <div className="flex items-center justify-between border-b border-purple-200 pb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-bold">
-                      LF
-                    </span>
-                    <span className="text-xs font-black text-[#1E1B4B]">Learn Fun</span>
+            {/* Phone bezel — matches real device form factor */}
+            <div className="w-64 sm:w-72 rounded-[36px] bg-[#1E1B4B] p-[5px] shadow-2xl shadow-indigo-900/30 border-[3px] border-white/20 select-none">
+              <div className="rounded-[32px] overflow-hidden bg-[#F8F9FC] flex flex-col" style={{ minHeight: "520px" }}>
+
+                {/* ── Top Nav Bar (matches real app) ── */}
+                <div className="flex items-center justify-between px-3 py-3 bg-white border-b border-gray-100 shrink-0">
+                  {/* Logo */}
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center border border-amber-600 shadow-sm">
+                      <span className="text-[11px] font-black text-white leading-none">LF</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1 bg-amber-100 px-2 py-0.5 rounded-full text-[11px] font-bold text-amber-900">
-                    <span>⭐</span> 48
+                  {/* Action buttons */}
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1 px-2 py-1 rounded-full border-2 border-[#1E1B4B] bg-white text-[9px] font-extrabold text-[#1E1B4B]">
+                      ↺ Erase
+                    </div>
+                    <div className="w-7 h-7 rounded-full bg-emerald-500 border-2 border-[#1E1B4B] flex items-center justify-center text-white text-[11px]">↓</div>
+                    <div className="w-7 h-7 rounded-full bg-white border-2 border-[#1E1B4B] flex items-center justify-center text-[#1E1B4B] text-[11px]">⚙</div>
+                    <div className="w-7 h-7 rounded-full bg-purple-600 border-2 border-[#1E1B4B] flex items-center justify-center text-white text-[11px]">👤</div>
                   </div>
                 </div>
 
-                {/* Simulated Lesson Categories */}
-                <div className="grid grid-cols-2 gap-2 text-center text-xs">
-                  <div className="p-3 rounded-xl bg-white border border-purple-100 shadow-sm">
-                    <div className="text-2xl">🔤</div>
-                    <div className="font-extrabold text-[#1E1B4B] mt-1 text-[11px]">Alphabet</div>
+                {/* ── Main Content ── */}
+                <div className="flex-1 px-3 pt-3 overflow-hidden">
+                  {/* Greeting */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-8 h-8 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-base shrink-0">🦊</div>
+                    <div>
+                      <div className="text-[10px] font-bold text-amber-600">🌙 Hello!</div>
+                      <div className="text-[12px] font-black text-[#1E1B4B] leading-tight">Child, what shall we learn?</div>
+                    </div>
                   </div>
-                  <div className="p-3 rounded-xl bg-white border border-purple-100 shadow-sm">
-                    <div className="text-2xl">🔢</div>
-                    <div className="font-extrabold text-[#1E1B4B] mt-1 text-[11px]">Numbers</div>
+
+                  {/* Adventure heading + arrows */}
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[11px] font-black text-[#1E1B4B]">Choose Your Adventure!</span>
+                    <div className="flex items-center gap-1">
+                      <div className="w-6 h-6 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 text-[11px]">‹</div>
+                      <div className="w-6 h-6 rounded-full bg-[#1E1B4B] border border-[#1E1B4B] flex items-center justify-center text-white text-[11px]">›</div>
+                    </div>
                   </div>
-                  <div className="p-3 rounded-xl bg-white border border-purple-100 shadow-sm">
-                    <div className="text-2xl">🔷</div>
-                    <div className="font-extrabold text-[#1E1B4B] mt-1 text-[11px]">Shapes</div>
+
+                  {/* Lesson Cards Carousel — 2 visible, matching real screenshot */}
+                  <div className="flex gap-2 overflow-hidden">
+                    {/* Card 1: Alphabet — red */}
+                    <Link to="/play" className="flex-shrink-0 w-[47%] rounded-3xl bg-[#E8291C] border-2 border-[#1E1B4B] shadow-[3px_4px_0_#1E1B4B] overflow-hidden flex flex-col">
+                      {/* Card header */}
+                      <div className="relative px-3 pt-3 pb-8 flex flex-col items-center" style={{ minHeight: "90px" }}>
+                        {/* Ghost letters */}
+                        <span className="absolute top-2 left-1 text-[22px] font-black text-white/15 leading-none">A</span>
+                        <span className="absolute top-5 right-1 text-[18px] font-black text-white/15 leading-none">C</span>
+                        <span className="absolute bottom-1 left-4 text-[16px] font-black text-white/15 leading-none">B</span>
+                        {/* NEW badge */}
+                        <div className="absolute -top-1 -right-1 bg-amber-400 border-2 border-[#1E1B4B] rounded-xl px-1.5 py-0.5 text-[8px] font-black text-[#1E1B4B]">NEW!</div>
+                        {/* abc icon */}
+                        <div className="w-11 h-10 rounded-xl bg-blue-500 border border-blue-700 flex items-center justify-center mt-1">
+                          <span className="text-[11px] font-black text-white">abc</span>
+                        </div>
+                        {/* Lessons pill */}
+                        <div className="absolute bottom-1.5 left-2 bg-white/90 rounded-full px-2 py-0.5 text-[8px] font-black text-[#1E1B4B]">26 lessons</div>
+                      </div>
+                      {/* Card footer */}
+                      <div className="bg-white px-2 pt-1.5 pb-0.5">
+                        <div className="text-[11px] font-black text-[#1E1B4B]">Alphabet</div>
+                        <div className="text-[9px] text-gray-500 font-semibold">A · B · C</div>
+                      </div>
+                      <div className="bg-[#E8291C] py-1.5 flex items-center justify-center gap-1 border-t-2 border-[#1E1B4B]">
+                        <span className="text-[9px] font-black text-white">▶ Start!</span>
+                      </div>
+                    </Link>
+
+                    {/* Card 2: Phonics — amber/orange */}
+                    <Link to="/play" className="flex-shrink-0 w-[47%] rounded-3xl bg-[#F59E0B] border-2 border-[#1E1B4B] shadow-[3px_4px_0_#1E1B4B] overflow-hidden flex flex-col">
+                      <div className="relative px-3 pt-3 pb-8 flex flex-col items-center" style={{ minHeight: "90px" }}>
+                        <span className="absolute top-2 left-1 text-[22px] font-black text-white/15 leading-none">M</span>
+                        <span className="absolute top-5 right-1 text-[18px] font-black text-white/15 leading-none">T</span>
+                        {/* NEW badge */}
+                        <div className="absolute -top-1 -right-1 bg-amber-300 border-2 border-[#1E1B4B] rounded-xl px-1.5 py-0.5 text-[8px] font-black text-[#1E1B4B]">NEW!</div>
+                        {/* Phonics mascot */}
+                        <div className="text-2xl mt-2">🎙️</div>
+                        {/* Lessons pill */}
+                        <div className="absolute bottom-1.5 left-2 bg-white/90 rounded-full px-2 py-0.5 text-[8px] font-black text-[#1E1B4B]">6 lessons</div>
+                      </div>
+                      <div className="bg-white px-2 pt-1.5 pb-0.5">
+                        <div className="text-[11px] font-black text-[#1E1B4B]">Phonics</div>
+                        <div className="text-[9px] text-gray-500 font-semibold">Learn letter sounds</div>
+                      </div>
+                      <div className="bg-[#F59E0B] py-1.5 flex items-center justify-center gap-1 border-t-2 border-[#1E1B4B]">
+                        <span className="text-[9px] font-black text-white">▶ Start!</span>
+                      </div>
+                    </Link>
                   </div>
-                  <div className="p-3 rounded-xl bg-white border border-purple-100 shadow-sm">
-                    <div className="text-2xl">🐶</div>
-                    <div className="font-extrabold text-[#1E1B4B] mt-1 text-[11px]">Animals</div>
+
+                  {/* Dot navigation indicators */}
+                  <div className="flex items-center justify-center gap-1 mt-2">
+                    <span className="w-4 h-1.5 rounded-full bg-[#1E1B4B]" />
+                    {[1,2,3,4,5,6,7,8,9,10,11].map(i => (
+                      <span key={i} className="w-1.5 h-1.5 rounded-full bg-gray-300" />
+                    ))}
                   </div>
                 </div>
 
-                {/* Simulated Streak Card */}
-                <div className="rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 p-3 text-white text-center space-y-1 shadow-md">
-                  <div className="text-xs font-black">🔥 5-Day Streak Active!</div>
-                  <div className="text-[10px] text-purple-200">Consistency creates confidence</div>
+                {/* ── Bottom Nav Bar (matches real app) ── */}
+                <div className="bg-white border-t-2 border-gray-100 px-2 py-2 grid grid-cols-5 gap-0 shrink-0">
+                  {[
+                    { icon: "🏠", label: "Home", active: true },
+                    { icon: "📖", label: "Learn", active: false },
+                    { icon: "🎮", label: "Games", active: false },
+                    { icon: "🏆", label: "Rewards", active: false },
+                    { icon: "👤", label: "Parent", active: false },
+                  ].map((item) => (
+                    <div key={item.label} className={`flex flex-col items-center gap-0.5 py-1 rounded-xl ${item.active ? "bg-purple-100" : ""}`}>
+                      <span className="text-[14px] leading-none">{item.icon}</span>
+                      <span className={`text-[8px] font-bold ${item.active ? "text-purple-700" : "text-gray-500"}`}>{item.label}</span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Action button inside mockup */}
-                <Link
-                  to="/play"
-                  className="block w-full py-2 rounded-xl bg-amber-400 text-purple-950 text-center text-xs font-black shadow hover:bg-amber-300 transition-colors"
-                >
-                  Start Lesson Now
-                </Link>
               </div>
             </div>
           </div>
+
 
           {/* Right Column: 3 Feature Cards */}
           <div className="md:col-span-4 space-y-4 text-left">
