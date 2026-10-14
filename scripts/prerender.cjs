@@ -137,6 +137,51 @@ const routes = [
     `
   },
   {
+    path: '/guides/offline-educational-apps-toddlers',
+    outputPath: path.join(distDir, 'guides/offline-educational-apps-toddlers/index.html'),
+    title: 'Offline Educational Apps for Toddlers: A Parent’s Checklist | Learn Fun',
+    description: 'Use this parent checklist to compare offline educational apps for toddlers, including Wi-Fi access, ads, purchases, parent controls, and age fit.',
+    canonical: 'https://learnfunkids.vercel.app/guides/offline-educational-apps-toddlers',
+    content: `
+      <main>
+        <article>
+          <p>Parent guide</p>
+          <h1>Offline Educational Apps for Toddlers: A Parent’s Checklist</h1>
+          <p>Before downloading a learning app for a toddler or preschooler, check what works without internet, what your child can tap, and whether the content fits your family’s routine.</p>
+          <p>Last reviewed: October 14, 2026</p>
+          <h2>Start with what “offline” means</h2>
+          <p>Offline support varies. Some apps let families download only selected activities, while others include learning content on the device after installation. Test the exact activities your child will use with Wi-Fi turned off before a trip.</p>
+          <p>Learn Fun’s Android app is designed to work offline after installation. Learn Fun is also available on the web and can be installed as a web app on supported devices and browsers; browser play needs an initial connection to load.</p>
+          <h2>A checklist for choosing an offline learning app</h2>
+          <ol>
+            <li>Check the age range and learning focus.</li>
+            <li>Test offline access before you need it.</li>
+            <li>Read the store listing for ads, purchases, and subscriptions.</li>
+            <li>Look for parent controls and child profiles on shared devices.</li>
+            <li>Review the Google Play data-safety section and privacy policy.</li>
+            <li>Plan for short, shared use alongside conversation, books, movement, and play.</li>
+          </ol>
+          <h2>What parents can check in Learn Fun</h2>
+          <ul>
+            <li>Alphabet activities, phonics, numbers 1–20, shapes, colors, animals, and mini-games for ages 1–5.</li>
+            <li>Offline Android lessons, phonics audio, and mini-games after installation.</li>
+            <li>Free use without ads, subscriptions, or in-app purchases.</li>
+            <li>Local child profiles, progress, rewards, and a six-digit Parent PIN.</li>
+          </ul>
+          <p><a href="/features/phonics">Explore phonics activities</a> · <a href="/features/alphabet">Explore alphabet activities</a> · <a href="/features/numbers">Explore number activities</a></p>
+          <h2>Use apps as one part of learning time</h2>
+          <p>Quality content and a clear family routine matter more than finding a single perfect app. Use learning apps alongside shared reading, conversation, movement, and imaginative play.</p>
+          <h2>Sources for parents</h2>
+          <ul>
+            <li><a href="https://www.healthychildren.org/English/family-life/Media/Pages/How-to-Make-a-Family-Media-Use-Plan.aspx">American Academy of Pediatrics: How to Make a Family Media Plan</a></li>
+            <li><a href="https://www.healthychildren.org/English/family-life/Media/Pages/why-co-viewing-is-important-tips-to-share-screen-time-with-your-kids.aspx">American Academy of Pediatrics: Why Co-Viewing Is Important</a></li>
+          </ul>
+          <p><a href="/play">Play Learn Fun Online</a> · <a href="https://play.google.com/store/apps/details?id=com.learnfunkids.app">Get Learn Fun on Google Play</a></p>
+        </article>
+      </main>
+    `
+  },
+  {
     path: '/play',
     outputPath: path.join(distDir, 'play/index.html'),
     title: 'Learn Fun Play',

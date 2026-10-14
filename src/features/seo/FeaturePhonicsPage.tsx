@@ -17,7 +17,7 @@ export function FeaturePhonicsPage() {
 
       <main className="max-w-4xl mx-auto px-4 py-12 space-y-8 flex-1">
         <div className="space-y-4">
-          <span className="text-xs font-black uppercase tracking-widest text-[#7C3AED] bg-purple-100 px-3 py-1 rounded-full">
+          <span className="block w-fit text-xs font-black uppercase tracking-widest text-[#7C3AED] bg-purple-100 px-3 py-1 rounded-full">
             Educational Feature Deep Dive
           </span>
           <h1 className="text-3xl md:text-5xl font-black text-[#1E1B4B]">

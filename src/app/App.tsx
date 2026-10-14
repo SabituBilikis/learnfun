@@ -5,21 +5,30 @@ import { Capacitor } from "@capacitor/core";
 import { ErrorBoundary } from "@/components/feedback/ErrorBoundary";
 import { AppSplash } from "@/components/feedback/AppSplash";
 import { ScreenTimeEnforcer } from "@/components/layout/ScreenTimeEnforcer";
-import { HomeScreen } from "@/features/home/HomeScreen";
-import { LandingPage } from "@/features/landing/LandingPage";
-import { FeaturePhonicsPage } from "@/features/seo/FeaturePhonicsPage";
-import { FeatureAlphabetPage } from "@/features/seo/FeatureAlphabetPage";
-import { FeatureNumbersPage } from "@/features/seo/FeatureNumbersPage";
 import { useProgress } from "@/hooks/useProgress";
 
-import { AlphabetRoute, LetterLessonRoute, CompleteRoute } from "@/app/routes/alphabetRoutes";
-import { PhonicsRoute, PhonicsLessonRoute } from "@/app/routes/phonicsRoutes";
-import { NumbersRoute, NumberLessonRoute, NumberCompleteRoute } from "@/app/routes/numbersRoutes";
-import { CategoryRoute, CategoryLessonRoute, CategoryCompleteRoute } from "@/app/routes/categoryRoutes";
-import { GamesRoute } from "@/app/routes/gamesRoute";
-import { ParentRoute } from "@/app/routes/parentRoutes";
+// Load page and game code only when its route is opened. This keeps the first
+// visit to a public page from downloading every lesson and mini-game.
+const HomeScreen = lazy(() => import("@/features/home/HomeScreen").then(m => ({ default: m.HomeScreen })));
+const LandingPage = lazy(() => import("@/features/landing/LandingPage").then(m => ({ default: m.LandingPage })));
+const FeaturePhonicsPage = lazy(() => import("@/features/seo/FeaturePhonicsPage").then(m => ({ default: m.FeaturePhonicsPage })));
+const FeatureAlphabetPage = lazy(() => import("@/features/seo/FeatureAlphabetPage").then(m => ({ default: m.FeatureAlphabetPage })));
+const FeatureNumbersPage = lazy(() => import("@/features/seo/FeatureNumbersPage").then(m => ({ default: m.FeatureNumbersPage })));
+const OfflineEducationalAppsGuidePage = lazy(() => import("@/features/seo/OfflineEducationalAppsGuidePage").then(m => ({ default: m.OfflineEducationalAppsGuidePage })));
+const AlphabetRoute = lazy(() => import("@/app/routes/alphabetRoutes").then(m => ({ default: m.AlphabetRoute })));
+const LetterLessonRoute = lazy(() => import("@/app/routes/alphabetRoutes").then(m => ({ default: m.LetterLessonRoute })));
+const CompleteRoute = lazy(() => import("@/app/routes/alphabetRoutes").then(m => ({ default: m.CompleteRoute })));
+const PhonicsRoute = lazy(() => import("@/app/routes/phonicsRoutes").then(m => ({ default: m.PhonicsRoute })));
+const PhonicsLessonRoute = lazy(() => import("@/app/routes/phonicsRoutes").then(m => ({ default: m.PhonicsLessonRoute })));
+const NumbersRoute = lazy(() => import("@/app/routes/numbersRoutes").then(m => ({ default: m.NumbersRoute })));
+const NumberLessonRoute = lazy(() => import("@/app/routes/numbersRoutes").then(m => ({ default: m.NumberLessonRoute })));
+const NumberCompleteRoute = lazy(() => import("@/app/routes/numbersRoutes").then(m => ({ default: m.NumberCompleteRoute })));
+const CategoryRoute = lazy(() => import("@/app/routes/categoryRoutes").then(m => ({ default: m.CategoryRoute })));
+const CategoryLessonRoute = lazy(() => import("@/app/routes/categoryRoutes").then(m => ({ default: m.CategoryLessonRoute })));
+const CategoryCompleteRoute = lazy(() => import("@/app/routes/categoryRoutes").then(m => ({ default: m.CategoryCompleteRoute })));
+const GamesRoute = lazy(() => import("@/app/routes/gamesRoute").then(m => ({ default: m.GamesRoute })));
+const ParentRoute = lazy(() => import("@/app/routes/parentRoutes").then(m => ({ default: m.ParentRoute })));
 
-// Lazy-loaded flows
 const RewardsPage     = lazy(() => import("@/app/modules/rewards").then(m => ({ default: m.RewardsPage })));
 const MemoryMatchGame = lazy(() => import("@/app/modules/memoryMatch").then(m => ({ default: m.MemoryMatchGame })));
 const DragDropGame    = lazy(() => import("@/app/modules/dragDrop").then(m => ({ default: m.DragDropGame })));
@@ -78,6 +87,7 @@ export default function App() {
           <Route path="/features/phonics" element={<FeaturePhonicsPage />} />
           <Route path="/features/alphabet" element={<FeatureAlphabetPage />} />
           <Route path="/features/numbers" element={<FeatureNumbersPage />} />
+          <Route path="/guides/offline-educational-apps-toddlers" element={<OfflineEducationalAppsGuidePage />} />
 
           {/* Main Interactive Learning App / Game Routes */}
           <Route path="/play" element={<HomeScreen />} />

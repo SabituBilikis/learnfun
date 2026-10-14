@@ -154,7 +154,7 @@ export function LandingPage() {
             to="/play"
             className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white text-sm md:text-base font-extrabold shadow-lg shadow-blue-300 hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2"
           >
-            <span>GET STARTED</span>
+            <span>PLAY ONLINE</span>
             <span className="text-sm">›</span>
           </Link>
           <a
@@ -247,39 +247,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* ── 3. Trust & Core Values Bar (Matching Reference Partner Bar) ─── */}
-      <section className="border-y border-gray-200/70 bg-white py-8 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="shrink-0">
-            <span className="text-xs font-black uppercase tracking-wider text-gray-400 block">
-              BUILT FOR EARLY CHILDHOOD 💙
-            </span>
-            <span className="text-sm font-extrabold text-[#1E1B4B]">
-              Core Commitments to Parents & Educators
-            </span>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-6 text-xs sm:text-sm font-bold text-gray-700">
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
-              <span className="text-blue-600">✓</span> 100% Offline-First
-            </span>
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
-              <span className="text-blue-600">✓</span> Zero Third-Party Ads
-            </span>
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
-              <span className="text-blue-600">✓</span> Human Voice Audio
-            </span>
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
-              <span className="text-blue-600">✓</span> Child-Proof PIN Gate
-            </span>
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100">
-              <span className="text-blue-600">✓</span> Ages 1–5 Tailored
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. Split Section 1: Phonics & Language (Media Left / Content Right) ─── */}
+      {/* ── 3. Split Section 1: Phonics & Language (Media Left / Content Right) ─── */}
       <section id="phonics" className="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Media / Visual Graphic on Left — Real App UI Recreation */}
@@ -394,7 +362,7 @@ export function LandingPage() {
 
           {/* Text Content on Right (Matching Reference Bullet Style) */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
+            <span className="block w-fit text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
               Learn Letter Sounds with Phonics
             </span>
 
@@ -462,7 +430,7 @@ export function LandingPage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Text Content on Left */}
           <div className="lg:col-span-7 space-y-6 text-left order-2 lg:order-1">
-            <span className="text-xs font-black uppercase tracking-wider text-amber-700 bg-amber-50 px-3.5 py-1.5 rounded-full">
+            <span className="block w-fit text-xs font-black uppercase tracking-wider text-amber-700 bg-amber-50 px-3.5 py-1.5 rounded-full">
               Learn Numbers 1–20 Through Play
             </span>
 
@@ -639,7 +607,7 @@ export function LandingPage() {
         <div className="hidden md:block absolute bottom-1/3 right-20 text-rose-400 text-xl select-none opacity-50">✳</div>
 
         <div className="max-w-2xl mx-auto space-y-3">
-          <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-white border border-blue-100 px-3.5 py-1.5 rounded-full shadow-sm">
+          <span className="block w-fit mx-auto text-xs font-black uppercase tracking-wider text-blue-600 bg-white border border-blue-100 px-3.5 py-1.5 rounded-full shadow-sm">
             All-In-One Toddler Platform
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
@@ -854,7 +822,7 @@ export function LandingPage() {
         <div className="max-w-6xl mx-auto space-y-16">
           {/* Transparency Heading */}
           <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-xs font-black uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3.5 py-1.5 rounded-full">
+            <span className="block w-fit mx-auto text-xs font-black uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3.5 py-1.5 rounded-full">
               Always Free — No Hidden Costs
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
@@ -926,7 +894,7 @@ export function LandingPage() {
           {/* ── 2x2 FAQ Accordion / Grid ── */}
           <div id="faq" className="pt-8 space-y-8 max-w-4xl mx-auto">
             <div className="text-center space-y-2">
-              <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
+              <span className="block w-fit mx-auto text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
                 Parent Questions Answered
               </span>
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-[#1E1B4B]">
@@ -959,7 +927,7 @@ export function LandingPage() {
       {/* ── 8. Educational Resources Hub (Matching Reference Article Grid) ─── */}
       <section id="resources" className="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full space-y-12 text-center">
         <div className="max-w-2xl mx-auto space-y-3">
-          <span className="text-xs font-black uppercase tracking-wider text-purple-600 bg-purple-50 px-3.5 py-1.5 rounded-full">
+          <span className="block w-fit mx-auto text-xs font-black uppercase tracking-wider text-purple-600 bg-purple-50 px-3.5 py-1.5 rounded-full">
             Early Childhood Learning Guides
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
@@ -970,7 +938,24 @@ export function LandingPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          <Link
+            to="/guides/offline-educational-apps-toddlers"
+            className="group rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
+          >
+            <div className="h-44 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 p-6 flex flex-col justify-between text-white relative overflow-hidden">
+              <div className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-white/10 blur-sm" />
+              <span className="text-xs font-black uppercase tracking-wider bg-white/20 backdrop-blur-md px-3 py-1 rounded-full w-max">Parent checklist</span>
+              <div className="text-4xl">✈️</div>
+            </div>
+            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-base font-extrabold text-[#1E1B4B] group-hover:text-blue-600 transition-colors">Offline Educational Apps for Toddlers</h3>
+                <p className="text-xs text-gray-600 font-medium mt-2 leading-relaxed">A practical checklist for checking offline access, ads, purchases, parent controls, and app fit before you download.</p>
+              </div>
+              <div className="pt-4 flex items-center text-xs font-bold text-blue-600 gap-1"><span>Read the guide</span><span>›</span></div>
+            </div>
+          </Link>
           {/* Resource Card 1 - Phonics */}
           <Link
             to="/features/phonics"
@@ -986,10 +971,10 @@ export function LandingPage() {
             <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-base font-extrabold text-[#1E1B4B] group-hover:text-blue-600 transition-colors">
-                  Why Human Voice Audio Matters in Phonics Learning
+                  Explore Phonics Audio and Letter Sounds
                 </h3>
                 <p className="text-xs text-gray-600 font-medium mt-2 leading-relaxed">
-                  Discover how authentic human speech articulation helps toddlers develop clean phonemic awareness faster than synthetic speech.
+                  Explore letter sounds, visual vocabulary prompts, and audio support in Learn Fun&apos;s phonics activities.
                 </p>
               </div>
               <div className="pt-4 flex items-center text-xs font-bold text-blue-600 gap-1">

@@ -58,6 +58,14 @@
       "destination": "/features/numbers/index.html"
     },
     {
+      "source": "/guides/offline-educational-apps-toddlers",
+      "destination": "/guides/offline-educational-apps-toddlers/index.html"
+    },
+    {
+      "source": "/guides/offline-educational-apps-toddlers/",
+      "destination": "/guides/offline-educational-apps-toddlers/index.html"
+    },
+    {
       "source": "/play/(.*)",
       "destination": "/play/index.html"
     },
