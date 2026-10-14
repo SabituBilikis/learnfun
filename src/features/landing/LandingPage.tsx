@@ -82,7 +82,6 @@ export function LandingPage() {
           <a href="#phonics" className="hover:text-[#2563EB] transition-colors">Phonics</a>
           <a href="#numbers" className="hover:text-[#2563EB] transition-colors">Numbers & Math</a>
           <a href="#showcase" className="hover:text-[#2563EB] transition-colors">App Features</a>
-          <a href="#pricing" className="hover:text-[#2563EB] transition-colors">100% Free</a>
           <a href="#faq" className="hover:text-[#2563EB] transition-colors">Parent FAQ</a>
           <a href="#resources" className="hover:text-[#2563EB] transition-colors">Resources</a>
         </nav>
@@ -121,7 +120,6 @@ export function LandingPage() {
           <a href="#phonics" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Phonics</a>
           <a href="#numbers" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Numbers & Math</a>
           <a href="#showcase" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">App Features</a>
-          <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">100% Free</a>
           <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Parent FAQ</a>
           <a href="#resources" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Resources</a>
         </div>
