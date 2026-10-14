@@ -51,8 +51,8 @@ export function LandingPage() {
       a: "Learn Fun is thoughtfully designed for toddlers and preschoolers aged 1 to 5 years old. The interface has high-contrast visuals, large touch targets, and intuitive audio feedback suited for little fingers."
     },
     {
-      q: "How does the human-recorded voice phonics system work?",
-      a: "Unlike robotic synthetic speech engines that can mispronounce early letter sounds, Learn Fun utilizes natural human voice recordings for phonics, helping children develop accurate articulation and phonemic awareness."
+      q: "How does phonics audio work in Learn Fun?",
+      a: "Learn Fun combines interactive letter-sound activities with locally packaged audio for selected phonics lessons and spoken feedback where it is available."
     },
     {
       q: "How does the star unlock and streak system motivate kids?",
@@ -145,7 +145,7 @@ export function LandingPage() {
 
         {/* Hero Subtitle */}
         <p className="text-base sm:text-lg text-gray-600 font-medium max-w-2xl mt-5 leading-relaxed">
-          An ad-free, interactive learning world helping toddlers and preschoolers master ABCs, human audio phonics, numbers 1–20, shapes, colors, and mini-games.
+          An ad-free, interactive learning world helping toddlers and preschoolers explore ABCs, phonics, numbers 1–20, shapes, colors, and mini-games.
         </p>
 
         {/* Dual Centered CTAs */}
@@ -399,11 +399,11 @@ export function LandingPage() {
             </span>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B] leading-tight">
-              Work smarter with clear, human-recorded voice phonics
+              Explore letter sounds with interactive phonics activities
             </h2>
 
             <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
-              Every letter of the alphabet comes with recorded human voice pronunciation, paired with recognizable visual vocabulary words to anchor early phonetic awareness.
+              Children can explore letter sounds alongside recognizable visual vocabulary words, with locally packaged audio available for selected phonics lessons.
             </p>
 
             <div className="space-y-4 pt-2">
@@ -414,7 +414,7 @@ export function LandingPage() {
                 <div>
                   <h3 className="text-base font-extrabold text-[#1E1B4B]">Human Voice Clarity</h3>
                   <p className="text-xs sm:text-sm text-gray-600 font-medium mt-0.5">
-                    Real recorded voice clips rather than robotic text-to-speech, ensuring toddlers hear authentic articulation and phonics.
+                    Selected phonics lessons include locally packaged recordings, alongside spoken feedback where supported by the device.
                   </p>
                 </div>
               </div>
@@ -670,7 +670,7 @@ export function LandingPage() {
               </div>
               <h3 className="text-base font-extrabold text-[#1E1B4B]">Human Voice Phonics</h3>
               <p className="text-xs text-gray-600 font-medium leading-relaxed">
-                Authentic, gentle spoken pronunciations for every letter and vocabulary word to nurture natural speech.
+                Interactive letter-sound activities with audio support and visual vocabulary prompts.
               </p>
             </div>
 

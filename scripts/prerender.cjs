@@ -29,7 +29,7 @@ const routes = [
       <main>
         <section>
           <h1>Learn Fun – Offline Learning App for Toddlers & Preschoolers</h1>
-          <p>Help little learners ages 1–5 explore ABCs, human audio phonics, numbers 1–20, shapes, colors, animals, and mini-games in a safe, ad-free environment.</p>
+          <p>Help little learners ages 1–5 explore ABCs, phonics, numbers 1–20, shapes, colors, animals, and mini-games in a safe, ad-free environment.</p>
           <div style="margin: 24px 0; border-radius: 20px; overflow: hidden; background: #FFFFFF; border: 1px solid #E5E7EB; box-shadow: 0 20px 50px rgba(0,0,0,0.12);">
             <div style="padding: 12px 16px; display: flex; align-items: center; gap: 12px; background: #FFFFFF; border-bottom: 1px solid #F3F4F6;">
               <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #FF5F56;"></span>
@@ -44,7 +44,7 @@ const routes = [
         </section>
         <section>
           <h2>Phonics & Speech Foundation</h2>
-          <p>Work smarter with clear, human-recorded voice phonics. Every letter of the alphabet comes with recorded human voice pronunciation, paired with recognizable visual vocabulary words.</p>
+          <p>Explore letter sounds, visual vocabulary words, and selected human-recorded phonics clips in interactive lessons.</p>
           <a href="/features/phonics">Learn More About Phonics</a>
         </section>
         <section>
@@ -56,7 +56,7 @@ const routes = [
           <h2>Everything Your Child Needs in One Safe App</h2>
           <ul>
             <li>100% Offline-First (No Wi-Fi Needed)</li>
-            <li>Human Voice Phonics Recording</li>
+            <li>Interactive Phonics Audio</li>
             <li>6 Interactive Mini-Games</li>
             <li>Star Rewards & Learning Streaks</li>
             <li>Child-Proof Parent PIN Security Gate</li>
@@ -70,7 +70,7 @@ const routes = [
         <section>
           <h2>Useful Resources for Parents & Educators</h2>
           <ul>
-            <li><a href="/features/phonics">Why Human Voice Audio Matters in Phonics Learning</a></li>
+            <li><a href="/features/phonics">Explore Phonics Audio in Learn Fun</a></li>
             <li><a href="/features/alphabet">The Foundation of Early Letter Recognition & ABCs</a></li>
             <li><a href="/features/numbers">Building Concrete Number Sense from 1 to 20</a></li>
           </ul>
@@ -89,15 +89,15 @@ const routes = [
     path: '/features/phonics',
     outputPath: path.join(distDir, 'features/phonics/index.html'),
     title: 'Phonics & Sound Experience for Preschoolers | Learn Fun',
-    description: 'Explore human-recorded phonics audio and speech sounds in Learn Fun. Help toddlers and preschoolers learn letter pronunciations offline.',
+    description: 'Explore phonics audio and letter-sound activities in Learn Fun. Help toddlers and preschoolers practise early pronunciation offline.',
     canonical: 'https://learnfunkids.vercel.app/features/phonics',
     h1: 'Phonics & Sound Experience for Preschoolers',
     content: `
       <main>
         <h1>Phonics & Sound Experience for Preschoolers</h1>
-        <p>Discover how Learn Fun helps toddlers aged 1–5 master letter sounds and early pronunciation using human-recorded audio recordings and interactive sound exploration.</p>
-        <h2>Human Voice Recorded Audio</h2>
-        <p>Learn Fun uses real human voice clips for phonics lessons, ensuring clear and accurate phonetic pronunciations for every letter from A to Z.</p>
+        <p>Discover how Learn Fun helps toddlers aged 1–5 explore letter sounds and early pronunciation through interactive sound activities.</p>
+        <h2>Phonics Audio and Sound Exploration</h2>
+        <p>Learn Fun pairs letter-sound activities with locally packaged audio for selected phonics lessons and visual vocabulary prompts.</p>
         <a href="/play">Play Phonics Game Online</a>
       </main>
     `
@@ -114,7 +114,7 @@ const routes = [
         <h1>Alphabet & Letter Learning for Toddlers</h1>
         <p>Help your toddler explore A to Z uppercase and lowercase letters, vocabulary words, and interactive picture association.</p>
         <h2>Interactive A–Z Vocabulary Building</h2>
-        <p>Learn Fun presents letter learning through visual engagement and real voice audio for all 26 letters of the alphabet.</p>
+        <p>Learn Fun presents all 26 letters through visual engagement, uppercase and lowercase pairs, and vocabulary prompts.</p>
         <a href="/play">Play Alphabet Game Online</a>
       </main>
     `
@@ -135,6 +135,20 @@ const routes = [
         <a href="/play">Play Numbers Game Online</a>
       </main>
     `
+  },
+  {
+    path: '/play',
+    outputPath: path.join(distDir, 'play/index.html'),
+    title: 'Learn Fun Play',
+    description: 'Open the Learn Fun interactive learning app for children ages 1–5.',
+    canonical: 'https://learnfunkids.vercel.app/play',
+    robots: 'noindex, follow',
+    content: `
+      <main>
+        <h1>Learn Fun Play</h1>
+        <p>Open the interactive Learn Fun learning app.</p>
+      </main>
+    `
   }
 ];
 
@@ -144,43 +158,57 @@ routes.forEach(route => {
     fs.mkdirSync(dir, { recursive: true });
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
+  const appSchema = {
         "@type": "SoftwareApplication",
         "@id": "https://learnfunkids.vercel.app/#app",
         "name": "Learn Fun",
         "url": "https://learnfunkids.vercel.app/",
         "operatingSystem": "Web, Android, PWA",
         "applicationCategory": "EducationalApplication",
-        "educationalUse": "Early Childhood Education, Preschool Learning, Phonics, Mathematics",
+        "educationalUse": "Early Childhood Education, Preschool Learning, Phonics, Number Recognition",
         "audience": {
           "@type": "EducationalAudience",
           "educationalRole": "student",
           "suggestedMinAge": "1",
           "suggestedMaxAge": "5"
         },
-        "description": route.description,
+        "description": "Learn Fun is a free educational app for children ages 1–5 with alphabet, phonics, numbers, shapes, colors, animals, and interactive mini-games.",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
         }
-      },
-      {
+      };
+  const websiteSchema = {
         "@type": "WebSite",
         "@id": "https://learnfunkids.vercel.app/#website",
         "url": "https://learnfunkids.vercel.app/",
         "name": "Learn Fun",
         "description": "Offline early learning app for toddlers and preschoolers aged 1-5."
-      }
-    ]
+      };
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": route.path === '/'
+      ? [appSchema, websiteSchema]
+      : [{
+          "@type": "WebPage",
+          "@id": `${route.canonical}#webpage`,
+          "url": route.canonical,
+          "name": route.title,
+          "description": route.description,
+          "isPartOf": { "@id": "https://learnfunkids.vercel.app/#website" }
+        }]
   };
 
   let html = baseTemplate;
   html = html.replace(/<title>.*?<\/title>/, `<title>${route.title}</title>`);
   html = html.replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${route.description}" />`);
+  html = html.replace(/<meta name="robots" content=".*?" \/>/, `<meta name="robots" content="${route.robots ?? "index, follow"}" />`);
+  html = html.replace(/<meta property="og:title" content=".*?" \/>/, `<meta property="og:title" content="${route.title}" />`);
+  html = html.replace(/<meta property="og:description" content=".*?" \/>/, `<meta property="og:description" content="${route.description}" />`);
+  html = html.replace(/<meta property="og:url" content=".*?" \/>/, `<meta property="og:url" content="${route.canonical}" />`);
+  html = html.replace(/<meta name="twitter:title" content=".*?" \/>/, `<meta name="twitter:title" content="${route.title}" />`);
+  html = html.replace(/<meta name="twitter:description" content=".*?" \/>/, `<meta name="twitter:description" content="${route.description}" />`);
   
   if (!html.includes('<link rel="canonical"')) {
     html = html.replace('</head>', `  <link rel="canonical" href="${route.canonical}" />\n  </head>`);
