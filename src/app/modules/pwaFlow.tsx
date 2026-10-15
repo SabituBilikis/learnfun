@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 import { C } from "../constants";
 import { CTAButton, Sparkle } from "./primitives";
 import { RainingConfetti } from "./lessonComplete";
-import learnFunLogo from "@/imports/Learn_fun.png";
+import { learnFunLogo } from "@/lib/branding";
 
 // ── App icon ─────────────────────────────────────────────────────────────────
 export function LearnFunIcon({ size = 72 }: { size?: number }) {

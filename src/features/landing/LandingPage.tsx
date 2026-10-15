@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import learnFunLogo from "@/imports/Learn_fun.png";
+import { learnFunLogo } from "@/lib/branding";
 import { speak } from "@/lib/speech";
 
 export function LandingPage() {
@@ -83,6 +83,7 @@ export function LandingPage() {
           <a href="#numbers" className="hover:text-[#2563EB] transition-colors">Numbers & Math</a>
           <a href="#showcase" className="hover:text-[#2563EB] transition-colors">App Features</a>
           <a href="#faq" className="hover:text-[#2563EB] transition-colors">Parent FAQ</a>
+          <a href="/blog" className="hover:text-[#2563EB] transition-colors">Blog</a>
           <a href="#resources" className="hover:text-[#2563EB] transition-colors">Resources</a>
         </nav>
 
@@ -121,6 +122,7 @@ export function LandingPage() {
           <a href="#numbers" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Numbers & Math</a>
           <a href="#showcase" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">App Features</a>
           <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Parent FAQ</a>
+          <a href="/blog" className="py-1 text-gray-700 hover:text-blue-600">Blog</a>
           <a href="#resources" onClick={() => setMobileMenuOpen(false)} className="py-1 text-gray-700 hover:text-blue-600">Resources</a>
         </div>
       )}
@@ -320,7 +322,7 @@ export function LandingPage() {
                     {/* Purple "Tap to hear sound" button */}
                     <button onClick={() => handlePlayPhonics(selectedPhonicsLetter)}
                       className={`w-full py-3.5 rounded-3xl border-2 border-[#1E1B4B] shadow-[3px_5px_0_#1E1B4B] flex items-center justify-center gap-2 text-sm font-extrabold transition-all active:scale-95 active:shadow-none active:translate-y-1 ${
-                        isPlayingAudio ? "bg-amber-400 text-[#1E1B4B]" : "bg-[#7C3AED] text-white"
+                        isPlayingAudio ? "bg-[#1D4ED8] text-white" : "bg-[#2563EB] text-white"
                       }`}>
                       <span className="text-base">🔊</span>
                       {isPlayingAudio ? "Playing..." : "Tap to hear sound"}
@@ -664,9 +666,7 @@ export function LandingPage() {
                 <div className="flex items-center justify-between px-3 py-3 bg-white border-b border-gray-100 shrink-0">
                   {/* Logo */}
                   <div className="flex items-center gap-1.5">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center border border-amber-600 shadow-sm">
-                      <span className="text-[11px] font-black text-white leading-none">LF</span>
-                    </div>
+                    <img src={learnFunLogo} alt="Learn Fun" className="h-9 w-auto object-contain" />
                   </div>
                   {/* Action buttons */}
                   <div className="flex items-center gap-1.5">
@@ -923,9 +923,9 @@ export function LandingPage() {
       </section>
 
       {/* ── 8. Educational Resources Hub (Matching Reference Article Grid) ─── */}
-      <section id="resources" className="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full space-y-12 text-center">
+      <section id="resources" className="bg-white py-20 px-4 md:px-8 max-w-6xl mx-auto w-full space-y-12 text-center">
         <div className="max-w-2xl mx-auto space-y-3">
-          <span className="block w-fit mx-auto text-xs font-black uppercase tracking-wider text-purple-600 bg-purple-50 px-3.5 py-1.5 rounded-full">
+          <span className="block w-fit mx-auto text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full">
             Early Childhood Learning Guides
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1E1B4B]">
@@ -982,33 +982,33 @@ export function LandingPage() {
             </div>
           </Link>
 
-          {/* Resource Card 2 - Alphabet */}
-          <Link
-            to="/features/alphabet"
+          {/* Resource Card 2 - Parent blog article */}
+          <a
+            href="/blog/offline-learning-apps-for-toddlers"
             className="group rounded-3xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col"
           >
             <div className="h-44 bg-gradient-to-br from-blue-500 via-sky-500 to-teal-400 p-6 flex flex-col justify-between text-white relative overflow-hidden">
               <div className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-white/10 blur-sm" />
               <span className="text-xs font-black uppercase tracking-wider bg-white/20 backdrop-blur-md px-3 py-1 rounded-full w-max">
-                Letter Mastery
+                Parent blog
               </span>
-              <div className="text-4xl">🔤</div>
+              <div className="text-4xl" aria-hidden="true">??</div>
             </div>
             <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-base font-extrabold text-[#1E1B4B] group-hover:text-blue-600 transition-colors">
-                  The Foundation of Early Letter Recognition & ABCs
+                  Free Offline Learning Apps for Ages 2?5
                 </h3>
                 <p className="text-xs text-gray-600 font-medium mt-2 leading-relaxed">
-                  Learn how uppercase and lowercase letter pairs combined with concrete vocabulary build preschool reading readiness.
+                  Explore app examples, playful learning ideas, and what to check before downloading an offline learning app.
                 </p>
               </div>
               <div className="pt-4 flex items-center text-xs font-bold text-blue-600 gap-1">
-                <span>Read Full Guide</span>
-                <span>›</span>
+                <span>Read the guide</span>
+                <span aria-hidden="true">?</span>
               </div>
             </div>
-          </Link>
+          </a>
 
           {/* Resource Card 3 - Numbers */}
           <Link

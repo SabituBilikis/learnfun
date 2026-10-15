@@ -13,7 +13,12 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "auto",
-      includeAssets: ["icon.svg", "icon-192x192.png", "icon-512x512.png"],
+      includeAssets: ["learn-fun-logo.jpg", "apple-touch-icon.png", "icon-192x192.png", "icon-512x512.png"],
+      // Editorial URLs must receive their own HTML rather than the cached
+      // homepage used as the interactive app's navigation fallback.
+      workbox: {
+        navigateFallbackDenylist: [/^\/(?:blog|features|guides)(?:\/|$)/, /^\/privacy\.html$/],
+      },
       manifest: {
         name: "Learn Fun",
         short_name: "LearnFun",

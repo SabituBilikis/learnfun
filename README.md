@@ -31,6 +31,14 @@ npm run dev
 
 React 18 · TypeScript (strict) · Vite 6 · Tailwind CSS v4 · Motion (Framer Motion) · Vitest + React Testing Library
 
+## Search and public website measurement
+
+See [the measurement setup and private dashboard guide](docs/search-measurement.md).
+Collection is disabled by default; `.env.example` documents activation.
+`npm run build` renders the actual public React pages and validates their HTML
+and sitemap. After an approved deployment, `npm run seo:audit-live` checks the
+public responses without requesting indexing or sending analytics events.
+
 ## Android release
 
 LearnFun now includes a Capacitor Android app. See `docs/android-play-release.md` for the Google Play release process.

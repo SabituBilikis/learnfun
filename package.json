@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm run typecheck && vite build && node scripts/prerender.cjs",
+    "build": "npm run typecheck && vite build && vite build --config vite.prerender.config.ts && node scripts/prerender.cjs && node scripts/verify-blog.cjs",
     "cap:sync": "npm run build && npx cap sync android",
     "cap:android": "npx cap open android",
     "cap:android:debug": "npm run cap:sync && cd android && gradlew.bat assembleDebug",
@@ -19,7 +19,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "seo:verify": "node scripts/verify-blog.cjs",
+    "seo:audit-live": "node scripts/audit-live-seo.cjs"
   },
   "dependencies": {
     "@capacitor-community/text-to-speech": "^8.0.2",

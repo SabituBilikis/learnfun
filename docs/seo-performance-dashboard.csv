@@ -1,0 +1,20 @@
+period_start,period_end,source,metric,current_value,previous_value,notes
+,,Search Console,google_clicks,,,Access required
+,,Search Console,google_impressions,,,Access required
+,,Search Console,google_ctr,,,Access required
+,,Search Console,indexed_public_pages,,,Not the sitemap URL count
+,,Search Console,top_relevant_queries,,,Use a separate authorized aggregate export
+,,Plausible,known_organic_visits,,,Collection disabled until configured
+,,Plausible,homepage_pageviews,,,
+,,Plausible,article_pageviews,,,
+,,Plausible,feature_pageviews,,,
+,,Plausible,play_online_clicks,,,
+,,Plausible,outbound_google_play_clicks,,,Not installs
+,,Plausible,identifiable_ai_referral_visits,,,Partial attribution only
+,,Plausible,ai_referral_google_play_clicks,,,
+,,Play Console,store_listing_visitors,,,Access required
+,,Play Console,store_listing_clicks,,,Not completed acquisitions
+,,Play Console,completed_acquisitions,,,Report available attribution separately
+,,Search Console,available_google_ai_visibility,,,Check report availability and avoid overlapping totals
+,,PageSpeed Insights,mobile_lab_lcp,,,Lab result not field data
+,,Manual,deployment_annotation,,,Record verified deployment and collection start dates

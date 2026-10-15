@@ -1,16 +1,16 @@
 import { Link } from "react-router";
-import learnFunLogo from "@/imports/Learn_fun.png";
+import { learnFunLogo } from "@/lib/branding";
 
 const googlePlayUrl = "https://play.google.com/store/apps/details?id=com.learnfunkids.app";
 
 export function OfflineEducationalAppsGuidePage() {
   return (
-    <div className="min-h-screen bg-[#F3EEFF] text-[#1E1B4B] font-fredoka flex flex-col">
-      <header className="bg-white border-b border-purple-100 px-4 md:px-8 py-4 flex items-center justify-between">
+    <div className="min-h-screen bg-white text-[#1E1B4B] font-fredoka flex flex-col">
+      <header className="bg-white border-b border-gray-100 px-4 md:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2" aria-label="Learn Fun home">
-          <img src={learnFunLogo} alt="Learn Fun" className="h-9 w-auto object-contain mix-blend-multiply" />
+          <img src={learnFunLogo} alt="Learn Fun" className="h-12 w-auto object-contain mix-blend-multiply" />
         </Link>
-        <Link to="/play" className="px-4 py-2 rounded-xl bg-[#7C3AED] text-white text-xs font-extrabold">
+        <Link to="/play" className="px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] transition-colors text-white text-xs font-extrabold">
           Play Free Online
         </Link>
       </header>
@@ -18,7 +18,7 @@ export function OfflineEducationalAppsGuidePage() {
       <main className="max-w-4xl mx-auto px-4 py-12 space-y-10 flex-1">
         <article className="space-y-8">
           <header className="space-y-4">
-            <span className="block w-fit text-xs font-black uppercase tracking-widest text-[#7C3AED] bg-purple-100 px-3 py-1 rounded-full">
+            <span className="block w-fit text-xs font-black uppercase tracking-widest text-[#2563EB] bg-blue-50 px-3 py-1 rounded-full">
               Parent guide
             </span>
             <h1 className="text-3xl md:text-5xl font-black leading-tight">
@@ -30,7 +30,7 @@ export function OfflineEducationalAppsGuidePage() {
             <p className="text-sm text-gray-500">Last reviewed: October 14, 2026</p>
           </header>
 
-          <section className="bg-white p-6 md:p-8 rounded-3xl border border-purple-100 shadow-sm space-y-4">
+          <section className="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4">
             <h2 className="text-2xl font-bold">Start with what “offline” means</h2>
             <p className="text-gray-700 leading-relaxed">
               “Works offline” can mean different things. Some apps let families download a small selection of activities; others include their learning content on the device after installation. Before leaving Wi-Fi, open the app once, try a lesson with airplane mode on, and check whether the parts your child uses still open.
@@ -52,7 +52,7 @@ export function OfflineEducationalAppsGuidePage() {
             </ol>
           </section>
 
-          <section className="bg-white p-6 md:p-8 rounded-3xl border border-purple-100 space-y-4 shadow-sm">
+          <section className="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 space-y-4 shadow-sm">
             <h2 className="text-2xl font-bold">What parents can check in Learn Fun</h2>
             <ul className="space-y-3 text-gray-700 leading-relaxed">
               <li><strong>Learning topics:</strong> alphabet activities, phonics, numbers 1–20, shapes, colors, animals, and mini-games for children ages 1–5.</li>
@@ -62,9 +62,9 @@ export function OfflineEducationalAppsGuidePage() {
               <li><strong>Where to use it:</strong> play on the web, install the web app on supported devices and browsers, or download the Android app from Google Play.</li>
             </ul>
             <div className="flex flex-wrap gap-3 pt-2">
-              <Link to="/features/phonics" className="text-sm font-bold text-[#7C3AED] hover:underline">Explore phonics activities</Link>
-              <Link to="/features/alphabet" className="text-sm font-bold text-[#7C3AED] hover:underline">Explore alphabet activities</Link>
-              <Link to="/features/numbers" className="text-sm font-bold text-[#7C3AED] hover:underline">Explore number activities</Link>
+              <Link to="/features/phonics" className="text-sm font-bold text-[#2563EB] hover:text-[#1D4ED8]">Explore phonics activities</Link>
+              <Link to="/features/alphabet" className="text-sm font-bold text-[#2563EB] hover:text-[#1D4ED8]">Explore alphabet activities</Link>
+              <Link to="/features/numbers" className="text-sm font-bold text-[#2563EB] hover:text-[#1D4ED8]">Explore number activities</Link>
             </div>
           </section>
 
@@ -87,25 +87,26 @@ export function OfflineEducationalAppsGuidePage() {
             </div>
           </section>
 
-          <section className="bg-purple-900 text-white p-6 md:p-8 rounded-3xl space-y-4 shadow-md">
+          <section className="bg-white border border-gray-100 text-[#1E1B4B] p-6 md:p-8 rounded-3xl space-y-4 shadow-md">
             <h2 className="text-2xl font-bold">Try Learn Fun before your next offline moment</h2>
-            <p className="text-purple-100 leading-relaxed">Play in a browser now, or install Learn Fun from Google Play before a journey or a day with limited internet.</p>
+            <p className="text-gray-600 leading-relaxed">Play in a browser now, or install Learn Fun from Google Play before a journey or a day with limited internet.</p>
             <div className="flex flex-wrap gap-4 items-center">
-              <Link to="/play" className="px-6 py-3 rounded-xl bg-amber-400 text-purple-950 font-black text-sm">Play Learn Fun Online</Link>
+              <Link to="/play" className="px-6 py-3 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] transition-colors text-white font-black text-sm">Play Learn Fun Online</Link>
               <a href={googlePlayUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:scale-105 transition-transform"><img src="/google-play-badge.svg" alt="Get Learn Fun on Google Play" className="h-12 w-auto" /></a>
             </div>
           </section>
 
-          <footer className="text-sm text-gray-600 space-y-2 border-t border-purple-100 pt-6">
+          <footer className="text-sm text-gray-600 space-y-2 border-t border-gray-100 pt-6">
             <h2 className="text-lg font-bold text-[#1E1B4B]">Sources for parents</h2>
-            <p><a className="text-[#7C3AED] hover:underline" href="https://www.healthychildren.org/English/family-life/Media/Pages/How-to-Make-a-Family-Media-Use-Plan.aspx" target="_blank" rel="noopener noreferrer">American Academy of Pediatrics: How to Make a Family Media Plan</a></p>
-            <p><a className="text-[#7C3AED] hover:underline" href="https://www.healthychildren.org/English/family-life/Media/Pages/why-co-viewing-is-important-tips-to-share-screen-time-with-your-kids.aspx" target="_blank" rel="noopener noreferrer">American Academy of Pediatrics: Why Co-Viewing Is Important</a></p>
+            <p><a className="text-[#2563EB] hover:text-[#1D4ED8]" href="https://www.healthychildren.org/English/family-life/Media/Pages/How-to-Make-a-Family-Media-Use-Plan.aspx" target="_blank" rel="noopener noreferrer">American Academy of Pediatrics: How to Make a Family Media Plan</a></p>
+            <p><a className="text-[#2563EB] hover:text-[#1D4ED8]" href="https://www.healthychildren.org/English/family-life/Media/Pages/why-co-viewing-is-important-tips-to-share-screen-time-with-your-kids.aspx" target="_blank" rel="noopener noreferrer">American Academy of Pediatrics: Why Co-Viewing Is Important</a></p>
           </footer>
         </article>
+        <aside className="bg-white p-6 rounded-3xl border border-gray-100 text-base leading-relaxed"><h2 className="text-xl font-bold">Choosing an app for offline learning?</h2><p>Read our <a href="/blog/offline-learning-apps-for-toddlers" className="text-[#2563EB]">guide to free offline learning apps for ages 2?5</a> for activity ideas, app examples and practical checks.</p><a href="/blog" className="text-[#2563EB]">All parent guides</a></aside>
       </main>
 
-      <footer className="bg-white border-t border-purple-100 py-6 px-4 text-center text-xs text-gray-500 font-medium">
-        <Link to="/" className="text-[#7C3AED] hover:underline">Back to Learn Fun home</Link>
+      <footer className="bg-white border-t border-gray-100 py-6 px-4 text-center text-xs text-gray-500 font-medium">
+        <Link to="/" className="text-[#2563EB] hover:text-[#1D4ED8]">Back to Learn Fun home</Link>
       </footer>
     </div>
   );

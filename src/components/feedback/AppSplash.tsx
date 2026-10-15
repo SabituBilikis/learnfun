@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { C } from "@/app/constants";
 import { Sparkle } from "@/components/feedback/Sparkle";
-import learnFunLogo from "@/imports/Learn_fun.png";
+import { learnFunLogo } from "@/lib/branding";
 
 export function AppSplash({ onDone }: { onDone: () => void }) {
   return (

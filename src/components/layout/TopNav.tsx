@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { Download, RotateCcw, Settings, Star, Users } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import learnFunLogo from "@/imports/Learn_fun.png";
+import { learnFunLogo } from "@/lib/branding";
 import { C, CATEGORIES } from "@/app/constants";
 import { useProgress } from "@/hooks/useProgress";
 import { defaultProgress } from "@/lib/progress";

@@ -34,6 +34,22 @@
   ],
   "rewrites": [
     {
+      "source": "/blog/offline-learning-apps-for-toddlers/",
+      "destination": "/blog/offline-learning-apps-for-toddlers/index.html"
+    },
+    {
+      "source": "/blog/offline-learning-apps-for-toddlers",
+      "destination": "/blog/offline-learning-apps-for-toddlers/index.html"
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    },
+    {
       "source": "/features/phonics",
       "destination": "/features/phonics/index.html"
     },
@@ -77,5 +93,7 @@
       "source": "/((?!assets/|audio/|.*\\..*).*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
